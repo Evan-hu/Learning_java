@@ -1,0 +1,12 @@
+log4j.rootLogger=INFO,CONSOLE,R
+
+log4j.appender.CONSOLE=org.apache.log4j.ConsoleAppender  
+log4j.appender.CONSOLE.layout=org.apache.log4j.PatternLayout
+log4j.appender.CONSOLE.layout.ConversionPattern=[%-5p] [%d{HH:mm:ss}] %c - %m%n
+
+log4j.appender.R=org.apache.log4j.DailyRollingFileAppender
+log4j.appender.R.DatePattern='_'yyyy-MM-dd'.log'
+log4j.appender.R.File=D\:/log/MakeUpERP.log
+log4j.appender.R.layout=org.apache.log4j.PatternLayout
+log4j.appender.R.layout.ConversionPattern=%d{yyyy-MM-dd HH:mm:ss} [%-5p] [%C] - %m%n
+

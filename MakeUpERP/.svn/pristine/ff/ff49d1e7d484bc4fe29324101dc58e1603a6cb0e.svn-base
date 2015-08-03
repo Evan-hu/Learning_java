@@ -1,0 +1,346 @@
+/*----------------------------------------------------------------
+ 页面分组区域
+ ------------------------------------------------------------------*/
+.GoodsEditSection {
+	margin: 8px;
+	padding: 5px;
+	background: #E7EFF4 url(../images/sysrightbackgroud.gif) repeat-x 0 0;
+	border: 1px solid #C7DBE5;
+}
+
+.GoodsDetails .division table th {
+	width: 100px;
+}
+.GoodsDetails .division {
+	margin: 4px;
+}
+.GoodsDetails .infoPanel .addon {
+	left: 20px;
+}
+.GoodsDetails .infoPanel .ActionBar {
+	background: #fff;
+}
+
+.sec-title {
+	margin: 0;
+	padding: 0;
+}
+
+
+.GoodsPicArea {
+	width: 200px;
+}
+
+.GoodsPicArea .gpic-box span {
+    border: 1px dotted #CCCCCC;
+    display: block;
+    height: 60px;
+    overflow: hidden;
+    text-align: center;
+    width: 40px;
+}
+.GoodsPicArea img {
+    border: 1px solid #FFFFFF;
+}
+.GoodsPicArea .gpic-box span img {
+    opacity: 0.7;
+}
+.GoodsPicArea .gpic-box span.current {
+    border: 1px solid #FF3300;
+}
+.GoodsPicArea .gpic-box span.current img {
+    opacity: 1;
+}
+
+.gpic-box {
+    background: none repeat scroll 0 0 #FFFFFF;
+    cursor: pointer;
+    float: left;
+    margin: 2px;
+}
+
+.gpic-box .picdelete {
+    -moz-border-bottom-colors: none;
+    -moz-border-image: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    background: none repeat scroll 0 0 #F2F2F2;
+    border-color: -moz-use-text-color #CCCCCC #CCCCCC;
+    border-right: 1px solid #CCCCCC;
+    border-style: none solid solid;
+    border-width: medium 1px 1px;
+    height: 15px;
+    overflow: hidden;
+    text-align: center;
+    width: 40px;
+}
+.gpic-box .picdelete img {
+    border: medium none !important;
+}
+.gpic-box table {
+    border: 1px solid #CCCCCC;
+    padding: 0;
+}
+.gpic-box table td {
+    padding: 0;
+}
+.gpic-box .current {
+    border: 1px solid #333333;
+}
+
+#all-pics {
+    margin: 5px auto;
+    width: 290px;
+    overflow: hidden;
+}
+
+.actionBar {
+    background: none repeat scroll 0 0 #F0F0F0;
+    border-bottom: 3px solid #6F777A;
+    border-top: 1px solid #FFFFFF;
+    line-height: 30px;
+    padding: 0 8px;
+}
+.actionBar td, .actionBar th {
+    padding: 0;
+}
+.actionBar table {
+    margin: 0;
+    width: auto;
+}
+
+#x-main-pic {
+    border: 1px solid #DDDDDD;
+    height: 310px;
+    margin: 0 auto;
+    overflow: hidden;
+    text-align: center;
+    width: 210px;
+}
+.x-main-pic-loading {
+    background: url("../images/loading.gif") no-repeat scroll 50% 50% transparent;
+}
+#x-main-pic .imgbox {
+    border: 1px solid #E9E9E9;
+}
+
+/*----------------------------------------------------------------
+ 分组内部表格
+ ------------------------------------------------------------------*/
+.division {
+    text-align:left;
+    background: none repeat scroll 0 0 #FFFFFF;
+    border-color: #CCCCCC #BEC6CE #BEC6CE #CCCCCC;
+    border-style: solid;
+    border-width: 1px 2px 2px 1px;
+    line-height: 150%;
+    margin: 3px;
+    padding: 1px;
+    white-space: normal;    
+}
+.division table {
+    margin: 0;
+    padding: 0;
+}
+.division label {
+    display: block;
+    float: left;
+    text-align: right;
+    white-space: nowrap;
+    width: 150px;
+}
+.division th, .division td {
+    border-color: #FFFFFF #DBE2E7 #DDDDDD #FFFFFF;
+    border-left: 1px solid #FFFFFF;
+    border-right: 1px solid #DBE2E7;
+    border-style: solid;
+    border-width: 1px;
+    padding: 5px;
+    vertical-align: top;
+}
+.division th {
+    background: none repeat scroll 0 0 #E2E8EB;
+    border-right: 1px solid #CCCCCC;
+    font-size: 14px;
+    text-align: right;
+    white-space: nowrap;
+    width: 140px;
+}
+.division .shopping_setting th {
+    width: 190px;
+}
+.division td {
+    white-space: normal;
+}
+.division td label, .division div label {
+    display: inline;
+    float: none;
+}
+.division ul, .division ul li {
+    list-style: none outside none;
+    margin: 0;
+    padding: 0;
+}
+.division fieldset label {
+    white-space: normal;
+}
+.division ul li {
+    border-bottom: 1px solid #EFEFEF;
+    padding: 2px;
+}
+/*----------------------------------------------------------------
+ 表格form
+ ------------------------------------------------------------------*/
+.tableform1 {
+    background: none repeat scroll 0 0 #EFEFEF;
+    border-color: #DDDDDD #BEC6CE #BEC6CE #DDDDDD;
+    border-style: solid;
+    border-width: 1px;
+    margin: 1px;
+    padding: 1px;
+    text-align: left;
+}
+margin: 0.5em 0;
+.tableform h2 span {
+    color: #777777;
+    font-weight: normal;
+}
+.tableform h3 span {
+    float: right;
+    font-weight: normal;
+}
+.tableform h3 .assis {
+    color: #000000;
+    font-weight: normal;
+}
+.tableform h3 span a {
+    color: #777777;
+    font-weight: normal;
+}
+.tableform .division td a {
+    color: #000000;
+    line-height: 20px;
+    margin: 0 3px;
+    padding: 2px 5px 0;
+}
+.tableform .intro {
+    color: #336699;
+    padding-left: 15px;
+}
+
+
+.tableAction {
+    clear: both;
+    margin: 5px auto;
+    width: auto;    
+}
+.tableAction td,th {
+	vertical-align: middle;
+	padding: 1px 4px;
+}
+
+.tableAction td .submitBtn input {
+    border: 0 none;
+}
+.submitBtn {
+    background: none repeat scroll 0 0 #4E6A81;
+    border-color: #DDDDDD #000000 #000000 #DDDDDD;
+    border-style: solid;
+    border-width: 2px;
+    cursor: pointer;
+    float: left;
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    white-space: nowrap;    
+    white-space:pre;
+    text-align: center;    
+	background-color:#4E6A81;
+}
+.submitBtn.blue {
+    background: none repeat scroll 0 0 #6A8AA5;
+}
+.submitBtn input, .submitBtn button {
+    background: none repeat scroll 0 0 #4E6A81;
+    border: 0 none;
+    color: #FFFFFF;
+    cursor: pointer;
+    display: block;
+    float: left;
+    font-family: Arial;
+    font-size: 14px;
+    font-weight: 700;
+    height: 24px;
+    margin: 0;
+    padding: 0 5px;
+    text-align: center;
+    text-decoration: none;
+    min-width:36px;
+}
+
+.submitBtn a,td.submitBtn a {
+    background: none repeat scroll 0 0 #4E6A81;
+    border: 0 none;
+    color: #FFFFFF;
+    cursor: pointer;
+    display: block;
+    float: left;
+    font-family: Arial;
+    font-size: 14px;
+    font-weight: 700;
+    height: 24px;
+    margin: 0;
+    padding: 0 5px;
+    text-align: center;
+    text-decoration: none;
+    line-height: 24px;
+}
+
+.submitBtn span {
+	line-height: 24px;
+	font-size: 14px;
+}
+
+.submitBtn.blue input, .submitBtn.blue a, .submitBtn.blue button, td .submitBtn.blue a {
+    background: none repeat scroll 0 0 #6A8AA5;
+}
+.submitBtn .iconbutton {
+    background-position: 0 0;
+    background-repeat: no-repeat;
+    padding-left: 20px;
+}
+.submitBtn .iconbutton.savereturn {
+    background-image: url("../images/savereturn.gif");
+}
+.submitBtn .iconbutton.savetolist {
+    background-image: url("../images/savetolist.gif");
+}
+.submitBtn .iconbutton.savebutton {
+    background: url("../images/sysicon.gif") no-repeat scroll 0 -622px transparent;
+}
+.submitBtn .iconbutton.saveaddsame {
+    background-image: url("../images/saveaddsame.gif");
+}
+
+.tableAction td a {
+    line-height: 19px;
+}
+
+.btnLook {
+	background:url(./imgX.gif) no-repeat; 	
+	width:22px; 
+	height:20px; 
+	text-indent:-1000px; o
+	verflow:hidden; 
+	float:left; 
+	margin-right: 3px;
+	background-position: -161px 0;
+	display:inline-block;
+	float:none;
+	padding: 0;
+}
+
+.trbtn {
+    text-decoration: underline;
+}

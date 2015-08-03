@@ -1,0 +1,53 @@
+<div class="pageHeader">
+  $queryForm
+</div>
+$showStr
+<div class="pageContent">
+  <div class="panelBar">
+    <ul class="toolBar">
+   	 #foreach($link in $toolbarList)
+   	 	#if ($link)
+   	 	<li>$link</li>
+   	 	#else
+   	 	<li class="line">line</li>
+   	 	#end
+	 #end
+    </ul>
+  </div>
+  
+  <div layoutH="95">
+   $resultTable
+   #if (${resultTable.getPageType()} == 2)
+    <div class="panelBar">
+    <div class="pages">
+      <span>显示</span>
+      <select class="combox" name="numPerPage" change="navTabPageBreak" param="numPerPage">
+        <option value="10">10</option>
+        <option value="20">20</option>
+        <option value="100">100</option>
+        <option value="200">200</option>
+      </select>
+      <span>条，共$resultTable.getRowCount()条</span>
+      <span></span>
+    </div>${resultTable.getDataSource().getRowCount()}
+    <div class="pagination" totalCount="${resultTable.getDataSource().getRowCount()}" numPerPage="${resultTable.getPageSize()}" pageNumShown="10" currentPage="${resultTable.getPageNum()}"></div>
+  </div>   	
+   #end   
+  </div>
+     #if (${resultTable.getPageType()} == 1)
+    <div class="panelBar" >
+    <div class="pages">
+      <span>显示</span>
+      <select class="combox" name="numPerPage" change="navTabPageBreak" param="numPerPage">
+        <option value="10">10</option>
+        <option value="20">20</option>
+        <option value="100">100</option>
+        <option value="200">200</option>
+      </select>
+      <span>条，共$resultTable.getRowCount()条</span>
+      <span></span>
+    </div>
+    <div class="pagination" totalCount="${resultTable.getRowCount()}" numPerPage="$resultTable.getPageSize()" pageNumShown="$resultTable.getPageSize()" currentPage="$resultTable.getPageNumber()"></div>
+   </div>   	
+   #end  
+</div>

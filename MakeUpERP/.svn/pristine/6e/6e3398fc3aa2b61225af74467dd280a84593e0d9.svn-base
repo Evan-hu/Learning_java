@@ -1,0 +1,366 @@
+package com.ga.erp.biz.store;
+
+import java.util.Map;
+
+import org.apache.click.ActionResult;
+
+import com.ga.click.control.GaConstant;
+import com.ga.click.control.SubmitTool;
+import com.ga.click.control.button.ActionButton;
+import com.ga.click.exception.BizException;
+import com.ga.click.layout.FormLayout;
+import com.ga.click.layout.Layout;
+import com.ga.click.layout.ViewPageLayout;
+import com.ga.click.mvc.FormView;
+import com.ga.click.mvc.ListView;
+import com.ga.click.mvc.PageEvent;
+import com.ga.click.mvc.UnitPage;
+import com.ga.click.page.QueryPageData;
+import com.ga.click.util.ClickUtil;
+import com.ga.erp.biz.activity.activity.ActivityBiz;
+import com.ga.erp.biz.activity.activity.ActivityListView;
+import com.ga.erp.biz.content.ad.AdBiz;
+import com.ga.erp.biz.content.ad.AdListView;
+import com.ga.erp.biz.member.MemberBiz;
+import com.ga.erp.biz.member.MemberListView;
+import com.ga.erp.biz.store.returnOrder.StoreReturnBiz;
+import com.ga.erp.biz.store.returnOrder.StoreReturnListView;
+import com.ga.erp.biz.store.storecomm.StoreCommBiz;
+import com.ga.erp.biz.store.storecomm.StoreCommListView;
+import com.ga.erp.biz.store.storepos.PosBiz;
+import com.ga.erp.biz.store.storepos.PosListView;
+import com.ga.erp.biz.store.storesalesorder.SalesOrderBiz;
+import com.ga.erp.biz.store.storesalesorder.SalesOrderListView;
+import com.ga.erp.biz.store.storewalletlog.WalletLogBiz;
+import com.ga.erp.biz.store.storewalletlog.WalletLogListView;
+import com.ga.erp.biz.system.OpBiz;
+import com.ga.erp.biz.system.OpListView;
+import com.ga.erp.biz.system.OpNoEditDetailPage;
+
+public class StoreDetailPage extends UnitPage {
+
+	private static final long serialVersionUID = 1L;
+	private FormView storeForm;
+	private ListView storeCommList;
+	private ListView posList;
+	private ListView walletLogList;
+	private ListView salesOrderList;
+	private ListView memberList;
+	private ListView adList;
+	private ListView storeReturnList;
+	private ListView activityList;
+	private ListView opList;
+  
+	@Override
+	public void initController() throws Exception {
+
+		this.storeForm = new StoreFormView("storeForm", this.modelMap);
+		this.storeCommList = new StoreCommListView("storeCommList",this.modelMap);
+		
+		this.posList = new PosListView("storePosList", this.modelMap);
+		this.posList.showQuery(false);
+		this.posList.showPage(false);
+		
+		this.walletLogList = new WalletLogListView("walletLogList",this.modelMap);
+		this.salesOrderList = new SalesOrderListView("salesOrderList", this.modelMap);
+		this.memberList = new MemberListView("memberList", this.modelMap);
+	    this.adList = new AdListView("adList", this.modelMap);
+	    this.storeReturnList = new StoreReturnListView("storeReturnList", this.modelMap);
+	    this.activityList = new ActivityListView("activityList", this.modelMap);
+	    this.opList = new OpListView("opList", this.modelMap);
+	    this.opList.showQuery(false);
+	    this.opList.showPage(false);
+	   
+
+		PageEvent event = this.regPageLoadEvent("pageLoad");
+		event.addEventParam(this.storeForm, PageEvent.PARAMTYPE_QUERYVALUE,"STORE_ID");
+
+		ActionButton action = new ActionButton(this.getClass(), "saveStore","保存", this.getSelfUrl(), null);
+		action.bindForm(this.storeForm.getViewID(), true);
+		SubmitTool.submitMvc(action, this.modelMap.getPreNavInfoStr());
+
+		action.addParam(GaConstant.FIXPARAM_EDITMODE,this.modelMap.getPageEditMode());
+		this.storeForm.regAction(action);
+
+		event = this.regPageEvent(action, "saveStore");
+		event.addEventParam(this.storeForm, PageEvent.PARAMTYPE_DATAMAP);
+
+		action = this.posList.regAddAction("newPos", "新建",	"/store/storepos/pos_detail.htm");
+		SubmitTool.submitToDialog(action, "newPos", "新建", 800, 270,this.modelMap.getPreNavInfoStr());
+		action.bindViewParam(this.storeForm, "STORE_ID", "STORE_ID", false);
+
+		action = this.posList.regEditAction("editPos", "查看/编辑","/store/storepos/pos_detail.htm");
+		SubmitTool.submitToDialog(action, "editPos", "查看/编辑", 1000, 360,this.modelMap.getPreNavInfoStr());
+		action.bindViewParam(this.storeForm, "STORE_ID", "STORE_ID", false);
+
+	  action = this.opList.regAddAction("newOp","新建","/system/op_noedit_detail.htm");
+	  SubmitTool.submitToDialog(action,"newOp", "新建",800,400,this.modelMap.getPreNavInfoStr());
+	  action.bindViewParam(this.storeForm, "STORE_ID", "STORE_ID", false);
+	  action.addParam("TYPE", OpNoEditDetailPage.storeOP);
+    
+	  action = this.opList.regEditAction("editOp","查看/编辑", "/system/op_noedit_detail.htm");
+	  SubmitTool.submitToDialog(action,"editOp", "查看/编辑",800,400,this.modelMap.getPreNavInfoStr());
+	  
+	  action = this.opList.regEditAction("editPassword","修改密码", "/system/op_pass_detail.htm");
+	  SubmitTool.submitToDialog(action,"editPassword", "修改密码",400,230,this.modelMap.getPreNavInfoStr());
+	  
+	  action  = new ActionButton(this.getClass(),"delStoreOp","删除",this.getSelfUrl(),null);
+    SubmitTool.submitMvc(action, this.modelMap.getPreNavInfoStr());
+    action.bindTableRowData(this.opList.getViewID());
+    action.setConfirm("确认删除(只会删除管理员本门店管理权限)?");
+    event = this.regPageEvent(action,"delStoreOp");
+    event.addEventParam(this.opList,PageEvent.PARAMTYPE_QUERYVALUE,"OP_STORE_ID");
+    this.opList.regAction(action);
+    
+    event = this.regListViewLoadEvent(this.posList, "reloadPosList");
+    event.addEventParam(this.storeForm, PageEvent.PARAMTYPE_QUERYVALUE,"STORE_ID");
+    
+		event = this.regListViewLoadEvent(this.storeCommList, "reloadStoreCommList");
+		event.addEventParam(this.storeForm, PageEvent.PARAMTYPE_QUERYVALUE,"STORE_ID");
+	 	event.addEventParam(this.storeCommList, PageEvent.PARAMTYPE_PAGEQUERY);
+	  
+	 	event = this.regListViewLoadEvent(this.walletLogList, "reloadWalletLogList");
+	 	event.addEventParam(this.storeForm, PageEvent.PARAMTYPE_QUERYVALUE,"STORE_ID");
+    event.addEventParam(this.walletLogList, PageEvent.PARAMTYPE_PAGEQUERY);
+    
+    event = this.regListViewLoadEvent(this.salesOrderList, "reloadSalesOrderList");
+    event.addEventParam(this.storeForm, PageEvent.PARAMTYPE_QUERYVALUE,"STORE_ID");
+    event.addEventParam(this.salesOrderList, PageEvent.PARAMTYPE_PAGEQUERY);
+    
+    event = this.regListViewLoadEvent(this.memberList, "reloadMemberList");
+    event.addEventParam(this.storeForm, PageEvent.PARAMTYPE_QUERYVALUE,"STORE_ID");
+    event.addEventParam(this.memberList, PageEvent.PARAMTYPE_PAGEQUERY);
+    
+    event = this.regListViewLoadEvent(this.adList, "reloadAdList");
+    event.addEventParam(this.storeForm, PageEvent.PARAMTYPE_QUERYVALUE,"STORE_ID");
+    event.addEventParam(this.adList, PageEvent.PARAMTYPE_PAGEQUERY);
+    
+    event = this.regListViewLoadEvent(this.storeReturnList, "reloadReOrderList");
+    event.addEventParam(this.storeForm, PageEvent.PARAMTYPE_QUERYVALUE,"STORE_ID");
+    event.addEventParam(this.storeReturnList, PageEvent.PARAMTYPE_PAGEQUERY);
+    
+    event = this.regListViewLoadEvent(this.activityList, "reloadActivityList");
+    event.addEventParam(this.storeForm, PageEvent.PARAMTYPE_QUERYVALUE,"STORE_ID");
+    event.addEventParam(this.activityList, PageEvent.PARAMTYPE_PAGEQUERY);
+    
+    event = this.regListViewLoadEvent(this.opList, "reloadStoreOp");
+    event.addEventParam(this.storeForm, PageEvent.PARAMTYPE_QUERYVALUE, "STORE_ID");  
+	}
+
+	@Override
+	public Layout initLayout() {
+		FormLayout formLayout = new FormLayout("",this.storeForm.getDataForm(), 2);
+		
+		this.storeForm.getDataForm().setLayout(formLayout);
+		
+		ViewPageLayout layout = new ViewPageLayout(this);
+		if(this.modelMap.getPageEditMode() == GaConstant.EDITMODE_NEW){
+		  layout.addControl(this.storeForm);
+		} else {
+		  layout.addControl("基本信息", "", this.storeForm);
+			layout.addControl("商品信息", "", this.storeCommList);
+			layout.addControl("销售订单", "", this.salesOrderList);
+			layout.addControl("退货订单", "", this.storeReturnList);
+			layout.addControl("会员信息", "", this.memberList);
+			layout.addControl("POS机", "", this.posList);
+			layout.addControl("钱包日志", "", this.walletLogList);
+			layout.addControl("广告信息", "", this.adList);
+			layout.addControl("活动情况", "", this.activityList);
+			layout.addControl("管理员信息","",this.opList);
+		  
+//      layout.addControl("", "门店信息", "基本信息","", this.storeForm);
+//      layout.addControl("", "门店相关", "商品信息", "", this.storeCommList);
+//      layout.addControl("","门店相关","销售订单", "", this.salesOrderList);
+//      layout.addControl("","门店相关","退货订单", "", this.storeReturnList);
+//      layout.addControl("","门店相关","会员信息", "", this.memberList);
+//      layout.addControl("","门店相关","POS机", "", this.posList);
+//      layout.addControl("","门店相关","钱包日志", "", this.walletLogList);
+//      layout.addControl("","门店相关","广告信息", "", this.adList);
+//      layout.addControl("","门店相关","活动情况", "", this.activityList);
+//      layout.addControl("","门店相关","管理员信息","",this.opList);
+		}
+		return layout;
+	}
+
+	public void pageLoad(Long storeId) {
+		try {
+			if (this.modelMap.getPageEditMode() == GaConstant.EDITMODE_EDIT) {
+			  
+  				StoreBiz biz = new StoreBiz(this.getUserACL());	
+  				Map<String, Object> valuesMap = biz.queryStoreDetail(storeId,this.storeForm.getFieldList());
+  				this.storeForm.bindData(valuesMap);
+  				
+  				QueryPageData pageData = new QueryPageData();
+  				
+  				StoreCommBiz storeCommBiz = new StoreCommBiz(this.getUserACL());
+  				this.storeCommList.bindData(storeCommBiz.queryStoreCommList(pageData, this.storeCommList.getFieldList(), storeId,null,null));
+  				
+  				PosBiz posBiz = new PosBiz(this.getUserACL());
+  				this.posList.bindData(posBiz.queryPosListMap(this.posList.getFieldList(), storeId));
+  				
+  				WalletLogBiz walletBiz = new WalletLogBiz(this.getUserACL());
+  				this.walletLogList.bindData(walletBiz.queryWalletLogList(pageData,this.walletLogList.getFieldList(), storeId));
+          
+          SalesOrderBiz soBiz = new SalesOrderBiz(this.getUserACL());
+          this.salesOrderList.bindData(soBiz.querySalesOrderList(pageData,this.salesOrderList.getFieldList(),storeId));
+          
+          MemberBiz mBiz = new MemberBiz(this.getUserACL());
+          this.memberList.bindData(mBiz.queryMemberList(pageData,this.memberList.getFieldList(), storeId));
+          
+          AdBiz aBiz = new AdBiz(this.getUserACL());
+          this.adList.bindData(aBiz.queryAdListByStore(pageData,this.adList.getFieldList(), storeId));
+          
+          StoreReturnBiz srBiz = new StoreReturnBiz(this.getUserACL());
+          this.storeReturnList.bindData(srBiz.queryStoreReturnList(pageData, this.storeReturnList.getFieldList(), storeId,null));
+          
+          ActivityBiz actBiz = new ActivityBiz(this.getUserACL());
+          this.activityList.bindData(actBiz.queryActivityListMap(pageData, this.activityList.getFieldList(), storeId));
+          
+          this.opList.bindData(new OpBiz(this.getUserACL()).queryStoreOpList(storeId));
+		          
+			}
+		} catch (BizException ex) {
+			throw ex;
+		} catch (Exception e) {
+			throw new BizException(BizException.SYSTEM, "页面加载异常");
+		}
+	}
+
+	public ActionResult saveStore(Map<String, Object> valueMap) {
+		StoreBiz biz = new StoreBiz(this.getUserACL());
+		if (this.getModelMap().getPageEditMode() == GaConstant.EDITMODE_NEW) {
+			biz.saveStore(valueMap, true);
+		} else if (this.modelMap.getPageEditMode() == GaConstant.EDITMODE_EDIT) {
+			biz.saveStore(valueMap, false);
+		}
+		return this.createReturnJSON(true, "保存成功", true, false, "storeList", "");
+	}
+	
+
+	public ActionResult delStoreOp(Long opStoreId){
+    try {
+      OpBiz biz = new OpBiz(this.getUserACL());
+      biz.delOpStore(opStoreId);
+      return this.createReturnJSON(true, "删除门店管理员成功!", false, false, this.opList.getViewID(),"");
+    } catch(Exception e) {
+      throw new BizException(BizException.SYSTEM,"修改操作员异常");
+    }
+  }
+	
+  public ActionResult reloadPosList(Long storeId) {
+    try {
+      PosBiz biz = new PosBiz(this.getUserACL());
+      this.posList.bindData(biz.queryPosListMap(this.posList.getFieldList(), storeId));
+      return this.linkView(this.posList);
+    } catch (BizException e) {
+      throw e;
+    } catch (Exception ex) {
+      throw new BizException("加载页面异常");
+    }
+  }
+  
+	public ActionResult reloadStoreCommList(Long storeId, QueryPageData pageData) {
+		try {
+			StoreCommBiz biz = new StoreCommBiz(this.getUserACL());
+			this.storeCommList.bindData(biz.queryStoreCommList(pageData, this.storeCommList.getFieldList(), storeId,null,null));
+			ClickUtil.setControlLayoutH(this.storeCommList.getViewControl(), 120);
+			return this.linkView(this.storeCommList);
+		} catch (BizException e) {
+			throw e;
+		} catch (Exception ex) {
+			throw new BizException("加载页面异常");
+		}
+	}
+	
+	public ActionResult reloadWalletLogList(Long storeId, QueryPageData pageData) {
+    try {
+      WalletLogBiz biz = new WalletLogBiz(this.getUserACL());
+      this.walletLogList.bindData(biz.queryWalletLogList(pageData,this.walletLogList.getFieldList(), storeId));
+      ClickUtil.setControlLayoutH(this.walletLogList.getViewControl(), 120);
+      return this.linkView(this.walletLogList);
+    } catch (BizException e) {
+      throw e;
+    } catch (Exception ex) {
+      throw new BizException("加载页面异常");
+    }
+  }
+	
+	public ActionResult reloadSalesOrderList(Long storeId, QueryPageData pageData) {
+    try {
+      SalesOrderBiz biz = new SalesOrderBiz(this.getUserACL());
+      this.salesOrderList.bindData(biz.querySalesOrderList(pageData, this.salesOrderList.getFieldList(), storeId));
+      ClickUtil.setControlLayoutH(this.salesOrderList.getViewControl(), 120);
+      return this.linkView(this.salesOrderList);
+    } catch (BizException e) {
+      throw e;
+    } catch (Exception ex) {
+      throw new BizException("加载页面异常");
+    }
+  }
+
+	 public ActionResult reloadMemberList(Long storeId, QueryPageData pageData) {
+	    try {
+	      MemberBiz mBiz = new MemberBiz(this.getUserACL());
+	      this.memberList.bindData(mBiz.queryMemberList(pageData, this.memberList.getFieldList(), storeId));
+	      ClickUtil.setControlLayoutH(this.memberList.getViewControl(), 120);
+	      return this.linkView(this.memberList);
+	    } catch (BizException e) {
+	      throw e;
+	    } catch (Exception ex) {
+	      throw new BizException("加载页面异常");
+	    }
+	  }
+	 
+	 public ActionResult reloadAdList(Long storeId, QueryPageData pageData) {
+     try {
+       AdBiz aBiz = new AdBiz(this.getUserACL());
+       this.adList.bindData(aBiz.queryAdListByStore(pageData, this.adList.getFieldList(), storeId));
+       ClickUtil.setControlLayoutH(this.adList.getViewControl(), 120);
+       return this.linkView(this.adList);
+     } catch (BizException e) {
+       throw e;
+     } catch (Exception ex) {
+       throw new BizException("加载页面异常");
+     }
+   }
+	 
+	 
+	 public ActionResult reloadReOrderList(Long storeId, QueryPageData pageData) {
+     try {
+       StoreReturnBiz srBiz = new StoreReturnBiz(this.getUserACL());
+       this.storeReturnList.bindData(srBiz.queryStoreReturnList(pageData, this.storeReturnList.getFieldList(), storeId,null));
+       ClickUtil.setControlLayoutH(this.storeReturnList.getViewControl(), 120);
+       return this.linkView(this.storeReturnList);
+     } catch (BizException e) {
+       throw e;
+     } catch (Exception ex) {
+       throw new BizException("加载页面异常");
+     }
+   }
+	
+	 public ActionResult reloadActivityList(Long storeId, QueryPageData pageData) {
+     try {
+       ActivityBiz actBiz = new ActivityBiz(this.getUserACL());
+       this.activityList.bindData(actBiz.queryActivityListMap(pageData, this.activityList.getFieldList(), storeId));
+       ClickUtil.setControlLayoutH(this.activityList.getViewControl(), 120);
+       return this.linkView(this.activityList);
+     } catch (BizException e) {
+       throw e;
+     } catch (Exception ex) {
+       throw new BizException("加载页面异常");
+     }
+   }
+	 
+	 public ActionResult reloadStoreOp(Long storeId) {
+     try {
+       this.opList.bindData(new OpBiz(this.getUserACL()).queryStoreOpList(storeId));
+       return this.linkView(this.opList);
+     } catch (BizException e) {
+       throw e;
+     } catch (Exception ex) {
+       throw new BizException("加载页面异常");
+     }
+   }
+	 
+
+}

@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE click-app PUBLIC "-//Apache Software Foundation//DTD Click Configuration 2.2//EN" "http://click.apache.org/dtds/click-2.2.dtd">
+<click-app locale="zh">
+  <pages package="com.ga.erp.biz" autobinding="annotation">
+    <page path="/main.htm" classname="MainPage"/>    
+    <page path="/menu.htm" classname="Menu"/> 
+  </pages>   
+  
+  <pages package="com.ga.erp.biz.comm" autobinding="annotation">
+    <page path="/comm/brand_main.htm" classname="brand.BrandMainPage"></page>
+    <page path="/comm/brand_detail.htm" classname="brand.BrandDetailPage"></page>
+    <page path="/comm/sort_main.htm" classname="sort.SortMainPage"></page>
+    <page path="/comm/sort_detail.htm" classname="sort.SortDetailPage"></page>
+    <page path="/comm/sort_sele.htm" classname="sort.SortSelePage"></page>
+    <page path="/comm/comm_main.htm" classname="CommMainPage"></page>
+    <page path="/comm/comm_detail.htm" classname="CommDetailPage"></page>
+  </pages>
+  
+  <pages package="com.ga.erp.biz.member" autobinding="annotation">
+    <page path="/member/member_main.htm" classname="MemberMainPage"></page>
+    <page path="/member/member_detail.htm" classname="MemberDetailPage"></page>
+    <page path="/member/consumeLog_main.htm" classname="viplog.ConsumeLogMainPage"></page>
+    <page path="/member/pwd_detail.htm" classname="pwd.MemberPwdDetailPage"></page>
+    <page path="member/activelog/activelog_main.htm" classname="activelog.ActiveLogMainPage"></page>
+    <page path="member/viplog/viplog_main.htm" classname="viplog.VipLogMainPage"></page>
+    <page path="/member/viprule/viprule_main.htm" classname="viprule.VipRuleMainPage"></page>
+    <page path="/member/viprule/viprule_detail.htm" classname="viprule.VipRuleDetailPage"></page>
+    <page path="/member/vipLoyaltyAn_main.htm" classname="vipLoyaltyAn.VipLoyaltyAnMainPage"></page>
+    <page path="/member/vipLoyaltyAn_detail.htm" classname="vipLoyaltyAn.VipLoyaltyAnDetailPage"></page>
+  </pages>
+
+   <pages package="com.ga.erp.biz.modifyprice" autobinding="annotation">
+    <page path="/modifyprice/bill_main.htm" classname="ModifyPriceMainPage"></page>
+    <page path="/modifyprice/bill_table.htm" classname="TablePage"></page>
+    <page path="/modifyprice/comm_detal.htm" classname="comm.CommDetailPage"></page>
+   </pages>
+
+  <pages package="com.ga.erp.biz.store" autobinding="annotation">
+    <page path="/store/store_main.htm" classname="StoreMainPage"></page>
+    <page path="/store/store_detail.htm" classname="StoreDetailPage"></page>
+    <page path="/store/storepos/pos_main.htm" classname="storepos.PosMainPage"></page>
+    <page path="/store/storepos/pos_detail.htm" classname="storepos.PosDetailPage"></page>
+    <page path="/store/storewalletlog/walletlog_main.htm" classname="storewalletlog.WalletLogMainPage"></page>
+  	<page path="/store/storewalletlog/walletlog_detail.htm" classname="storewalletlog.WalletLogDetailPage"></page>
+  	<page path="/store/storesalesorder/salesorder_main.htm" classname="storesalesorder.SalesOrderMainPage"></page>
+  	<page path="/store/storesalesorder/salesorder_detail.htm" classname="storesalesorder.SalesOrderDetailPage"></page>
+  	<page path="/store/storesalesdetail/salesdetail_main.htm" classname="storesalesdetail.SalesDetailMainPage"></page>
+  	<page path="/store/returnOrder_main.htm" classname="returnOrder.StoreReturnMainPage"></page>
+    <page path="/store/returnOrder_detail.htm" classname="returnOrder.StoreReturnDetailPage"></page>
+    <page path="/store/storeorder_main.htm" classname="storeorder.StoreOrderMainPage"></page>
+    <page path="/store/storeorder_detail.htm" classname="storeorder.StoreOrderDetailPage"></page>
+    <page path="/store/ordercomm_detail.htm" classname="storeorder.comm.OrderCommDetailPage"></page>
+    <page path="/store/storealert_main.htm" classname="storealert.StoreAlertMainPage"></page>
+    <page path="/store/comm_main.htm" classname="storecomm.StoreCommMainPage"></page>
+     <page path="/store/toOrder_detail.htm" classname="storeorder.toOrder.ToOrderTablePage"></page>
+    <page path="/pending/pending_detail.htm" classname="pending.PendingDetailPage"></page> 
+  </pages>
+  
+  <pages package="com.ga.erp.biz.purchase" autobinding="annotation">
+  <page path="/purchase/purList_main.htm" classname="list.PurListMainPage"></page>
+  <page path="/purchase/purList_detail.htm" classname="list.PurListDetailPage"></page>
+  <page path="/purchase/purOrder_main.htm" classname="order.PurOrderMainPage"></page>
+  <page path="/purchase/purOrder_detail.htm" classname="order.PurOrderDetailPage"></page>
+  </pages>
+
+  <pages package="com.ga.erp.biz.content" autobinding="annotation">
+    <page path="/content/ad_main.htm" classname="ad.AdMainPage"></page>
+    <page path="/content/ad_detail.htm" classname="ad.AdDetailPage"></page>
+    <page path="/content/adpublish_detail.htm" classname="ad.AdPublishDetailPage"></page>
+    <page path="/content/stationmsg_main.htm" classname="stationmsg.StationMsgMainPage"></page>
+    <page path="/content/stationmsg_detail.htm" classname="stationmsg.StationMsgDetailPage"></page>
+     </pages>
+  
+   <pages package="com.ga.erp.biz.stock" autobinding="annotation"> 
+     <page path="/stock/stock_main.htm" classname="StockMainPage"></page> 
+     <page path="/stock/stock_detail.htm" classname="StockDetailPage"></page> 
+     <page path="/stock/comm_main.htm" classname="stockcomm.StockCommMainPage"></page>
+     <page path="/stock/comm_detail.htm" classname="stockcomm.StockCommDetailPage"></page> 
+     <page path="/stock/shelf_main.htm" classname="shelf.ShelfMainPage"></page> 
+     <page path="/stock/shelf_detail.htm" classname="shelf.ShelfDetailPage"></page> 
+     <page path="/stock/shelf_sele.htm" classname="shelf.ShelfSelePage"></page> 
+     <page path="/stock/batch_main.htm" classname="inventorybatch.BatchMainPage"></page> 
+     <page path="/stock/batch_detail.htm" classname="inventorybatch.BatchDetailPage"></page> 
+     <page path="/stock/import_detail.htm" classname="inventorybatch.imports.ImportDetailPage"></page> 
+     <page path="/stock/bill_main.htm" classname="inventorybill.BillMainPage"></page> 
+     <page path="/stock/bill_detail.htm" classname="inventorybill.BillDetailPage"></page> 
+     <page path="/stock/billcomm_main.htm" classname="inventorybill.comm.CommMainPage"></page> 
+     <page path="/stock/billcomm_detail.htm" classname="inventorybill.comm.CommDetailPage"></page> 
+     <page path="/stock/diffbill_main.htm" classname="inventorydiffbill.DiffBillMainPage"></page> 
+     <page path="/stock/diffbill_detail.htm" classname="inventorydiffbill.DiffBillDetailPage"></page> 
+     <page path="/stock/diffcomm_main.htm" classname="inventorydiffbill.comm.CommMainPage"></page> 
+     <page path="/stock/diffcomm_detail.htm" classname="inventorydiffbill.comm.CommDetailPage"></page> 
+     <page path="/stock/stockalert_main.htm" classname="stockalert.StockAlertMainPage"></page> 
+     <page path="/stock/bill_mtable.htm" classname="inventorybill.TablePage"></page> 
+     <page path="/stock/diffbill_mtable.htm" classname="inventorydiffbill.TablePage"></page> 
+  <!-- 
+    <page path="/stock/innageAd_main.htm" classname="innageAdjust.InnageAdMainPage"></page>
+    <page path="/stock/innageAd_detail.htm" classname="innageAdjust.InnageAdDetailPage"></page>
+     -->
+  </pages>
+  
+  <pages package="com.ga.erp.biz.supplier" autobinding="annotation">
+    <page path="/supplier/supplier_main.htm" classname="SupplierMainPage"></page>
+    <page path="/supplier/supplier_detail.htm" classname="SupplierDetailPage"></page>
+     <page path="/supplier/contract_main.htm" classname="contract.ContractMainPage"></page>
+     <page path="/supplier/contract_detail.htm" classname="contract.ContractDeatilPage"></page>
+  </pages>
+
+  <pages package="com.ga.erp.biz.supplier.commodity" autobinding="annotation">
+	<page classname="SupplierCommodityMainPage" path="/supplier/commodity/suppliercommodity_main.htm"></page>
+	<page classname="SupplierCommodityDetailPage" path="/supplier/commodity/suppliercommodity_detail.htm"></page>
+  </pages>
+
+<pages package="com.ga.erp.biz.activity" autobinding="annotation">
+    <page path="/activity/activity_list.htm" classname="activity.ActivityListPage"/>
+    <page path="/activity/activity_edit.htm" classname="activity.ActivityEditPage"/>
+    <page path="/activity/activity_param_edit.htm" classname="activity.ActivityParamEditPage"/>
+    <page path="/activity/activity_store_edit.htm" classname="activity.ActivityStoreEditPage"/>
+    
+    <page path="/activity/scorerule_main.htm" classname="scorerule.ScoreRuleMainPage"/>
+    <page path="/activity/scorerule_detail.htm" classname="scorerule.ScoreRuleDetailPage"/>
+    <page path="/activity/scorelog_main.htm" classname="scorelog.ScoreLogMainPage"/>
+    <page path="/activity/card_main.htm" classname="card.CardMainPage"/>
+    <page path="/activity/card_detail.htm" classname="card.CardDetailPage"/>
+    <page path="/activity/cardbatch_main.htm" classname="cardbatch.CardBatchMainPage"/>
+    <page path="/activity/cardbatch_detail.htm" classname="cardbatch.CardBatchDetailPage"/>
+    
+    <page path="/regactivity/regActivity_mainpage.htm" classname="regactivity.RegActivityMainPage"/>
+    <page path="/regactivity/regActivity_ditailpage.htm" classname="regactivity.RegActivityDetailPage"/>
+    <page path="/regactivity/regActivity_mtpage.htm" classname="regactivity.RegActivityMTPage"/>
+  </pages>  
+  
+  <pages package="com.ga.erp.biz.store.storecataloguecomm" autobinding="annotation">
+    <page path="/store/storecataloguecomm_main.htm" classname="StoreCatalogueCommMainPage"/>
+    <page path="/store/storecataloguecomm_detail.htm" classname="StoreCatalogueCommDetailPage"/>
+  </pages>  
+  
+   <pages package="com.ga.erp.biz.settlement" autobinding="annotation">
+    <page path="/settlement/settlement_detail.htm" classname="settlement.SettlementDetailPage"/>
+    <page path="/settlement/settlement_log_detail.htm" classname="settlement.SettlementLogDetailPage"/>
+    <page path="/settlement/settlement_main.htm" classname="settlement.SettlementMainPage"/>
+    <page path="/settlement/supplier_settlement_main.htm" classname="suppliersettlement.SuppSettlementMainPage"/>
+    <page path="/settlement/supplier_settlement_mtpage.htm" classname="suppliersettlement.SuppSettlementMTPage"></page>
+    <page path="/settlement/costorder_settlement_mtpage.htm" classname="suppliersettlement.costordersettlement.CostOrderSettlementMTPage"></page>
+    <page path="/settlement/settlementorder_mainpage.htm" classname="settlementorder.SettlementOrderMainPage"></page>
+    <page path="/settlement/storesettlement_mainpage.htm" classname="storesettlement.StoreSettlementMainPage"></page>
+    <page path="/settlement/store_settlement_mtpage.htm" classname="storesettlement.StoreSettlementMTPage"></page>
+    <page path="/costorder/costorder_main.htm" classname="costorder.CostOrderMainPage"/>
+    <page path="/costorder/costorder_detail.htm" classname="costorder.CostOrderDetailPage"/>
+    <page path="/deliveryorg/deliveryorg_main.htm" classname="deliveryorg.DeliverySettMainPage"/>
+    <page path="/deliveryorg/deliveryorg_mtpage.htm" classname="deliveryorg.DeliverySettMTPage"/>
+
+  </pages>  
+  
+  <pages package="com.ga.erp.biz.system" autobinding="annotation">
+    <page path="/system/log_main.htm" classname="log.LogMainPage"></page>
+    <page path="/system/op_main.htm" classname="OpMainPage"></page>
+    <page path="/system/op_detail.htm" classname="OpDetailPage"></page>
+    <page path="/system/opstore_detail.htm" classname="opstore.OpStoreDetailPage"></page>
+    <page path="/system/op_noedit_detail.htm" classname="OpNoEditDetailPage"></page>
+    <page path="/system/op_pass_detail.htm" classname="OpPasswordDetailPage"></page>
+    <page path="/system/op_noedit_detail.htm" classname="OpNoEditDetailPage"></page>
+    <page path="/system/purview_main.htm" classname="purview.PurviewMainPage"></page>
+    <page path="/system/purview_select.htm" classname="purview.PurviewSelePage" />
+    <page path="/system/purview_new.htm" classname="purview.PurviewNewPage" />
+    <page path="/system/role_main.htm" classname="role.RoleMainPage"></page>
+    <page path="/system/role_detail.htm" classname="role.RoleDetailPage"></page>
+    <page path="/system/op_select.htm" classname="role.OpSelePage"></page>
+    <page path="/system/area_main.htm" classname="area.AreaMainPage"></page>
+    <page path="/system/area_detail.htm" classname="area.AreaNewPage"></page>
+    <page path="/system/area_sele.htm" classname="area.AreaSelePage"></page>
+    <page path="/system/audits_main.htm" classname="audits.AuditsMainPage"></page>
+    <page path="/system/audits_detail.htm" classname="audits.AuditsDetailPage"></page>
+    <page path="/system/audconfig_main.htm" classname="audits.config.AudConfigMainPage"></page>
+    <page path="/system/audconfig_detail.htm" classname="audits.config.AudConfigDetailPage"></page>
+    <page path="/system/AuditsRole_detail.htm" classname="audits.role.AuditsRoleDetailPage"></page>
+    <page path="/system/audexample_main.htm" classname="audits.example.AuditsExampleMainPage"></page>
+    <page path="/system/audexample_detail.htm" classname="audits.example.AuditsExampleDetailPage"></page>
+    
+    <page path="/system/delivery_main.htm" classname="deliveryorg.DeliveryMainPage"></page>
+    <page path="/system/delivery_detail.htm" classname="deliveryorg.DeliveryDetailPage"></page>
+    <page path="/system/catalogue_detail.htm" classname="area.catalogue.CatalogueDetailPage"></page>
+ 	  <page path="/system/catalogue_comm_detail.htm" classname="area.cataloguecomm.CatalogueCommDetailPage"></page>
+ 	  <page path="/system/syscode_main.htm" classname="syscode.SyscodeMainPage"></page>
+ 	  <page path="/system/syscode_detail.htm" classname="syscode.SyscodeDetailPage"></page>
+ 	  <page path="/system/syscode_sele.htm" classname="syscode.SyscodeSelePage"></page>
+ 	  <page path="/system/mtable_role.htm" classname="audits.config.MTableRolePage"></page>
+        
+ 	  <page path="/system/mtab_test.htm" classname="com.ga.erp.biz.store.MTableTestPage"></page>
+    
+   
+    
+ 	  
+  </pages>
+  
+  <pages package="com.ga.erp.biz.statistic" autobinding="annotation">
+    <page path="/abc/abc_mainpage.htm" classname="abc.AbcMainPage"></page>
+  </pages>
+  
+  <mode value="production"/>
+</click-app>
+

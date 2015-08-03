@@ -1,0 +1,110 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=GBK" />
+<meta http-equiv="X-UA-Compatible" content="IE=7" />
+<title>连锁专卖店后台管理系统</title>
+<link href="/clicktemplate/themes/default/style.css" rel="stylesheet" type="text/css" media="screen"/>
+<link href="/clicktemplate/themes/css/core.css" rel="stylesheet" type="text/css" media="screen"/>
+<link href="/clicktemplate/themes/css/print.css" rel="stylesheet" type="text/css" media="print"/>
+<link href="/clicktemplate/uploadify/css/uploadify.css" rel="stylesheet" type="text/css" media="screen"/>
+<link rel="stylesheet" href="/clicktemplate/valide/validationEngine.jquery.css" type="text/css" media="screen"  />
+<!--[if IE6]>
+<link rel="stylesheet" href="/clicktemplate/css/ieHack.css" type="text/css" media="screen" />
+<![endif]-->
+<!--[if IE]>
+<link href="/clicktemplate/themes/css/ieHack.css" rel="stylesheet" type="text/css" media="screen"/>
+<![endif]-->
+<!--[if lte IE 9]>
+<script src="/clicktemplate/js/speedup.js" type="text/javascript"></script>
+<![endif]-->
+
+<style type="text/css">
+  #header{height:85px}
+  #leftside, #container, #splitBar, #splitBarProxy{top:90px}
+</style>
+<!-- dwz -->
+<script type="text/javascript" src="/js/jquery-1.5.2.min.js"></script>
+<script src="/clicktemplate/js/jquery.cookie.js" type="text/javascript"></script>
+<script src="/clicktemplate/js/jquery.validate.js" type="text/javascript"></script>
+<script src="/clicktemplate/js/jquery.bgiframe.js" type="text/javascript"></script>
+<script src="/clicktemplate/xheditor/xheditor-1.1.12-zh-cn.min.js" type="text/javascript"></script>
+<script src="/clicktemplate/uploadify/scripts/swfobject.js" type="text/javascript"></script>
+
+<script src="/clicktemplate/uploadify/scripts/jquery.uploadify.v2.1.4.js" type="text/javascript"></script>
+
+<script src="/clicktemplate/js/dwz.min.js" type="text/javascript"></script>
+<script src="/clicktemplate/js/dwz.regional.zh.js" type="text/javascript"></script>
+
+<script src="/js/highcharts.js" type="text/javascript"></script>
+<script src="/js/modules/exporting.js" type="text/javascript"></script>
+
+<!-- 扩展 -->
+<script src="/js/ga.js" type="text/javascript"></script>
+<link href="/js/ga.css" rel="stylesheet" type="text/css" media="screen"/>
+<!-- 校验 -->
+<script src="/clicktemplate/valide/jquery.validationEngine-zh_CN.js" type="text/javascript"></script>
+<script src="/clicktemplate/valide/jquery.validationEngine.js" type="text/javascript"></script>
+
+  
+<script type="text/javascript">
+  String.prototype.endsWith = function(suffix) {
+    return this.indexOf(suffix, this.length - suffix.length) !== -1;
+  }
+$(function(){
+  DWZ.init("/clicktemplate/bin/dwz.frag.xml", {
+    loginUrl:"login_dialog.html", loginTitle:"登录",  // 弹出登录对话框
+    statusCode:{ok:200, error:300, timeout:301}, //【可选】
+    pageInfo:{pageNum:"pageNum", numPerPage:"numPerPage", orderField:"orderField", orderDirection:"orderDirection"}, //【可选】
+    debug:true,  // 调试模式 【true|false】
+    callback:function(){
+      initEnv();
+      $("#themeList").theme({themeBase:"themes"});
+      navTab.reload("/index.htm", {}, "main");      
+    }
+  });
+});
+</script>
+</head>
+<body scroll="no">
+  <div id="layout">
+    <div id="header">
+      <div class="headerNav">
+        <ul class="nav">
+          <li><font style="color: #ff0000;">您好!超级管理员</font></li>
+          <li><a href="/first.jsp?logout=1">退出</a></li>
+        </ul>
+      </div>
+    $topMenu
+    </div>
+    <div id="leftside">
+      <div id="sidebar_s">
+        <div class="collapse">
+          <div class="toggleCollapse"><div></div></div>
+        </div>
+      </div>
+      <div id="sidebar">
+        <div class="toggleCollapse"><h2>主菜单</h2><div>收缩</div></div>
+        $panelTree
+      </div>
+    </div>
+    <div id="container">
+    <div id="navTab" class="tabsPage">
+        <div class="tabsPageHeader">
+          <div class="tabsPageHeaderContent"><!-- 显示左右控制时添加 class="tabsPageHeaderMargin" -->
+            <ul class="navTab-tab">
+              <li tabid="main" class="main"><a href="javascript:;"><span><span class="home_icon">首页</span></span></a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="navTab-panel tabsPageContent layoutBox">
+          <div class="page unitBox">          
+          </div>          
+        </div> 
+    </div>   
+    </div>
+  </div>
+  <div id="TableFloatDiv" >
+  </div>
+</body>
+</html>
