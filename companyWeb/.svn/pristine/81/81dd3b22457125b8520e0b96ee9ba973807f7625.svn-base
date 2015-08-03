@@ -1,0 +1,12 @@
+jdbc.driverClassName=com.mysql.jdbc.Driver
+
+jdbc.url=jdbc:mysql://119.147.137.45:3306/lllm?characterEncoding=UTF-8
+jdbc.username=lllm
+jdbc.password=lllm
+jdbc.maxActive=20
+jdbc.maxIdle=5
+jdbc.maxWait=500
+jdbc.defaultAutoCommit=true
+jdbc.removeAbandoned=true   
+jdbc.removeAbandonedTimeout=30   
+jdbc.logAbandoned=true  

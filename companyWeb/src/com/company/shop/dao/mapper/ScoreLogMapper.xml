@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.company.shop.dao.ScoreLogMapper" >
+  <resultMap id="BaseResultMap" type="com.company.shop.entity.ScoreLog" >
+    <id column="SCORE_LOG_ID" property="scoreLogId" jdbcType="INTEGER" />
+    <result column="ACTION_TYPE" property="actionType" jdbcType="INTEGER" />
+    <result column="SCORE" property="score" jdbcType="INTEGER" />
+    <result column="NOW_SCORE" property="nowScore" jdbcType="INTEGER" />
+    <result column="SCORE_RULE_ID" property="scoreRuleId" jdbcType="INTEGER" />
+    <result column="MEMBER_ID" property="memberId" jdbcType="INTEGER" />
+    <result column="BIZ_TYPE" property="bizType" jdbcType="INTEGER" />
+    <result column="BIZ_ID" property="bizId" jdbcType="INTEGER" />
+    <result column="BIZ_NAME" property="bizName" jdbcType="VARCHAR" />
+    <result column="CREATOR_ID" property="creatorId" jdbcType="INTEGER" />
+    <result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="STATE" property="state" jdbcType="INTEGER" />
+    <result column="NOTE" property="note" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    SCORE_LOG_ID, ACTION_TYPE, SCORE, NOW_SCORE, SCORE_RULE_ID, MEMBER_ID, BIZ_TYPE, 
+    BIZ_ID, BIZ_NAME, CREATOR_ID, CREATE_TIME, STATE, NOTE
+  </sql>
+  
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from score_log
+    where SCORE_LOG_ID = #{scoreLogId,jdbcType=INTEGER}
+  </select>
+  
+  <select id="selectByMemberId" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from score_log
+    where MEMBER_ID = #{memberId,jdbcType=INTEGER}
+  </select>
+  
+  <select id="selectAllScoreLog" resultMap="BaseResultMap" parameterType="com.company.pager.Page" >
+    select 
+    <include refid="Base_Column_List" />
+    from score_log
+    where MEMBER_ID = #{params.memberId} order by CREATE_TIME
+  </select>
+  
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from score_log
+    where SCORE_LOG_ID = #{scoreLogId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.company.shop.entity.ScoreLog" >
+    insert into score_log (SCORE_LOG_ID, ACTION_TYPE, SCORE, 
+      NOW_SCORE, SCORE_RULE_ID, MEMBER_ID, 
+      BIZ_TYPE, BIZ_ID, BIZ_NAME, 
+      CREATOR_ID, CREATE_TIME, STATE, 
+      NOTE)
+    values (#{scoreLogId,jdbcType=INTEGER}, #{actionType,jdbcType=INTEGER}, #{score,jdbcType=INTEGER}, 
+      #{nowScore,jdbcType=INTEGER}, #{scoreRuleId,jdbcType=INTEGER}, #{memberId,jdbcType=INTEGER}, 
+      #{bizType,jdbcType=INTEGER}, #{bizId,jdbcType=INTEGER}, #{bizName,jdbcType=VARCHAR}, 
+      #{creatorId,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, #{state,jdbcType=INTEGER}, 
+      #{note,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.company.shop.entity.ScoreLog" >
+    insert into score_log
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="scoreLogId != null" >
+        SCORE_LOG_ID,
+      </if>
+      <if test="actionType != null" >
+        ACTION_TYPE,
+      </if>
+      <if test="score != null" >
+        SCORE,
+      </if>
+      <if test="nowScore != null" >
+        NOW_SCORE,
+      </if>
+      <if test="scoreRuleId != null" >
+        SCORE_RULE_ID,
+      </if>
+      <if test="memberId != null" >
+        MEMBER_ID,
+      </if>
+      <if test="bizType != null" >
+        BIZ_TYPE,
+      </if>
+      <if test="bizId != null" >
+        BIZ_ID,
+      </if>
+      <if test="bizName != null" >
+        BIZ_NAME,
+      </if>
+      <if test="creatorId != null" >
+        CREATOR_ID,
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME,
+      </if>
+      <if test="state != null" >
+        STATE,
+      </if>
+      <if test="note != null" >
+        NOTE,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="scoreLogId != null" >
+        #{scoreLogId,jdbcType=INTEGER},
+      </if>
+      <if test="actionType != null" >
+        #{actionType,jdbcType=INTEGER},
+      </if>
+      <if test="score != null" >
+        #{score,jdbcType=INTEGER},
+      </if>
+      <if test="nowScore != null" >
+        #{nowScore,jdbcType=INTEGER},
+      </if>
+      <if test="scoreRuleId != null" >
+        #{scoreRuleId,jdbcType=INTEGER},
+      </if>
+      <if test="memberId != null" >
+        #{memberId,jdbcType=INTEGER},
+      </if>
+      <if test="bizType != null" >
+        #{bizType,jdbcType=INTEGER},
+      </if>
+      <if test="bizId != null" >
+        #{bizId,jdbcType=INTEGER},
+      </if>
+      <if test="bizName != null" >
+        #{bizName,jdbcType=VARCHAR},
+      </if>
+      <if test="creatorId != null" >
+        #{creatorId,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="state != null" >
+        #{state,jdbcType=INTEGER},
+      </if>
+      <if test="note != null" >
+        #{note,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.company.shop.entity.ScoreLog" >
+    update score_log
+    <set >
+      <if test="actionType != null" >
+        ACTION_TYPE = #{actionType,jdbcType=INTEGER},
+      </if>
+      <if test="score != null" >
+        SCORE = #{score,jdbcType=INTEGER},
+      </if>
+      <if test="nowScore != null" >
+        NOW_SCORE = #{nowScore,jdbcType=INTEGER},
+      </if>
+      <if test="scoreRuleId != null" >
+        SCORE_RULE_ID = #{scoreRuleId,jdbcType=INTEGER},
+      </if>
+      <if test="memberId != null" >
+        MEMBER_ID = #{memberId,jdbcType=INTEGER},
+      </if>
+      <if test="bizType != null" >
+        BIZ_TYPE = #{bizType,jdbcType=INTEGER},
+      </if>
+      <if test="bizId != null" >
+        BIZ_ID = #{bizId,jdbcType=INTEGER},
+      </if>
+      <if test="bizName != null" >
+        BIZ_NAME = #{bizName,jdbcType=VARCHAR},
+      </if>
+      <if test="creatorId != null" >
+        CREATOR_ID = #{creatorId,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="state != null" >
+        STATE = #{state,jdbcType=INTEGER},
+      </if>
+      <if test="note != null" >
+        NOTE = #{note,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where SCORE_LOG_ID = #{scoreLogId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.company.shop.entity.ScoreLog" >
+    update score_log
+    set ACTION_TYPE = #{actionType,jdbcType=INTEGER},
+      SCORE = #{score,jdbcType=INTEGER},
+      NOW_SCORE = #{nowScore,jdbcType=INTEGER},
+      SCORE_RULE_ID = #{scoreRuleId,jdbcType=INTEGER},
+      MEMBER_ID = #{memberId,jdbcType=INTEGER},
+      BIZ_TYPE = #{bizType,jdbcType=INTEGER},
+      BIZ_ID = #{bizId,jdbcType=INTEGER},
+      BIZ_NAME = #{bizName,jdbcType=VARCHAR},
+      CREATOR_ID = #{creatorId,jdbcType=INTEGER},
+      CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      STATE = #{state,jdbcType=INTEGER},
+      NOTE = #{note,jdbcType=VARCHAR}
+    where SCORE_LOG_ID = #{scoreLogId,jdbcType=INTEGER}
+  </update>
+</mapper>

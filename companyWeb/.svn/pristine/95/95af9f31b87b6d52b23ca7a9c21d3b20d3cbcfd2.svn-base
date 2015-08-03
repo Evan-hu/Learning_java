@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+	<!-- 定时任务 -->
+	<bean class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+		<property name="triggers">
+			<list>
+				<ref bean="luceneTrigger" />
+				<ref bean="clearTrigger" />
+				<ref bean="orderTrigger" />
+			</list>
+		</property>
+		<property name="autoStartup" value="true" />
+	</bean>
+	
+	<!-- 清理文件任务 -->
+	<bean id="clearTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+		<property name="jobDetail" ref="clearJobDetail" />
+		<property name="cronExpression" value="0 0 23 * * ?"/>
+	</bean> 
+	
+	<bean id="clearJobDetail" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">   
+        <property name="targetObject" ref="clearJob"/>  
+        <property name="targetMethod" value="execute"/>  
+        <property name="concurrent" value="false"/>
+	</bean>  
+	<bean id="clearJob" class="com.lulu.shop.job.ClearJob"></bean>
+	
+	<!--lucene刷新任务触发器 -->
+	<bean id="luceneTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+		<property name="jobDetail" ref="luceneJobDetail" />
+		<property name="cronExpression" value="0 0 0/20 * * ?"/>
+	</bean> 
+	
+	<bean id="luceneJobDetail" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">   
+        <property name="targetObject" ref="luceneJob"/>
+        <property name="targetMethod" value="execute"/>  
+        <property name="concurrent" value="false"/>
+        <!-- 是否允许任务并发执行。当值为false时，表示必须等到前一个线程处理完毕后才再启一个新的线程 -->  
+	</bean>
+	<bean id="luceneJob" class="com.lulu.shop.job.LuceneJob"></bean>
+	
+	<!-- 订单任务 -->
+	<bean id="orderTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+		<property name="jobDetail" ref="orderJobDetail" />
+		<property name="cronExpression" value="0 01 00 * * ?"/>
+	</bean> 
+	
+	<bean id="orderJobDetail" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">   
+        <property name="targetObject" ref="orderJob"/>  
+        <property name="targetMethod" value="autoConfirmReceipt"/>  
+        <property name="concurrent" value="false"/>
+	</bean>  
+	<bean id="orderJob" class="com.lulu.shop.job.OrderJob"></bean>
+	
+</beans>  

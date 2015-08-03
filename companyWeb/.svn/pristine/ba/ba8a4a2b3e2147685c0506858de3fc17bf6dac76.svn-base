@@ -1,0 +1,51 @@
+/**
+ * Copyright (c) 2014 GA
+ * All right reserved.
+ */
+package com.company.shop.service;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.company.pager.Page;
+import com.company.shop.dao.ArticleMapper;
+import com.company.shop.entity.Article;
+import com.company.shop.entity.ArticleSort;
+
+/**
+ * 类描述
+ * @author zyq
+ * @create_time 2014-7-14 下午7:19:25
+ * @project companyWeb
+ */
+
+@Service
+public class ArticleService {
+
+  @Autowired
+  ArticleMapper articleMapper;
+  
+  /**
+   * 查询文章列表
+   * @param page
+   * @return
+   */
+
+   public List<Article> queryArticleList(Page<Article> page) {
+     
+     return articleMapper.selectArticleList(page);
+   }
+   /**
+    * 根据文章ID查询文章
+    * 
+    * @param articleId
+    * @return
+    */
+   public Article quArticle(Integer articleId){
+     
+     return articleMapper.selectByPrimaryKey(articleId);
+   }
+  
+}

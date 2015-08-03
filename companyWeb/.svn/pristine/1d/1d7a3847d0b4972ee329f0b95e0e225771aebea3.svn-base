@@ -1,0 +1,22 @@
+package com.company.shop.dao;
+
+import java.util.List;
+
+import com.company.pager.Page;
+import com.company.shop.entity.ArticleImg;
+
+public interface ArticleImgMapper {
+    int deleteByPrimaryKey(Integer articleImgId);
+
+    int insert(ArticleImg record);
+
+    int insertSelective(ArticleImg record);
+
+    ArticleImg selectByPrimaryKey(Integer articleImgId);
+
+    int updateByPrimaryKeySelective(ArticleImg record);
+
+    int updateByPrimaryKey(ArticleImg record);
+    
+    List<ArticleImg> selectArticleImgs(Page<ArticleImg> page);
+}

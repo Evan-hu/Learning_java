@@ -1,0 +1,14 @@
+@charset "utf-8";
+/* CSS Document */
+
+.sec {
+	width:1100px; height: auto;
+	margin:198px auto;
+}
+
+.setip {
+	display:block;
+	width: 480px; height:146px;
+	margin:0px auto;
+	background:url(../images/exceptionimages/sys_error.png) no-repeat scroll 0 0;
+}

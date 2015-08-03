@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.company.shop.dao.StoreExtendMapper" >
+  <resultMap id="BaseResultMap" type="com.company.shop.entity.StoreExtend" >
+    <id column="STORE_EXTEND_ID" property="storeExtendId" jdbcType="INTEGER" />
+    <result column="STORE_ID" property="storeId" jdbcType="INTEGER" />
+    <result column="AREA_NUM" property="areaNum" jdbcType="VARCHAR" />
+    <result column="LINK_TEL" property="linkTel" jdbcType="VARCHAR" />
+    <result column="OPEN_TIME" property="openTime" jdbcType="VARCHAR" />
+    <result column="ADDR" property="addr" jdbcType="VARCHAR" />
+    <result column="LONGITUDE" property="longitude" jdbcType="DOUBLE" />
+    <result column="LATITUDE" property="latitude" jdbcType="DOUBLE" />
+    <result column="IMG_URL" property="imgUrl" jdbcType="VARCHAR" />
+    <result column="NOTE" property="note" jdbcType="VARCHAR" />
+    <result column="STORE_NAME" property="storeName" jdbcType="VARCHAR" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.company.shop.entity.StoreExtend" extends="BaseResultMap" >
+    <result column="CONTENT" property="content" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    STORE_EXTEND_ID, STORE_ID, AREA_NUM, LINK_TEL, OPEN_TIME, ADDR, LONGITUDE, LATITUDE, 
+    IMG_URL, NOTE, STORE_NAME
+  </sql>
+  <sql id="Blob_Column_List" >
+    CONTENT
+  </sql>
+  
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from store_extend
+    where STORE_EXTEND_ID = #{storeExtendId,jdbcType=INTEGER}
+  </select>
+  
+  <select id="selectByStoreKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from store_extend
+    where STORE_ID = #{storeId,jdbcType=INTEGER}
+  </select>
+  
+  <select id="selectAllStore" resultMap="ResultMapWithBLOBs" parameterType="com.company.pager.Page" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from store_extend
+  </select>
+  
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from store_extend
+    where STORE_EXTEND_ID = #{storeExtendId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.company.shop.entity.StoreExtend" >
+    insert into store_extend (STORE_EXTEND_ID, STORE_ID, AREA_NUM, 
+      LINK_TEL, OPEN_TIME, ADDR, 
+      LONGITUDE, LATITUDE, IMG_URL, 
+      NOTE, STORE_NAME, CONTENT
+      )
+    values (#{storeExtendId,jdbcType=INTEGER}, #{storeId,jdbcType=INTEGER}, #{areaNum,jdbcType=VARCHAR}, 
+      #{linkTel,jdbcType=VARCHAR}, #{openTime,jdbcType=VARCHAR}, #{addr,jdbcType=VARCHAR}, 
+      #{longitude,jdbcType=DOUBLE}, #{latitude,jdbcType=DOUBLE}, #{imgUrl,jdbcType=VARCHAR}, 
+      #{note,jdbcType=VARCHAR}, #{storeName,jdbcType=VARCHAR}, #{content,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.company.shop.entity.StoreExtend" >
+    insert into store_extend
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="storeExtendId != null" >
+        STORE_EXTEND_ID,
+      </if>
+      <if test="storeId != null" >
+        STORE_ID,
+      </if>
+      <if test="areaNum != null" >
+        AREA_NUM,
+      </if>
+      <if test="linkTel != null" >
+        LINK_TEL,
+      </if>
+      <if test="openTime != null" >
+        OPEN_TIME,
+      </if>
+      <if test="addr != null" >
+        ADDR,
+      </if>
+      <if test="longitude != null" >
+        LONGITUDE,
+      </if>
+      <if test="latitude != null" >
+        LATITUDE,
+      </if>
+      <if test="imgUrl != null" >
+        IMG_URL,
+      </if>
+      <if test="note != null" >
+        NOTE,
+      </if>
+      <if test="storeName != null" >
+        STORE_NAME,
+      </if>
+      <if test="content != null" >
+        CONTENT,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="storeExtendId != null" >
+        #{storeExtendId,jdbcType=INTEGER},
+      </if>
+      <if test="storeId != null" >
+        #{storeId,jdbcType=INTEGER},
+      </if>
+      <if test="areaNum != null" >
+        #{areaNum,jdbcType=VARCHAR},
+      </if>
+      <if test="linkTel != null" >
+        #{linkTel,jdbcType=VARCHAR},
+      </if>
+      <if test="openTime != null" >
+        #{openTime,jdbcType=VARCHAR},
+      </if>
+      <if test="addr != null" >
+        #{addr,jdbcType=VARCHAR},
+      </if>
+      <if test="longitude != null" >
+        #{longitude,jdbcType=DOUBLE},
+      </if>
+      <if test="latitude != null" >
+        #{latitude,jdbcType=DOUBLE},
+      </if>
+      <if test="imgUrl != null" >
+        #{imgUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="note != null" >
+        #{note,jdbcType=VARCHAR},
+      </if>
+      <if test="storeName != null" >
+        #{storeName,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null" >
+        #{content,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.company.shop.entity.StoreExtend" >
+    update store_extend
+    <set >
+      <if test="storeId != null" >
+        STORE_ID = #{storeId,jdbcType=INTEGER},
+      </if>
+      <if test="areaNum != null" >
+        AREA_NUM = #{areaNum,jdbcType=VARCHAR},
+      </if>
+      <if test="linkTel != null" >
+        LINK_TEL = #{linkTel,jdbcType=VARCHAR},
+      </if>
+      <if test="openTime != null" >
+        OPEN_TIME = #{openTime,jdbcType=VARCHAR},
+      </if>
+      <if test="addr != null" >
+        ADDR = #{addr,jdbcType=VARCHAR},
+      </if>
+      <if test="longitude != null" >
+        LONGITUDE = #{longitude,jdbcType=DOUBLE},
+      </if>
+      <if test="latitude != null" >
+        LATITUDE = #{latitude,jdbcType=DOUBLE},
+      </if>
+      <if test="imgUrl != null" >
+        IMG_URL = #{imgUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="note != null" >
+        NOTE = #{note,jdbcType=VARCHAR},
+      </if>
+      <if test="storeName != null" >
+        STORE_NAME = #{storeName,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null" >
+        CONTENT = #{content,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where STORE_EXTEND_ID = #{storeExtendId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.company.shop.entity.StoreExtend" >
+    update store_extend
+    set STORE_ID = #{storeId,jdbcType=INTEGER},
+      AREA_NUM = #{areaNum,jdbcType=VARCHAR},
+      LINK_TEL = #{linkTel,jdbcType=VARCHAR},
+      OPEN_TIME = #{openTime,jdbcType=VARCHAR},
+      ADDR = #{addr,jdbcType=VARCHAR},
+      LONGITUDE = #{longitude,jdbcType=DOUBLE},
+      LATITUDE = #{latitude,jdbcType=DOUBLE},
+      IMG_URL = #{imgUrl,jdbcType=VARCHAR},
+      NOTE = #{note,jdbcType=VARCHAR},
+      STORE_NAME = #{storeName,jdbcType=VARCHAR},
+      CONTENT = #{content,jdbcType=LONGVARCHAR}
+    where STORE_EXTEND_ID = #{storeExtendId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.company.shop.entity.StoreExtend" >
+    update store_extend
+    set STORE_ID = #{storeId,jdbcType=INTEGER},
+      AREA_NUM = #{areaNum,jdbcType=VARCHAR},
+      LINK_TEL = #{linkTel,jdbcType=VARCHAR},
+      OPEN_TIME = #{openTime,jdbcType=VARCHAR},
+      ADDR = #{addr,jdbcType=VARCHAR},
+      LONGITUDE = #{longitude,jdbcType=DOUBLE},
+      LATITUDE = #{latitude,jdbcType=DOUBLE},
+      IMG_URL = #{imgUrl,jdbcType=VARCHAR},
+      NOTE = #{note,jdbcType=VARCHAR},
+      STORE_NAME = #{storeName,jdbcType=VARCHAR}
+    where STORE_EXTEND_ID = #{storeExtendId,jdbcType=INTEGER}
+  </update>
+</mapper>

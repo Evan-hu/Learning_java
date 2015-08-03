@@ -1,0 +1,56 @@
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="ad" uri="/WEB-INF/ad.tld" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<link rel="stylesheet" href="/css/news.css"/>
+<script type="text/javascript">
+	setCookie("searchType",3,48,"/");
+</script>
+</head>
+<body>
+<div class="main">
+	
+	<div class="wrap">
+		<div class="section_newslist" style="margin-bottom: 0px;">
+			<div class="leftSide">
+				<div class="head">
+					<div class="more">
+					您所在的位置：<a href="/">首页</a> 
+					 <a href="/news/index.do">资讯首页</a> 
+					   详细内容
+					</div>
+				</div>
+	
+				<div class="newsDetail">
+					<h1>${article.title}---</h1>
+					<div class="info">
+						<span>时间：<fmt:formatDate pattern="yyyy-MM-dd HH:mm:ss" value="${article.createTime}" type="both"/></span>
+						<span>点击：${article.clickCnt}</span>
+					</div>	
+          <div>
+            ${article.imgUrl}
+          </div>
+					<div class="con">
+						${article.content}
+					</div>
+				</div>
+
+	
+			</div>
+			
+			<div class="rightSide">
+				<%--<jsp:include page="/commodity/activityBrand.do"/>--%>
+			</div>	
+	</div>
+	</div>
+	<!-- 底部 -->
+</div>
+<!-- JiaThis Button BEGIN -->
+<script type="text/javascript" src="http://v3.jiathis.com/code/jiathis_r.js?move=0&amp;btn=r1.gif" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+</body>
+</html>

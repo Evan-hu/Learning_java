@@ -1,0 +1,55 @@
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="owner" uri="http://www.ownerTag.com/taglib" %>
+<%@ taglib prefix="mft" uri="http://www.myFunctionTag.com/taglib"%>
+<%@ taglib prefix="page" uri="/WEB-INF/page.tld"%>
+
+<div class="comment">
+	<div class="title">
+		<h2>网友评论</h2>
+		<div class="num">已有<span>${page.totalRecord}</span>条评论</div>
+	</div>
+		
+	<form action="/content/addReview.do" method="post" id="reviewForm">
+	<input type="hidden" name ="targetName" value="${page.params.targetName}">
+	<input type="hidden" name ="targetType" value="${page.params.targetType}">
+	<input type="hidden" name ="targetId" value="${page.params.targetId}">
+	<div class="inputArea">
+		<!--<a href="">登录</a>后可以评论-->
+		<textarea name="content" id="content"></textarea>
+	</div>
+
+	<div class="submit">
+		验证码：<input type="text" class="inputText" name="authCode" id="authCode" style="width: 85px;">
+	  <img id="authImg" src="/authimg.jpg" width="94" height="27" />
+		<a href="javascript:;" class="btnSubmit" onclick="ajaxLogin(2,'reviewSubmit()');">发表评论</a>
+	</div>
+	</form>
+  <div class="commentList">
+	<c:choose>
+		<c:when test="${empty page.results}"><div class="item" style="text-align: center;">暂无评论</div></c:when>
+		<c:otherwise>
+			<c:forEach var="review" items="${page.results}" varStatus="i">
+					<div class="item">
+						<div class="top">
+							<span class="title">${empty review.member.truename ? '会员' : review.member.truename}</span>
+							<span class="floorNum">${page.totalRecord - (page.pageSize * (page.pageNo -1) + i.index)}楼</span>
+						</div>
+			
+						<div class="con">
+							<c:out value="${mft:filterStr(review.content)}"/>
+						</div>			
+						<div class="bottom">
+							<span class="time"><owner:fmDate date="${review.createTime}"/></span>
+							<span class="from">来自    ${review.ip}</span>
+							<span class="other">
+								<a href="javascript:;" onclick="addReviewClick(${review.reviewId})">支持 (<span id="review_click_${review.reviewId}">${review.clickCount}</span>)</a>
+							</span>
+						</div>
+					</div>
+			</c:forEach>
+			<page:jsnav jsFunc="reviewPageNext" page="${page}" />
+		</c:otherwise>
+	</c:choose>
+	</div>
+</div>

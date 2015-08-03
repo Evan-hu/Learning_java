@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.company.shop.dao.ApplicationMapper" >
+  <resultMap id="BaseResultMap" type="com.company.shop.entity.Application" >
+    <result column="APPLICATION_ID" property="applicationId" jdbcType="INTEGER" />
+    <result column="USERNAME" property="username" jdbcType="VARCHAR" />
+    <result column="TYPE" property="type" jdbcType="INTEGER" />
+    <result column="COMPANY_NAME" property="companyName" jdbcType="VARCHAR" />
+    <result column="TEL" property="tel" jdbcType="VARCHAR" />
+    <result column="QQ" property="qq" jdbcType="VARCHAR" />
+    <result column="DESCR" property="descr" jdbcType="VARCHAR" />
+    <result column="FILE_PATH" property="filePath" jdbcType="VARCHAR" />
+    <result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="OP_ID" property="opId" jdbcType="INTEGER" />
+    <result column="READ_TIME" property="readTime" jdbcType="TIMESTAMP" />
+    <result column="NOTE" property="note" jdbcType="VARCHAR" />
+    <result column="STATE" property="state" jdbcType="INTEGER" />
+    <result column="ADDR" property="addr" jdbcType="VARCHAR" />
+    <result column="EMAIL" property="email" jdbcType="VARCHAR" />
+  </resultMap>
+  <insert id="insert" parameterType="com.company.shop.entity.Application" >
+    insert into application (APPLICATION_ID, USERNAME, TYPE, 
+      COMPANY_NAME, TEL, QQ, 
+      DESCR, FILE_PATH, CREATE_TIME, 
+      OP_ID, READ_TIME, NOTE, 
+      STATE, ADDR, EMAIL)
+    values (#{applicationId,jdbcType=INTEGER}, #{username,jdbcType=VARCHAR}, #{type,jdbcType=INTEGER}, 
+      #{companyName,jdbcType=VARCHAR}, #{tel,jdbcType=VARCHAR}, #{qq,jdbcType=VARCHAR}, 
+      #{descr,jdbcType=VARCHAR}, #{filePath,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{opId,jdbcType=INTEGER}, #{readTime,jdbcType=TIMESTAMP}, #{note,jdbcType=VARCHAR}, 
+      #{state,jdbcType=INTEGER}, #{addr,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.company.shop.entity.Application" >
+    insert into application
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="applicationId != null" >
+        APPLICATION_ID,
+      </if>
+      <if test="username != null" >
+        USERNAME,
+      </if>
+      <if test="type != null" >
+        TYPE,
+      </if>
+      <if test="companyName != null" >
+        COMPANY_NAME,
+      </if>
+      <if test="tel != null" >
+        TEL,
+      </if>
+      <if test="qq != null" >
+        QQ,
+      </if>
+      <if test="descr != null" >
+        DESCR,
+      </if>
+      <if test="filePath != null" >
+        FILE_PATH,
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME,
+      </if>
+      <if test="opId != null" >
+        OP_ID,
+      </if>
+      <if test="readTime != null" >
+        READ_TIME,
+      </if>
+      <if test="note != null" >
+        NOTE,
+      </if>
+      <if test="state != null" >
+        STATE,
+      </if>
+      <if test="addr != null" >
+        ADDR,
+      </if>
+      <if test="email != null" >
+        EMAIL,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="applicationId != null" >
+        #{applicationId,jdbcType=INTEGER},
+      </if>
+      <if test="username != null" >
+        #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        #{type,jdbcType=INTEGER},
+      </if>
+      <if test="companyName != null" >
+        #{companyName,jdbcType=VARCHAR},
+      </if>
+      <if test="tel != null" >
+        #{tel,jdbcType=VARCHAR},
+      </if>
+      <if test="qq != null" >
+        #{qq,jdbcType=VARCHAR},
+      </if>
+      <if test="descr != null" >
+        #{descr,jdbcType=VARCHAR},
+      </if>
+      <if test="filePath != null" >
+        #{filePath,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="opId != null" >
+        #{opId,jdbcType=INTEGER},
+      </if>
+      <if test="readTime != null" >
+        #{readTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="note != null" >
+        #{note,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null" >
+        #{state,jdbcType=INTEGER},
+      </if>
+      <if test="addr != null" >
+        #{addr,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        #{email,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+</mapper>

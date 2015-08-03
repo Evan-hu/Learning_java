@@ -1,0 +1,82 @@
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%
+String path = request.getContextPath();
+String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+%>
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <base href="<%=basePath%>">
+    
+    <title>My JSP 'storeDetail.jsp' starting page</title>
+    
+	<meta http-equiv="pragma" content="no-cache">
+	<meta http-equiv="cache-control" content="no-cache">
+	<meta http-equiv="expires" content="0">    
+	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+	<meta http-equiv="description" content="This is my page">
+	<!--
+	<link rel="stylesheet" type="text/css" href="styles.css">
+	-->
+
+  </head>
+  
+  <body>
+    <div align="center">
+            门店详情
+       <div>
+       <table>
+       <tr>
+         <td width="50%">
+                          图片：<img src=""/>${storeExtend.imgUrl}
+         </td>
+        <td>
+        
+        <table>
+          <tr align="center">
+            ${storeExtend.storeName}
+          </tr>
+          
+          <tr>
+            <td align="right">面积:</td>
+            <td align="left">${storeExtend.areaNum }</td>
+          </tr>
+          
+          <%--
+          <tr>
+            <td>日均客流量</td>
+            <td></td>
+          </tr>
+          --%>
+          
+          <tr>
+            <td align="right">联系电话:</td>
+            <td align="left">${storeExtend.linkTel }</td>
+          </tr>
+         
+          <tr>
+            <td align="right">营业时间:</td>
+            <td align="left">${storeExtend.openTime }</td>
+          </tr>
+          
+          <tr>
+            <td align="right">地址:</td>
+            <td align="left">${storeExtend.addr }</td>
+          </tr>
+        </table>
+       </td>
+       </tr>
+       
+       <tr align="center" width="100%">
+         <td>备注</td>
+       </tr>
+       <tr align="center"  width="100%">
+          <td>${storeExtend.content }</td>
+       </tr>
+       </table>
+       
+       </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.company.shop.dao.AdsMapper" >
+  <resultMap id="BaseResultMap" type="com.company.shop.entity.Ads" >
+    <id column="AD_ID" property="adId" jdbcType="INTEGER" />
+    <result column="AD_NAME" property="adName" jdbcType="VARCHAR" />
+    <result column="ADDRS" property="addrs" jdbcType="VARCHAR" />
+    <result column="AD_WIDTH" property="adWidth" jdbcType="INTEGER" />
+    <result column="AD_HEIGHT" property="adHeight" jdbcType="INTEGER" />
+    <result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="BEGIN_TIME" property="beginTime" jdbcType="TIMESTAMP" />
+    <result column="END_TIME" property="endTime" jdbcType="TIMESTAMP" />
+    <result column="RANK_NUM" property="rankNum" jdbcType="INTEGER" />
+    <result column="CLICK_COUNT" property="clickCount" jdbcType="INTEGER" />
+    <result column="STATE" property="state" jdbcType="INTEGER" />
+    <result column="NOTE" property="note" jdbcType="VARCHAR" />
+    <result column="OP_ID" property="opId" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    AD_ID, AD_NAME, TITLE, ADDRS, AD_WIDTH, AD_HEIGHT, CREATE_TIME, BEGIN_TIME, END_TIME, RANK_NUM, 
+    CLICK_COUNT, STATE, NOTE, OP_ID
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from ads
+    where AD_ID = #{adId,jdbcType=INTEGER}
+  </select>
+  <select id="loadAds" resultMap="BaseResultMap" >
+    select 
+    <include refid="Base_Column_List" />
+    from ADS A where A.BEGIN_TIME &lt;= now() and A.END_TIME &gt;= now() and A.STATE = 1 order by A.BEGIN_TIME DESC
+  </select> 
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from ads
+    where AD_ID = #{adId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.company.shop.entity.Ads" >
+    insert into ads (AD_ID, AD_NAME, ADDRS, 
+      AD_WIDTH, AD_HEIGHT, CREATE_TIME, 
+      BEGIN_TIME, END_TIME, RANK_NUM, 
+      CLICK_COUNT, STATE, NOTE, 
+      OP_ID)
+    values (#{adId,jdbcType=INTEGER}, #{adName,jdbcType=VARCHAR}, #{addrs,jdbcType=VARCHAR}, 
+      #{adWidth,jdbcType=INTEGER}, #{adHeight,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{beginTime,jdbcType=TIMESTAMP}, #{endTime,jdbcType=TIMESTAMP}, #{rankNum,jdbcType=INTEGER}, 
+      #{clickCount,jdbcType=INTEGER}, #{state,jdbcType=INTEGER}, #{note,jdbcType=VARCHAR}, 
+      #{opId,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.company.shop.entity.Ads" >
+    insert into ads
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="adId != null" >
+        AD_ID,
+      </if>
+      <if test="adName != null" >
+        AD_NAME,
+      </if>
+      <if test="addrs != null" >
+        ADDRS,
+      </if>
+      <if test="adWidth != null" >
+        AD_WIDTH,
+      </if>
+      <if test="adHeight != null" >
+        AD_HEIGHT,
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME,
+      </if>
+      <if test="beginTime != null" >
+        BEGIN_TIME,
+      </if>
+      <if test="endTime != null" >
+        END_TIME,
+      </if>
+      <if test="rankNum != null" >
+        RANK_NUM,
+      </if>
+      <if test="clickCount != null" >
+        CLICK_COUNT,
+      </if>
+      <if test="state != null" >
+        STATE,
+      </if>
+      <if test="note != null" >
+        NOTE,
+      </if>
+      <if test="opId != null" >
+        OP_ID,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="adId != null" >
+        #{adId,jdbcType=INTEGER},
+      </if>
+      <if test="adName != null" >
+        #{adName,jdbcType=VARCHAR},
+      </if>
+      <if test="addrs != null" >
+        #{addrs,jdbcType=VARCHAR},
+      </if>
+      <if test="adWidth != null" >
+        #{adWidth,jdbcType=INTEGER},
+      </if>
+      <if test="adHeight != null" >
+        #{adHeight,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="beginTime != null" >
+        #{beginTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endTime != null" >
+        #{endTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="rankNum != null" >
+        #{rankNum,jdbcType=INTEGER},
+      </if>
+      <if test="clickCount != null" >
+        #{clickCount,jdbcType=INTEGER},
+      </if>
+      <if test="state != null" >
+        #{state,jdbcType=INTEGER},
+      </if>
+      <if test="note != null" >
+        #{note,jdbcType=VARCHAR},
+      </if>
+      <if test="opId != null" >
+        #{opId,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.company.shop.entity.Ads" >
+    update ads
+    <set >
+      <if test="adName != null" >
+        AD_NAME = #{adName,jdbcType=VARCHAR},
+      </if>
+      <if test="addrs != null" >
+        ADDRS = #{addrs,jdbcType=VARCHAR},
+      </if>
+      <if test="adWidth != null" >
+        AD_WIDTH = #{adWidth,jdbcType=INTEGER},
+      </if>
+      <if test="adHeight != null" >
+        AD_HEIGHT = #{adHeight,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="beginTime != null" >
+        BEGIN_TIME = #{beginTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endTime != null" >
+        END_TIME = #{endTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="rankNum != null" >
+        RANK_NUM = #{rankNum,jdbcType=INTEGER},
+      </if>
+      <if test="clickCount != null" >
+        CLICK_COUNT = #{clickCount,jdbcType=INTEGER},
+      </if>
+      <if test="state != null" >
+        STATE = #{state,jdbcType=INTEGER},
+      </if>
+      <if test="note != null" >
+        NOTE = #{note,jdbcType=VARCHAR},
+      </if>
+      <if test="opId != null" >
+        OP_ID = #{opId,jdbcType=INTEGER},
+      </if>
+    </set>
+    where AD_ID = #{adId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.company.shop.entity.Ads" >
+    update ads
+    set AD_NAME = #{adName,jdbcType=VARCHAR},
+      ADDRS = #{addrs,jdbcType=VARCHAR},
+      AD_WIDTH = #{adWidth,jdbcType=INTEGER},
+      AD_HEIGHT = #{adHeight,jdbcType=INTEGER},
+      CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      BEGIN_TIME = #{beginTime,jdbcType=TIMESTAMP},
+      END_TIME = #{endTime,jdbcType=TIMESTAMP},
+      RANK_NUM = #{rankNum,jdbcType=INTEGER},
+      CLICK_COUNT = #{clickCount,jdbcType=INTEGER},
+      STATE = #{state,jdbcType=INTEGER},
+      NOTE = #{note,jdbcType=VARCHAR},
+      OP_ID = #{opId,jdbcType=INTEGER}
+    where AD_ID = #{adId,jdbcType=INTEGER}
+  </update>
+</mapper>

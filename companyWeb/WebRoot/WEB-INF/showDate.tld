@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="gbk" ?>
+<taglib xmlns="http://java.sun.com/xml/ns/j2ee"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-jsptaglibrary_2_0.xsd"
+    version="2.0">
+    
+  <description></description>
+  <display-name>显示时间</display-name>
+  <tlib-version>1.0</tlib-version>
+  <short-name>owner</short-name>
+  <uri>http://www.ownerTag.com/taglib</uri>
+  
+  <tag>
+    <description>格式化显示最后时间</description>
+    <name>fmDate</name>
+    <tag-class>com.lulu.shop.util.jstl.ShowDateTag</tag-class>
+    <body-content>empty</body-content>
+    <attribute>
+        <description>需要格式化的时间</description>
+        <name>date</name>
+        <type>Date</type>
+        <required>true</required>
+        <fragment>true</fragment>
+    </attribute>
+  </tag>
+</taglib>

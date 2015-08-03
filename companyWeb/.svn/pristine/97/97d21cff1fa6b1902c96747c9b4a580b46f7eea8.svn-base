@@ -1,0 +1,130 @@
+@charset "utf-8";
+/* CSS Document */
+.rp{
+width:100%; height:38px;
+  line-height:38px;
+  font-size:20px; color:#e86e61;
+  margin-bottom: 18px;
+  background:#f2f2f2;
+}
+
+.rp .myscore{
+	display:inline-block;
+	font-size:16px;
+	margin-left:20px;
+}
+
+.rp .scoreLabel{
+	display:inline-block;
+	height:100%; line-height:41px;
+	font-size:12px; color:#000;
+	font-family:"宋体";
+	margin-left:20px;
+}
+
+.rp .scoreValue{
+	display:inline-block;
+	height:100%; line-height:41px;
+	font-size:16px; color:#e86e61;
+}
+
+.rp .condition{
+	display:inline-block;
+	width:auto; height:auto;
+	margin-top:8px;padding:1px;
+	border:1px solid #ababab;
+	min-width:85px; min-height:19px;
+	float:right;
+}
+
+.mcd{
+	width:806px; height:912px;
+	padding:30px 28px 40px;
+	border:1px solid #dcdcdc;
+	position:relative;
+}
+
+.shopPage {
+	width:100%; height:100%;
+	margin:0px auto;
+}
+
+.shop{
+	width:180px; height:210px;
+	float:left;
+}
+
+.shop_pic{
+	width:178px; height:178px;
+	border:1px solid #d1d1d1;
+}
+
+.shop_info{
+	width:100%; height:30px;
+	line-height:30px;
+	color:#6f6f6f; font-family:"宋体"; font-size:12px;
+	overflow:hidden; white-space:nowrap; text-overflow:ellipsis;
+}
+
+.adviser_name{
+	display:inline-block;
+	width:auto; height:100%;
+	line-height:30px;
+}
+
+.antag{
+	display:inline-block;
+	width:auto; height:100%;
+	line-height:30px;
+	padding:0px 4px;
+	font-size:12px; color:#999;
+}
+
+.ap{
+	display:inline-block;
+	width:auto; height:100%;
+	line-height:30px;
+	font-size:12px; color:#999;
+}
+
+.single_shop{
+	margin-right:25px;
+}
+
+.shop_bottom{
+	margin-bottom:18px;
+}
+
+.page{
+	width:190px; height:14px;
+	position:absolute;
+	left:41.2%; bottom:26px;
+}
+
+.page span.forward{
+	display:inline-block;
+	width:17px; height:17px;
+	vertical-align:middle;
+}
+
+.page span.pageNum{
+	display:inline-block;
+	width:auto; height:17px;
+	min-width:17px;
+	line-height:17px;
+    font-family:"宋体";color:#808080;
+	text-align:center;
+}
+
+.page span.curPageNum{
+	display:inline-block;
+	width:auto; height:17px;
+	min-width:17px;
+	line-height:17px;
+    font-family:"宋体";color:#f97466;
+	text-align:center;
+}
+
+
+
+

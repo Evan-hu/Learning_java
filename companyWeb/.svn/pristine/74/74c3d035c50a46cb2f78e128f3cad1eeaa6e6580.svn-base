@@ -1,0 +1,230 @@
+/**
+ * common
+ * @author	Rocky
+ * @date	2013-09-13
+ */
+/* reset */
+html{-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;font-size:100%}body,ul,ol,dl,dd,h1,h2,h3,h4,h5,h6,p,form,fieldset,legend,input,textarea,select,button,th,td,div{margin:0;padding:0}ol,ul,li{list-style:none}
+.clearfix:after{content:".";display:block;height:0;font-size:0;clear:both;visibility:hidden}.clearfix{zoom:1}
+.fl{float:left;_display:inline}
+.fr{float:right;_display:inline}
+.inlineBlock{display:inline-block;*display:inline;*zoom:1}
+select, input, button, textarea{font:12px/1.5 Tahoma,Helvetica,Arial,'Simsun',sans-serif;}
+img{border:0}
+/* reset */
+body{ font:12px/1.5 Tahoma,Helvetica,Arial,'Simsun',sans-serif; color:#333;}
+a{color:#333; text-decoration:none}
+a:hover{color:#B20000;text-decoration:underline;}
+
+.fontOrange{color: #ffd500}
+.main{ background: url(../images/body_bg.png) repeat-x;}
+.wrap{ width: 980px; margin: 0 auto;}
+
+.fontGray{ color: #999;}
+.fontRed{ color: red;}
+
+.rate{ display: inline-block; *display: inline; *zoom: 1; vertical-align: middle;}
+.rate .orange,
+.rate .grey,
+.rate .rateHover{
+	display: inline-block;
+	vertical-align: middle;
+	width: 15px;
+	height: 14px;
+}
+
+.rate .grey{
+	background: url(../images/mall/star_gray.png);
+}
+.rate .orange,
+.rate .rateHover{
+	background: url(../images/mall/star_orange.png);
+}
+
+.crumbs{ margin-top: 10px; line-height: 40px;}
+
+
+.borderNone{border: 0;}
+.inputText{ width: 180px; border: 1px solid #ccc; padding: 3px; height: 20px; line-height: 20px;}
+.inputBtn{ min-width: 70px; text-align: center; height: 28px; padding: 0 12px; border: 0; border-radius: 3px; background: #1C7AD1; color: #fff;} 
+.inputBtnRed{ display: inline-block;  min-width: 70px; text-align: center; height: 28px; line-height: 28px; padding: 0 12px; border: 0; border-radius: 3px; background: #b20000; color: #fff;} 
+.inputBtnRed:hover{ color: #fff;}
+
+/* top */
+.shortcut{ height: 27px; line-height: 27px; color: #fff;}
+.shortcut a{ color: #fff;}
+.shortcut .fr a{ margin: 0 8px;}
+.shortcut .fav{ padding-left: 20px; background: url(../images/icon/icon_fav.png) left center no-repeat;}
+.shortcut .customer{ display: inline-block; height: 27px; padding-left: 40px; background: url(../images/icon/icon_customer.png) left center no-repeat;}
+.shortcut .mobile{ display: inline-block; height: 27px; padding-left: 20px; background: url(../images/icon/icon_mobile.png) left center no-repeat;}
+.shortcut a.cart{  display: inline-block; vertical-align: top; height: 18px; margin-top: 4px;  
+	padding: 0 10px 0 30px; background: url(../images/icon/icon_cart.png) 10px center no-repeat #fff;
+	 border: 1px solid #ccc; line-height: 18px; color: #333}
+.shortcut a.cart b{ color: #B20000;}
+
+
+/* header */
+.header{ height: 110px;}
+.header .logo{ float: left; margin-top: 12px;}
+
+.header .search{ float: right; width: 520px; margin: 34px 10px 0 0;}
+.header .search .searchCon{ width: 520px; height: 36px; background: url(../images/header_search_bg_2.jpg);}
+.header .search .searchType{ float: left; position: relative; width: 94px; margin: 4px 0 0 5px; border: 1px solid #fff; background: url(../images/arrow_bottom.png) 73px 12px no-repeat; font-size:14px;}
+
+.header .search .searchType label{ height: 27px; padding-left: 6px; line-height: 27px;}
+.header .search .searchType ul{ display: none; position: absolute; left: -1px; top: 27px; width: 94px; padding-top: 3px; background: #fff; border: 1px solid #BBB9BA; border-top: 0;z-index: 10;}
+.header .search .searchType ul li{height: 30px; line-height: 30px;}
+.header .search .searchType ul li a{ display: block; height: 30px; padding-left: 6px; }
+.header .search .searchType ul li a:hover{ background: #eee; text-decoration: none; }
+.header .search .searchType.active{ background-color: #fff; border: 1px solid #BBB9BA;  border-bottom: 0;}
+.header .search .searchType.active ul{ display: block;}
+
+.header .search .searchInput{ float: left; width: 330px; height: 20px; margin: 8px 0 0 10px; >margin-top: 10px; border: 0;}
+.header .search .gray{ color: #777;}
+.header .search .searchBtn{ float: right; width: 60px; height: 36px; background: none; border: 0; cursor: pointer; color: #fff;}
+.header .search .keywords{ line-height: 24px; color: #8E8284;}
+.header .search .keywords a{ margin-right: 5px; color: #8E8284;}
+
+/* nav */
+.nav{ height: 42px;}
+.nav li{float: left; margin: 0 27px; line-height: 38px; text-align: center;}
+.nav li a{ font-size: 15px; font-weight: bold; font-family: microsoft yahei;}
+.nav li.current a{ color: #B20000;}
+
+/* banner */
+.banner{ height: 360px; background: url(../images/banner_bg.png) left top repeat-x #E9E9E9;}
+/* 幻灯片 */
+.slideBoxBanner{ position:relative; width: 980px; height: 360px; background: #f8f8f8;}
+.slideBoxBanner .bigImg{ display: none; height: 360px;}
+.slideBoxBanner .bigImg img{ position:absolute; width: 980px; height: 360px; top:0; left:0;}
+
+/* 幻灯片数字 */
+.slideBoxBanner .slideUl{position:absolute; overflow: hidden; bottom: 10px; width: 980px; text-align: center;}
+.slideBoxBanner .slideUl li{ display:inline-block; *display:inline; *zoom:1;}
+.slideBoxBanner .slideUl span{ display:inline-block; *display:inline; *zoom:1; width: 10px; height:10px;  margin: 0 5px; background:#ccc; border-radius:5px; cursor:pointer;}
+.slideBoxBanner .slideUl span.on{ background: #3699DC;}
+
+/* footer */
+.footer{border-top: 2px solid #B20000;}
+.footer .help{ padding: 30px 0; background: #f2f2f2; overflow: hidden;}
+.footer .help dl{ float: left; width: 176px; padding-left: 20px;}
+.footer .help dl dt{height: 16px; padding-left: 24px; padding-bottom: 10px; line-height: 16px; font-size: 14px; font-weight: bold; color: #707070; }
+.footer .help dl dt.help_1{ background: url(../images/icon/icon_help_1.png) 0 0 no-repeat;}
+.footer .help dl dt.help_2{ background: url(../images/icon/icon_help_2.png) 0 0 no-repeat;}
+.footer .help dl dt.help_3{ background: url(../images/icon/icon_help_3.png) 0 0 no-repeat;}
+.footer .help dl dt.help_4{ background: url(../images/icon/icon_help_4.png) 0 0 no-repeat;}
+.footer .help dl dt.help_5{ background: url(../images/icon/icon_help_5.png) 0 0 no-repeat;}
+
+.footer .help dl dd{height: 15px; margin: 5px 0; padding-left: 24px; background: url(../images/icon/icon_help_dd.png) 0 0 no-repeat; line-height: 15px; color: #808080;}
+.footer .help dl dd.sina{background: url(../images/icon/icon_help_dd_sina.png) 0 0 no-repeat; }
+.footer .help dl dd.qq{background: url(../images/icon/icon_help_dd_qq.png) 0 0 no-repeat; }
+.footer .help dl dd.huafen{background: url(../images/icon/icon_help_dd_huafen.png) 0 0 no-repeat; }
+
+.footer .service{ background: #e4e4e4;}
+.footer .quickLink{ padding: 20px 0; text-align: center;}
+.footer .quickLink a{ margin: 0 10px;}
+
+.footer .copyright{ padding-bottom: 20px; line-height: 24px; text-align: center; color: #777;}
+
+.footer .auth{ padding-bottom: 20px; text-align: center;}
+.footer .auth a{ display: inline-block; *display: inline; *zoom: 1; margin: 0 10px;}
+
+/* page */
+.page{display: block; height: 30px; margin: 20px 0; text-align: right;}
+.page a{ display: inline-block; *display: inline; *zoom: 1; height: 28px; margin: 0 3px; padding: 0 10px; border: 1px solid #B0B0B0; line-height: 28px;
+background-image: -webkit-gradient(linear, left top, left bottom, from(#ffffff), to(#f3f3f3));
+background-image: -webkit-linear-gradient(top, #ffffff, #f3f3f3);
+background-image:    -moz-linear-gradient(top, #ffffff, #f3f3f3);
+background-image:      -o-linear-gradient(top, #ffffff, #f3f3f3);
+background-image:         linear-gradient(to bottom, #ffffff, #f3f3f3);
+filter:progid:DXImageTransform.Microsoft.Gradient(startColorStr='#ffffff', endColorStr='#f3f3f3', gradientType='0');
+border-radius: 2px;
+}
+.page a.current{background: #6d6d6d;filter:progid:DXImageTransform.Microsoft.Gradient(startColorStr='#6d6d6d', endColorStr='#6d6d6d', gradientType='0'); border: 1px solid #333; color: #fff;}
+
+/*自动适应宽度*/
+.auto_hidden{overflow: hidden;text-overflow: ellipsis;white-space: nowrap;}
+
+/**
+ * 弹出层组件
+ */
+
+.dialog{ display:none; position:fixed; background:#fff;
+	-webkit-box-shadow:0 0 10px rgba(0,0,0,0.8); 
+	-moz-box-shadow:0 0 10px rgba(0,0,0,0.8); 
+	box-shadow:0 0 10px rgba(0,0,0,0.8);
+	background: #fff;
+	border: 1px solid #a1a1a1;
+}
+.dialogTitle{ position:relative; height:40px; padding-left:15px; line-height:40px; font-weight:bold; color:#fff; font-size:16px;
+  background: #B6000C;
+}
+.dialogFold, .dialogMin, .dialogMax{ float:right; width:17px; height:16px; margin:6px 8px 0 0; display:inline; background-image:url(images/dialog_icon.gif); }
+.dialogFold{ background-position:-51px 0;}
+.dialogFold:hover{ background-position:-51px -16px;}
+.dialogFoldActive{ background-position:-68px 0;}
+.dialogFoldActive:hover{ background-position:-68px -16px;}
+.dialogFoldDisable, .dialogFoldDisable:hover{ background-position:-51px -32px;}
+
+.dialogMin{ background-position:0 0;}
+.dialogMin:hover{ background-position:0 -16px;}
+.dialogMinDisable, .dialogMinDisable:hover{ background-position:0 -32px;}
+
+.dialogMax{ background-position:-17px 0;}
+.dialogMax:hover{ background-position:-17px -16px;}
+.dialogMaxActive{ background-position:-34px 0;}
+.dialogMaxActive:hover{ background-position:-34px -16px;}
+
+.dialogClose{ position: absolute; top:0; right: 5px; width:28px; height:28px; text-align: center; color: #fff}
+.dialogClose:hover{ color: #fff;}
+.dialogCon{ position:relative; padding:10px; overflow:auto;}
+.dialogResize{ position:absolute; bottom:0; right:0; width:5px; height:5px; cursor:nw-resize;}
+.dialogMask{ z-index:1000000; display:none; position:absolute; top:0; left:0; width:100%; background:#333; filter:alpha(opacity=40); -moz-opacity:0.4; opacity:0.4;}
+
+.dialogMinBar{position:fixed; bottom:-25px; left:0; width:100%; height:25px; background:#eee; border-top:1px solid #bbb; _position:absolute; _right:0; _top:expression(documentElement.scrollTop+documentElement.clientHeight); z-index:8000; overflow:hidden; }
+.dialogMinBar div{ position:relative; float:left; padding:0 25px; background:#ddd; border-right:1px solid #bebebe; line-height:25px; cursor:pointer;}
+.dialogMinBar div.active{ background:#aaa;}
+.dialogMinBar div a{ color:#333;}
+
+.dialogMinBar div .dialogMinBarClose{ position:absolute; top:2px; right:2px; width:15px; height:15px; line-height:14px; color:#111; font-family:arial; text-align:center;}
+.dialogMinBar div .dialogMinBarClose:hover{ color:red;}
+/*------ 弹出层组件 end ------*/
+
+.dialogLogin{display: none; }
+.dialogLogin .con{margin: 0 90px; line-height: 24px;}
+.dialogLogin .con p{ overflow: hidden;}
+.dialogLogin .con .inputText{ width: 250px;  margin-bottom: 5px;}
+.dialogLogin .con b{float: left;}
+.dialogLogin .con a{ float: right; color: #3465CB}
+.dialogLogin .con .btnSubmit{
+	width: 100%;
+	height: 30px;
+	margin-top: 15px;
+	padding: 0 12px;
+	border-radius: 3px;
+	background: #b20000;
+	line-height: 30px;
+	color: #fff;
+	border: 0;
+}
+
+.dialogVeri{display: none; }
+.dialogVeri .con{margin: 0 50px; line-height: 24px;}
+.dialogVeri .con h3{ line-height: 60px; font-size: 18px; font-weight: bold; font-family: microsoft yahei;}
+.dialogVeri .con p{ font-size: 14px; text-align: right; overflow: hidden; color: #777}
+.dialogVeri .con .inputText{ float: left; width: 150px; height: 38px; margin-bottom: 5px; padding: 0 8px; font-size: 16px;}
+.dialogVeri .con .getCode{ float: left; width: 160px; height: 40px; margin-left: 10px; background: #B6000C; color: #fff; font-family: microsoft yahei; font-size: 18px; line-height: 40px; text-align: center;}
+.dialogVeri .con .btnSubmit{
+	display: block;
+	height: 45px; line-height: 45px; margin-top: 30px; background: #B6000C; color: #fff; text-align: center; font-size: 18px; font-family: microsoft yahei
+}
+
+/* .header .tel {
+	position: absolute;
+	top: 32px;
+	right: 150px;
+	font-style: italic;
+	font-size: 18px;
+	font-weight: bold;
+	font-family: microsoft yahei;
+} */

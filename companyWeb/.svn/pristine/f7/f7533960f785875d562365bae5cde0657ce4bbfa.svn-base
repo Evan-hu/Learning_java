@@ -1,0 +1,87 @@
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@taglib prefix="page" uri="/WEB-INF/page.tld" %>
+<%
+String path = request.getContextPath();
+String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+%>
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <base href="<%=basePath%>">
+    
+    <title>My JSP 'userindex.jsp' starting page</title>
+    
+	<meta http-equiv="pragma" content="no-cache">
+	<meta http-equiv="cache-control" content="no-cache">
+	<meta http-equiv="expires" content="0">    
+	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+	<meta http-equiv="description" content="This is my page">
+	<!--
+	<link rel="stylesheet" type="text/css" href="styles.css">
+	-->
+
+  </head>
+  
+  <body>
+      <div align="center"><br />
+      <table width="50%">
+      <tr>
+        <td>操作</td>
+        <td>1、<a href="<%=basePath%>user/goto.do?memberId=${member.memberId}&&type=1" target="_blank">修改资料</a></td>
+        <td>2、<a href="<%=basePath%>user/mangGift.do?memberId=${member.memberId}" target="_blank">礼卷管理</a></td>
+        <td>3、<a href="<%=basePath%>user/queryScore.do?memberId=${member.memberId}" target="_blank">积分查询</a></td>
+        <td>4、<a href="<%=basePath%>user/myMessageList.do?memberId=${member.memberId}" target="_blank">站内信</a></td>
+        <td>5、<a href="<%=basePath%>user/goto.do?memberId=${member.memberId}&&type=2" target="_blank">修改密码（短信验证）</a></td>
+      </tr>
+      </table>
+      <br/>
+      <br/>
+      <br/>
+      <table>
+      <tr>
+        <td>登陆成功</td>
+        <td>基本信息</td>
+      </tr>
+      <tr>
+        <td>ID</td>
+        <td><input type="text" value="${member.memberId}"/></td>
+      </tr>
+      <tr>
+        <td>TEL</td>
+        <td><input type="text" value="${member.tel}"/></td>
+      </tr>
+      <tr>
+        <td>STORE_ID</td>
+        <td><input type="text" value="${member.storeId}"/></td>
+      </tr>
+      <tr>
+        <td>登陆时间</td>
+        <td><input type="text" value="<fmt:formatDate pattern="yyyy-MM-dd" value="${member.lastTime}" type="both"/>"/></td>
+      </tr>
+      <tr>
+        <td>邮件</td>
+        <td><input type="text" value="${member.email}"/></td>
+      </tr>
+      <tr>
+        <td>最后店名</td>
+        <td><input type="text" value="${member.lastStoreName}"/></td>
+      </tr>
+      <tr>
+        <td>账户</td>
+        <td><input type="text" value="${member.allAmount}"/></td>
+      </tr>
+      <tr>
+        <td>订单数量</td>
+        <td><input type="text" value="${member.allOrder}"/></td>
+      </tr>
+      <tr>
+        <td>状态</td>
+        <td><input type="text" value="${member.state}"/></td>
+      </tr>
+      </table>
+      </div>
+  </body>
+</html>

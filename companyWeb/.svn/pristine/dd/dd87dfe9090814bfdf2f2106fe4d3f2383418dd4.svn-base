@@ -1,0 +1,61 @@
+var buyCommodityMsg;
+
+/**
+ * 商品加入购物车或修改数量
+ * @param {} cid 商品ID
+ * @param {} cnt 数量
+ * @param {} shopType 店铺类型
+ * @param {} freeType 运费模式
+ * @param {} addType 增加类型 1:新增 2:覆盖 3:删除
+ * @param {} soureType 来源方式 1 商品 2购物车
+ * @param {} successCallback 成功回调函数 
+ */
+function changeCartAmount(cid, cnt,shopType,freeType,addType,soureType,successCallback) {
+  var pattern = /^[0-9]*[1-9][0-9]*$/;
+  var amountStr =cnt;
+  var amount;
+  if (pattern.exec(amountStr) == null) {
+    alert("商品数量修改失败.商品数量只能为数字而且必须大于0.", 0);
+    return false;
+  } else {
+    amount = parseInt(amountStr);
+  }
+  $.ajax({
+    url: "/addOrUpdateItem.do?math="+Math.random(),
+    type : "POST",
+    data : {"commodityId":cid, "amount":amount,"addType":addType, "shopType":shopType, "freeType":freeType,"soureType":soureType},
+    success : function(m) {
+    	
+    	if (m.flag == 0 || m.flag == 1) {
+    	  if(successCallback == null){
+    		  alert("商品成功添加到购物车！");
+          }else{
+        	buyCommodityMsg = m;
+        	successCallback.call();	
+          }
+        } else {
+          alert(m.msg, 0);
+          return false;
+       }
+    	
+    },
+    error : function() {
+      alert("服务器错误.", 0);
+      return false;
+    }
+  });
+  //reloadHeadCart();
+  return true;
+}
+
+function reloadHeadCart(){
+	alert("商品成功添加到购物车！");
+	$("#refreshHeader").load("/refreshHeader.do");
+}
+function reloadCart(){
+	window.location='/shopCartIndex.do';
+}
+function refreshCard(){
+	$("#shopCartDetail").load("/refreshShopCart.do");
+}
+

@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.company.shop.dao.ArticleSortMapper" >
+  <resultMap id="BaseResultMap" type="com.company.shop.entity.ArticleSort" >
+    <id column="ARTICLE_SORT_ID" property="articleSortId" jdbcType="INTEGER" />
+    <result column="CODE" property="code" jdbcType="VARCHAR" />
+    <result column="P_ID" property="pId" jdbcType="INTEGER" />
+    <result column="SORT_NAME" property="sortName" jdbcType="VARCHAR" />
+    <result column="RANK_NUM" property="rankNum" jdbcType="INTEGER" />
+    <result column="CLICK_CNT" property="clickCnt" jdbcType="INTEGER" />
+    <result column="OP_ID" property="opId" jdbcType="INTEGER" />
+    <result column="CREATE_TIME" property="createTime" jdbcType="DATE" />
+    <result column="STATE" property="state" jdbcType="SMALLINT" />
+    <result column="NOTE" property="note" jdbcType="VARCHAR" />
+    <result column="ID_PATH" property="idPath" jdbcType="VARCHAR" />
+    <result column="STATE_PATH" property="statePath" jdbcType="VARCHAR" />
+    <result column="NLEVEL" property="nlevel" jdbcType="INTEGER" />
+    <result column="SHOW_TYPE" property="showType" jdbcType="CHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ARTICLE_SORT_ID, CODE, P_ID, SORT_NAME, RANK_NUM, CLICK_CNT, OP_ID, CREATE_TIME, 
+    STATE, NOTE, ID_PATH, STATE_PATH, NLEVEL, SHOW_TYPE
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from article_sort
+    where ARTICLE_SORT_ID = #{articleSortId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from article_sort
+    where ARTICLE_SORT_ID = #{articleSortId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.company.shop.entity.ArticleSort" >
+    insert into article_sort (ARTICLE_SORT_ID, CODE, P_ID, 
+      SORT_NAME, RANK_NUM, CLICK_CNT, 
+      OP_ID, CREATE_TIME, STATE, 
+      NOTE, ID_PATH, STATE_PATH, 
+      NLEVEL, SHOW_TYPE)
+    values (#{articleSortId,jdbcType=INTEGER}, #{code,jdbcType=VARCHAR}, #{pId,jdbcType=INTEGER}, 
+      #{sortName,jdbcType=VARCHAR}, #{rankNum,jdbcType=INTEGER}, #{clickCnt,jdbcType=INTEGER}, 
+      #{opId,jdbcType=INTEGER}, #{createTime,jdbcType=DATE}, #{state,jdbcType=SMALLINT}, 
+      #{note,jdbcType=VARCHAR}, #{idPath,jdbcType=VARCHAR}, #{statePath,jdbcType=VARCHAR}, 
+      #{nlevel,jdbcType=INTEGER}, #{showType,jdbcType=CHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.company.shop.entity.ArticleSort" >
+    insert into article_sort
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="articleSortId != null" >
+        ARTICLE_SORT_ID,
+      </if>
+      <if test="code != null" >
+        CODE,
+      </if>
+      <if test="pId != null" >
+        P_ID,
+      </if>
+      <if test="sortName != null" >
+        SORT_NAME,
+      </if>
+      <if test="rankNum != null" >
+        RANK_NUM,
+      </if>
+      <if test="clickCnt != null" >
+        CLICK_CNT,
+      </if>
+      <if test="opId != null" >
+        OP_ID,
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME,
+      </if>
+      <if test="state != null" >
+        STATE,
+      </if>
+      <if test="note != null" >
+        NOTE,
+      </if>
+      <if test="idPath != null" >
+        ID_PATH,
+      </if>
+      <if test="statePath != null" >
+        STATE_PATH,
+      </if>
+      <if test="nlevel != null" >
+        NLEVEL,
+      </if>
+      <if test="showType != null" >
+        SHOW_TYPE,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="articleSortId != null" >
+        #{articleSortId,jdbcType=INTEGER},
+      </if>
+      <if test="code != null" >
+        #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="pId != null" >
+        #{pId,jdbcType=INTEGER},
+      </if>
+      <if test="sortName != null" >
+        #{sortName,jdbcType=VARCHAR},
+      </if>
+      <if test="rankNum != null" >
+        #{rankNum,jdbcType=INTEGER},
+      </if>
+      <if test="clickCnt != null" >
+        #{clickCnt,jdbcType=INTEGER},
+      </if>
+      <if test="opId != null" >
+        #{opId,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=DATE},
+      </if>
+      <if test="state != null" >
+        #{state,jdbcType=SMALLINT},
+      </if>
+      <if test="note != null" >
+        #{note,jdbcType=VARCHAR},
+      </if>
+      <if test="idPath != null" >
+        #{idPath,jdbcType=VARCHAR},
+      </if>
+      <if test="statePath != null" >
+        #{statePath,jdbcType=VARCHAR},
+      </if>
+      <if test="nlevel != null" >
+        #{nlevel,jdbcType=INTEGER},
+      </if>
+      <if test="showType != null" >
+        #{showType,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.company.shop.entity.ArticleSort" >
+    update article_sort
+    <set >
+      <if test="code != null" >
+        CODE = #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="pId != null" >
+        P_ID = #{pId,jdbcType=INTEGER},
+      </if>
+      <if test="sortName != null" >
+        SORT_NAME = #{sortName,jdbcType=VARCHAR},
+      </if>
+      <if test="rankNum != null" >
+        RANK_NUM = #{rankNum,jdbcType=INTEGER},
+      </if>
+      <if test="clickCnt != null" >
+        CLICK_CNT = #{clickCnt,jdbcType=INTEGER},
+      </if>
+      <if test="opId != null" >
+        OP_ID = #{opId,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME = #{createTime,jdbcType=DATE},
+      </if>
+      <if test="state != null" >
+        STATE = #{state,jdbcType=SMALLINT},
+      </if>
+      <if test="note != null" >
+        NOTE = #{note,jdbcType=VARCHAR},
+      </if>
+      <if test="idPath != null" >
+        ID_PATH = #{idPath,jdbcType=VARCHAR},
+      </if>
+      <if test="statePath != null" >
+        STATE_PATH = #{statePath,jdbcType=VARCHAR},
+      </if>
+      <if test="nlevel != null" >
+        NLEVEL = #{nlevel,jdbcType=INTEGER},
+      </if>
+      <if test="showType != null" >
+        SHOW_TYPE = #{showType,jdbcType=CHAR},
+      </if>
+    </set>
+    where ARTICLE_SORT_ID = #{articleSortId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.company.shop.entity.ArticleSort" >
+    update article_sort
+    set CODE = #{code,jdbcType=VARCHAR},
+      P_ID = #{pId,jdbcType=INTEGER},
+      SORT_NAME = #{sortName,jdbcType=VARCHAR},
+      RANK_NUM = #{rankNum,jdbcType=INTEGER},
+      CLICK_CNT = #{clickCnt,jdbcType=INTEGER},
+      OP_ID = #{opId,jdbcType=INTEGER},
+      CREATE_TIME = #{createTime,jdbcType=DATE},
+      STATE = #{state,jdbcType=SMALLINT},
+      NOTE = #{note,jdbcType=VARCHAR},
+      ID_PATH = #{idPath,jdbcType=VARCHAR},
+      STATE_PATH = #{statePath,jdbcType=VARCHAR},
+      NLEVEL = #{nlevel,jdbcType=INTEGER},
+      SHOW_TYPE = #{showType,jdbcType=CHAR}
+    where ARTICLE_SORT_ID = #{articleSortId,jdbcType=INTEGER}
+  </update>
+</mapper>

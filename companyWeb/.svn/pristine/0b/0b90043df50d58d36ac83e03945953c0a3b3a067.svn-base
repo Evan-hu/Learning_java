@@ -1,0 +1,78 @@
+$(function(){
+    $('#mycarousel').jcarousel({
+        scroll: 1
+    });
+	$(".jqzoom").jqzoom({zoomWidth:300,zoomHeight:300,title:false});
+	$("#mycarousel li").mouseover(function(){
+			var JQ_img = jQuery("img", this);
+			var id_name = JQ_img.attr("name");
+			jQuery(".jqzoom").attr("href", "/photos/" + id_name + "_5.jpg");
+			jQuery("#_normalImage").attr("src", "/photos/" + id_name + "_4.jpg");
+			jQuery(this).siblings().each(function(){
+				jQuery("img", this).removeClass();
+			})
+			JQ_img.addClass("on");
+		})
+		
+	$.fn.rate = function(options) {
+		var defaults = {
+			rated: 5,
+			rateMax: 5,
+			rateClass: 'grey',
+			rateOverClass: 'rateHover',
+			ratedClass: 'orange',
+			initCallback: function(_self, rate){},
+			ratedCallback: function(_self, rate){}
+		};
+		var opt = $.extend({},defaults, options);
+        var $rateArr = $(this);
+
+        $rateArr.each(function(){
+			var _self = $(this);
+	        var $rateUnits = [];
+	        for(var i = 0; i < opt.rateMax; i++){    
+	            $rateUnits[i] =  $(document.createElement("a")).attr("href","javascript:;").addClass(opt.rateClass);                        
+	            if(i < opt.rated){
+	                $rateUnits[i].addClass(opt.ratedClass);
+	            }
+	            _self.append($rateUnits[i]);
+	        }
+	        
+	        $.each($rateUnits, function(){                         
+	            $(this).hover(function(){ 
+	            	$(this).prevAll().add($(this)).addClass(opt.rateOverClass) 
+	            },function(){ 
+	                $(this).prevAll().add($(this)).removeClass(opt.rateOverClass)
+	            });  
+	            $(this).click(function(){
+	                var index = _self.children().index($(this));    
+	                opt.ratedCallback(_self, index+1);
+	                $(this).prevAll().add($(this)).addClass(opt.ratedClass);
+	                $(this).nextAll().removeClass(opt.ratedClass);
+	            });    
+	        });
+
+	        opt.initCallback(_self, opt.rated);
+
+        });
+    }; 
+	
+	$('.tab .tabSwitch li').click(function(){
+		var _index = $(this).attr('index');
+		$(this).parent().find('li').removeClass('current')
+		$(this).addClass('current');
+
+		var _con = $(this).parents('.tab').find('.tabCon');
+		_con.hide();
+		_con.eq(_index).show();
+	});
+
+	$('#Rate').rate({
+		initCallback: function(_self, rate){
+			var thisIndex = _self.attr('index');
+		},
+		ratedCallback: function(_self, rate){
+			_self.parent().find('.rateVal').html(rate);
+		}
+	});
+})

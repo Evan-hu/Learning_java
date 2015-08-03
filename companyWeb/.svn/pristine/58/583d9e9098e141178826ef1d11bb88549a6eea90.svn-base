@@ -1,0 +1,70 @@
+/**
+ * Copyright (c) 2014 GA
+ * All right reserved.
+ */
+package com.company.shop.action.web;
+
+import java.net.URLDecoder;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import com.company.pager.Page;
+import com.company.shop.action.BaseController;
+import com.company.shop.entity.Article;
+import com.company.shop.service.ArticleService;
+
+/**
+ * 类描述
+ * @author zyq
+ * @create_time 2014-7-14 下午7:23:31
+ * @project companyWeb
+ */
+@Controller 
+@RequestMapping("/article")
+public class ArticleController  extends BaseController {
+
+  @Autowired
+  ArticleService articleService;
+  
+  
+  /**
+   * 
+   * 文字文章列表查询
+   * @param modelMap
+   * @param sortId
+   * @param page
+   * @return
+   * @throws Exception
+   */
+  @RequestMapping("/list.do")
+  public String queryBySortId(ModelMap modelMap,@RequestParam(value = "sortId", defaultValue = "2")Integer sortId, 
+    Page<Article> page) throws Exception{
+    sortId = page.optParamInt("sortId", sortId);
+    String keyword = page.optParamStr("keyword", null);  
+    if(keyword != null){
+          keyword = URLDecoder.decode(keyword,"utf-8");
+          page.addParam("keyword", keyword);
+    }
+    page.setResults(articleService.queryArticleList(page));
+    modelMap.put("page", page);
+//    modelMap.put("sortName", articleService.);
+    return "/news/list";
+  }
+  
+  @RequestMapping("/detail.do")
+  public String queryByArticleId(ModelMap modelMap,@RequestParam(value = "articleId", defaultValue = "2") Integer articleId){
+    modelMap.put("article", articleService.quArticle(articleId));
+    modelMap.addAttribute("");
+    return "/news/detail";
+  }
+  
+ @RequestMapping("/picList.do")
+ public String queryPicArticle(ModelMap modelMap,@RequestParam(value = "sortId", defaultValue = "2")Integer sortId, 
+     Page<Article> page){
+   return "/news/picList";
+ }
+  
+}

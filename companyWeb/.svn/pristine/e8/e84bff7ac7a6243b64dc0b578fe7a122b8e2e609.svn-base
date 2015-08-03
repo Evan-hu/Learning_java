@@ -1,0 +1,96 @@
+/**
+ * Copyright (c) 2010 Noah
+ * All right reserved.
+ */
+package com.company.shop.util.jstl;
+
+import java.io.IOException;
+import java.io.Writer;
+
+import javax.servlet.jsp.JspException;
+import javax.servlet.jsp.tagext.SimpleTagSupport;
+
+import com.company.pager.Page;
+
+/**
+ * 分页导航.
+ */
+public class PageJsNavTag extends SimpleTagSupport {
+
+	
+	private Page<?> page;
+	private String jsFunc;
+	private final static int MAX_SHOW_PAGE_COUNT = 10;
+
+	@Override
+	public void doTag() throws JspException, IOException {
+		if (page != null) {
+			
+			int nowPage = page.getPageNo();
+			int last = page.getTotalPage();
+			int pre = nowPage <= 1 ? 1 : (nowPage - 1);
+			int follow = nowPage >= last ? nowPage : nowPage + 1;
+			int segment = (nowPage - 1) / MAX_SHOW_PAGE_COUNT + 1;
+			int startPageNumber = (segment - 1) * MAX_SHOW_PAGE_COUNT + 1;
+			int endPageNumber = segment * MAX_SHOW_PAGE_COUNT;
+			startPageNumber = startPageNumber < 1 ? 1 : startPageNumber;
+			endPageNumber = endPageNumber > last ? last : endPageNumber;
+
+			StringBuilder html = new StringBuilder();
+			if (page.getTotalPage() > 1) {
+
+				html.append("<div class='page'>");
+				html.append("<a onclick=\"").append(jsFunc + "(1);\" style='cursor: pointer;'>首页</a>");
+
+				if (!page.isFirst()) {
+					html.append("<a onclick=\"").append(jsFunc + "("+pre+");\" style='cursor: pointer;'>上一�?/a>");
+				}
+
+				if (startPageNumber > 1) {
+					html.append("<a onclick=\"").append(jsFunc + "("+(nowPage - 2)+");\">...</a>");
+				}
+
+				for (int i = startPageNumber; i <= endPageNumber; i++) {
+					if (i == nowPage) {
+						html.append("<a class='current'>").append(i)
+								.append("</a>");
+					} else {
+						html.append("<a style='cursor: pointer;' onclick=\"").append(jsFunc + "("+(i)+");\">").append(i).append("</a>");
+					}
+				}
+
+				if (endPageNumber < last) {
+					html.append("<a style='cursor: pointer;' onclick=\"").append(jsFunc + "("+(nowPage + 2)+");\">").append("...</a>");
+				}
+
+				if (!page.isLast()) {
+					html.append("<a style='cursor: pointer;' onclick=\"").append(jsFunc + "("+(follow)+");\">").append("下一�?/a>");
+				}
+
+				html.append("<a style='cursor: pointer;' onclick=\"").append(jsFunc + "("+(last)+");\">").append("尾页</a>");
+				html.append("</div>");
+			}
+
+			Writer out = getJspContext().getOut();
+			out.write(html.toString());
+		}
+	}
+
+	public Page<?> getPage() {
+		return page;
+	}
+
+	public void setPage(Page<?> page) {
+		this.page = page;
+	}
+
+	public String getJsFunc() {
+		return jsFunc;
+	}
+
+	public void setJsFunc(String jsFunc) {
+		this.jsFunc = jsFunc;
+	}
+
+	
+}

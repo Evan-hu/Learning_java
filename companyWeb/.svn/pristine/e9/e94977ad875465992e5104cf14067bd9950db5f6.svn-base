@@ -1,0 +1,178 @@
+var index = {
+	member:$(".ml"),
+	provider:$(".su"),
+	collection:$(".coll"),
+	navBar:$("#navBar"),
+	floatMenu:$("#floatMenu"),
+	pageLink:$(".link"),
+	share:$(".share"),
+	init:function() {
+		//设计导航栏绑定一个hover事件
+		$.each(this.navBar.children(), function(key, value){
+			$(value).hover(function(){
+				var img = $(this).children(".adlink").eq(0).find("img");
+				if (img.attr("src").indexOf("_1.jpg") == -1) {
+					if(img.attr("src").indexOf("_2.jpg") != -1) {
+						return false;
+					}
+					else {
+						var path = img.attr("src");
+						path = path.substring(0, path.indexOf(".jpg")) + "_2.jpg";
+						img.attr("src", path);
+						$(".navSlider").show();
+						//$("#"+this.id+"_slider").stop().show().animate({height:$("#"+this.id+"_slider").height,opacity:1,visibility:"visible"},200);
+						$("#"+this.id+"_slider").css("visibility","visible"); 
+					}
+				}
+			}, function(){
+				var img = $(this).children(".adlink").eq(0).find("img");
+				if (img.attr("src").indexOf("_1.jpg") == -1) {
+					if (img.attr("src").indexOf("_2.jpg") != -1){
+						var path = img.attr("src");
+						path = path.substring(0, path.indexOf("_2.jpg")) + ".jpg";
+						img.attr("src", path);
+						$("#"+this.id+"_slider").stop().animate({height:0,opacity:0},200,function(){
+						$(this).css({"visibility":"hidden"});
+					});
+						$("#"+this.id+"_slider").css("visibility","hidden"); 
+						$(".navSlider").hide();
+					}
+				}
+			})
+		});
+		
+		$.each(this.floatMenu.children(), function(key, value) {
+			$(value).hover(function(){
+				var id = this.id.substring(0, this.id.indexOf("_slider"));
+				var img = $("#"+id).children(".adlink").eq(0).find("img");
+				if (img.attr("src").indexOf("_2.jpg") != -1) {
+					return false;	
+				}
+				else {
+					var imgPath = img.attr("src").substring(0, img.attr("src").indexOf(".jpg"));
+					img.attr("src", imgPath + "_2.jpg");
+				}
+			}, function(){
+				var id = this.id.substring(0, this.id.indexOf("_slider"));
+				var img = $("#"+id).children(".adlink").eq(0).find("img");
+				if (img.attr("src").indexOf("_2.jpg") != -1) {
+					var imgPath = img.attr("src").substring(0, img.attr("src").indexOf("_2.jpg"));
+					img.attr("src", imgPath + ".jpg");	
+				}
+			});
+		});
+		
+		$.each(this.pageLink.find("a"), function(key, value){
+			$(value).hover(function(){
+				var img = $(this).find("span").eq(0).find("img");
+				if (img.attr("src").indexOf("_1.png") != -1) {
+					var path = img.attr("src").substring(0, img.attr("src").indexOf("_1.png")) + "_2.png";
+					img.attr("src",path);
+				}
+			}, function(){
+				var img = $(this).find("span").eq(0).find("img");
+				if (img.attr("src").indexOf("_2.png") != -1) {
+					var path = img.attr("src").substring(0, img.attr("src").indexOf("_2.png")) + "_1.png";
+					img.attr("src",path);
+				}
+			});
+		});
+		
+		this.member.hover(function(){
+			var img = $(this).children().eq(0);
+			if (img.attr("src").indexOf("_1.png") != -1) {
+				var path = img.attr("src").substring(0, img.attr("src").indexOf("_1.png")) + "_2.png";
+				img.attr("src",path);
+			}
+		}, function(){
+			var img = $(this).children().eq(0);
+			if (img.attr("src").indexOf("_2.png") != -1) {
+				var path = img.attr("src").substring(0, img.attr("src").indexOf("_2.png")) + "_1.png";
+				img.attr("src",path);
+			}
+		});
+		
+		this.provider.hover(function(){
+			var img = $(this).children().eq(0);
+			if (img.attr("src").indexOf("_1.png") != -1) {
+				var path = img.attr("src").substring(0, img.attr("src").indexOf("_1.png")) + "_2.png";
+				img.attr("src",path);
+			}
+		}, function(){
+			var img = $(this).children().eq(0);
+			if (img.attr("src").indexOf("_2.png") != -1) {
+				var path = img.attr("src").substring(0, img.attr("src").indexOf("_2.png")) + "_1.png";
+				img.attr("src",path);
+			}
+		});
+		
+		this.collection.hover(function(){
+			var img = $(this).children().eq(0);
+			if (img.attr("src").indexOf("_1.png") != -1) {
+				var path = img.attr("src").substring(0, img.attr("src").indexOf("_1.png")) + "_2.png";
+				img.attr("src",path);
+			}
+		}, function(){
+			var img = $(this).children().eq(0);
+			if (img.attr("src").indexOf("_2.png") != -1) {
+				var path = img.attr("src").substring(0, img.attr("src").indexOf("_2.png")) + "_1.png";
+				img.attr("src",path);
+			}
+		});
+		
+		this.share.hover(function(){
+			var source = $(this).children(".jiathis").eq(0);
+			if (source.css("background-image").indexOf("_1.png") != -1)	{
+				var path = source.css("background-image").substring(0, source.css("background-image").indexOf("_1.png")) + "_2.png";
+				source.css("background-image",path);
+			}
+		}, function(){
+			var source = $(this).children(".jiathis").eq(0);
+			if (source.css("background-image").indexOf("_2.png") != -1)	{
+				var path = source.css("background-image").substring(0, source.css("background-image").indexOf("_2.png")) + "_1.png";
+				source.css("background-image",path);
+			}
+		});	
+	},
+	login:function(){
+		//用户登录
+		window.location.href = "";
+	},
+	providerLogin:function(){
+		//供应商登录
+		window.location.href = "";
+	},
+	collectionPage: function() {
+		//用于收藏网站
+		if (document.all) {
+			window.external.addFavorite('http://www.fable360.com','成都非泊企业管理有限公司');
+		}
+		else if (window.sidebar){
+			window.sidebar.addPanel('成都非泊企业管理有限公司', 'http://www.fable360.com', "");
+		}
+	}
+}
+/*
+var theSpan = $(this);
+var theMenu = theSpan.find(".submenu");
+var tarHeight = theMenu.height();
+theMenu.css({height:0,opacity:0});
+var t1;
+			
+function expand() {
+	clearTimeout(t1);
+	theSpan.find('a').addClass("selected");
+	theMenu.stop().show().animate({height:tarHeight,opacity:1},200);
+}
+			
+function collapse() {
+	clearTimeout(t1);
+		t1 = setTimeout(function(){
+			theSpan.find('a').removeClass("selected");
+			theMenu.stop().animate({height:0,opacity:0},200,function(){
+				$(this).css({display:"none"});
+			});
+		}, 250);
+}
+*/
+index.init();

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="gbk" ?>
+<taglib xmlns="http://java.sun.com/xml/ns/j2ee"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-jsptaglibrary_2_4.xsd"
+    version="2.4">
+    
+  <description></description>
+  <display-name>用于广告的标签</display-name>
+  <tlib-version>1.0</tlib-version>
+  <short-name>ad</short-name>
+  
+  <tag>
+    <description>生成广告位.</description>
+    <name>place</name>
+    <tag-class>com.company.shop.util.jstl.AdPlaceTag</tag-class>
+    <body-content>empty</body-content>
+    <attribute>
+        <description>广告位的id.</description>
+        <name>id</name>
+        <type>long</type>
+        <required>true</required>
+        <fragment>true</fragment>
+    </attribute>
+    <attribute>
+        <description>对象的id.</description>
+        <name>objectId</name>
+        <type>long</type>
+        <required>false</required>
+        <fragment>true</fragment>
+    </attribute>
+  </tag>
+</taglib>

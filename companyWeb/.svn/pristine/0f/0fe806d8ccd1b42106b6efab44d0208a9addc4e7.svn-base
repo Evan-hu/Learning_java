@@ -1,0 +1,37 @@
+#MerchantID
+chinapay.merid =808080081393253
+
+#MerchantKey FilePath
+chinapay.merkey.filepath = F\:\\MerPrK_808080081393253_20130813164627.key
+
+#PublicKey FilePath
+chinapay.pubkey.filepath = F\:\\PgPubk.key
+
+#Payment PostURL(Test environment)
+chinapay.payment.url = http://payment-test.chinapay.com/pay/TransGet
+
+#Payment PostURL(Production environment)
+#chinapay.payment.url = https://payment.chinapay.com/pay/TransGet
+
+#Refund PostURL(Test environment)
+chinapay.refund.url = http://payment-test.chinapay.com/refund1/SingleRefund.jsp
+
+#Refund PostURL(Production environment)
+#chinapay.refund.url = https://console.chinapay.com/refund/SingleRefund.jsp
+
+#Query PostURL(Test environment)
+chinapay.query.url = http://payment-test.chinapay.com/QueryWeb/processQuery.jsp
+
+#Query PostURL(Production environment)
+#chinapay.query.url = http://console.chinapay.com/QueryWeb/processQuery.jsp
+
+chinapay.version = 20070129
+
+#\u4EBA\u6C11\u5E01
+chinapay.curyId = 156
+
+chinapay.bgret.url = http://jiamin13579.oicp.net/pay/chinaPaybgRetrun.do
+
+chinapay.pageret.url = http://jiamin13579.oicp.net/pay/chinaPayPageRetrun.do
+
+

@@ -1,0 +1,30 @@
+package com.company.shop.dao;
+
+import java.util.List;
+
+import com.company.pager.Page;
+import com.company.shop.entity.Article;
+import com.company.shop.entity.ArticleSort;
+
+public interface ArticleMapper {
+    int deleteByPrimaryKey(Integer articleId);
+
+    int insert(Article record);
+
+    int insertSelective(Article record);
+
+    Article selectByPrimaryKey(Integer articleId);
+
+    int updateByPrimaryKeySelective(Article record);
+
+    int updateByPrimaryKeyWithBLOBs(Article record);
+
+    int updateByPrimaryKey(Article record);
+    
+    List<Article> selectArticleList(Page<Article> page);
+
+    /**≤È—Ø∑÷¿‡
+     * @return
+     */
+    List<ArticleSort> selectRoot();
+}

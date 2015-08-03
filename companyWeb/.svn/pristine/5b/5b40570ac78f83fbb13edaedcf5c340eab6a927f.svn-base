@@ -1,0 +1,117 @@
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
+<div class="header">
+      <div class="main">
+            <div class="link wrapfix">
+                <div class="link_right">
+                    <span class="ml" onclick="index.login();">
+                        <img src="<%=basePath%>common/images/member_1.png" />
+                    </span>
+                    <span class="su" onclick="index.providerLogin();">
+                        <img src="<%=basePath%>common/images/supplier_1.png" />
+                    </span>
+                    <span class="coll" onclick="index.collectionPage();">
+                        <img src="<%=basePath%>common/images/coll_1.png" />
+                    </span>
+                    <div class="share jiathis_style_32x32">
+                        <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank" style="background:url(<%=basePath%>common/images/share_1.png) no-repeat scroll 0 0 transparent;"></a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="navBar">
+                <div class="nav wrapfix">
+                    <div class="logo"></div>
+                    <ul class="wrapfix" style="margin-top:2px;" id="navBar">
+                        <li id="index">  <a href="#" target="_blank" class="adlink"><img src="<%=basePath%>common/images/nav/index_1.jpg" alt="首页"/></a></li>
+                        <li id="news"><a href="#" target="_blank" class="adlink"><img src="<%=basePath%>common/images/nav/news.jpg" alt="最新动态"/></a></li>
+                        <li id="intro"><a href="#" target="_blank" class="adlink"><img src="<%=basePath%>common/images/nav/company.jpg" alt="公司介绍"/></a></li>
+                        <li id="shop"><a href="#" target="_blank" class="adlink"><img src="<%=basePath%>common/images/nav/shop.jpg" alt="门店展示"/></a></li>
+                        <li id="contact"><a href="#" target="_blank" class="adlink"><img src="<%=basePath%>common/images/nav/contact.jpg" alt="联系我们"/></a></li>
+                        <li id="join"><a href="#" target="_blank" class="adlink"><img src="<%=basePath%>common/images/nav/join.jpg" alt="咨询加盟"/></a></li>
+                        <li id="friend"><a href="#" target="_blank" class="adlink"><img src="<%=basePath%>common/images/nav/friend.jpg" alt="伙伴招募"/></a></li>
+                    </ul>
+                </div>
+            </div>
+          
+            <div id="navSlider" class="navSlider">
+            <ul class="wrapfix" id="floatMenu">
+                  <li id="index_slider" style="padding:0px;">
+                    </li>
+                    
+                    <li id="news_slider">
+                      <span class="nocur">
+                  非泊新闻
+                        </span>
+                        <span class="cur">
+                            <font>非泊风采</font>
+                        </span>
+                        <span class="nocur">
+                            <font>最新活动</font>
+                        </span>
+                    </li>
+                  
+                     <li id="intro_slider">
+                      <span class="nocur">
+                  非泊新闻
+                        </span>
+                        <span class="cur">
+                            <font>非泊风采</font>
+                        </span>
+                        <span class="nocur">
+                            <font>最新活动</font>
+                        </span>
+                    </li>
+                    
+                     <li id="shop_slider">
+                      <span class="nocur">
+                  非泊新闻
+                        </span>
+                        <span class="cur">
+                            <font>非泊风采</font>
+                        </span>
+                        <span class="nocur">
+                            <font>最新活动</font>
+                        </span>
+                    </li>
+                    
+                    <li id="contact_slider">
+                      <span class="nocur">
+                  非泊新闻
+                        </span>
+                        <span class="cur">
+                            <font>非泊风采</font>
+                        </span>
+                        <span class="nocur">
+                            <font>最新活动</font>
+                        </span>
+                    </li>
+                    
+                    <li id="join_slider">
+                      <span class="nocur">
+                  非泊新闻
+                        </span>
+                        <span class="cur">
+                            <font>非泊风采</font>
+                        </span>
+                        <span class="nocur">
+                            <font>最新活动</font>
+                        </span>
+                    </li>
+                    
+                    <li id="friend_slider">
+                      <span class="nocur">
+                  非泊新闻
+                        </span>
+                        <span class="cur">
+                            <font>非泊风采</font>
+                        </span>
+                        <span class="nocur">
+                            <font>最新活动</font>
+                        </span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+  </div>

@@ -1,0 +1,124 @@
+@charset "utf-8";
+/* CSS Document */
+.rp{
+width:100%; height:38px;
+  line-height:38px;
+  font-size:20px; color:#e86e61;
+  margin-bottom: 18px;
+  background:#f2f2f2;
+}
+
+.rp .myscore{
+	display:inline-block;
+	font-size:16px;
+	margin-left:20px;
+}
+
+.rp .scoreLabel{
+	display:inline-block;
+	height:100%; line-height:41px;
+	font-size:12px; color:#000;
+	font-family:"宋体";
+	margin-left:20px;
+}
+
+.rp .scoreValue{
+	display:inline-block;
+	height:100%; line-height:41px;
+	font-size:16px; color:#e86e61;
+}
+
+.rp .condition{
+	display:inline-block;
+	width:auto; height:auto;
+	margin-top:8px;padding:1px;
+	border:1px solid #ababab;
+	min-width:85px; min-height:19px;
+	float:right;
+}
+
+.mcd{
+	width: auto;
+	 height:819px;
+	padding:5px 16px 40px;
+	border:1px solid #dcdcdc;
+	position:relative;
+}
+
+.shopPage {
+	width:100%; height:100%;
+	margin:0px auto;
+}
+
+.shopPage ul{
+	width:100%; height:auto;
+	min-height:200px;
+	list-style-position:inside;
+	color:#949494;
+}
+
+.shopPage ul li{
+	width:100%; height:44px;
+	line-height:44px;;
+	border-bottom:1px dashed #a4a4a4;
+	position: relative;
+}
+
+.shopPage ul li a:link, .shopPage ul li a:visited,.shopPage ul li a:hover,.shopPage ul li a:active{
+	height:100%; width:736px;
+	font-family:"宋体";color:#aaaaaa;
+	font-size:12px;
+}
+
+.shopPage ul li span{
+	display:inline-block;
+	width:70px; height:100%;
+	line-height:44px;
+	font-size:12px;
+	position:absolute;
+	right:0px;
+}
+
+.page{
+	width:190px; height:14px;
+	position:absolute;
+	left:41.2%; bottom:26px;
+}
+
+.page span.forward{
+	display:inline-block;
+	width:17px; height:17px;
+	vertical-align:middle;
+}
+
+.page span.pageNum{
+	display:inline-block;
+	width:auto; height:17px;
+	min-width:17px;
+	line-height:17px;
+    font-family:"宋体";color:#808080;
+	text-align:center;
+}
+
+.page span.curPageNum{
+	display:inline-block;
+	width:auto; height:17px;
+	min-width:17px;
+	line-height:17px;
+    font-family:"宋体";color:#f97466;
+	text-align:center;
+}
+
+.sv{
+	color:#42c129;
+}
+
+.cv{
+	color:#f96f0a;
+}
+
+.noe{
+	color:#000;
+}
+
+

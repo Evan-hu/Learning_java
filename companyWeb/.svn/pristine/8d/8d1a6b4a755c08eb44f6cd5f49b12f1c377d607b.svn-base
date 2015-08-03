@@ -1,0 +1,65 @@
+/**
+ * Copyright (c) 2014 GA
+ * All right reserved.
+ */
+package com.company.shop.action.web;
+
+import java.net.URLDecoder;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.company.pager.Page;
+import com.company.shop.action.BaseController;
+import com.company.shop.entity.ArticleImg;
+import com.company.shop.entity.StoreExtend;
+import com.company.shop.service.ArticleImgService;
+import com.company.shop.service.ArticleService;
+import com.company.shop.service.StoreService;
+
+/**
+ * ¿‡√Ë ˆ
+ * @author ht
+ * @create_time 2014-7-21 …œŒÁ11:38:47
+ * @project companyWeb
+ */
+@Controller 
+@RequestMapping("/store")
+public class StoreController extends BaseController{
+
+  @Autowired
+  ArticleService articleService;
+  @Autowired
+  ArticleImgService articleImgService;
+  @Autowired
+  StoreService storeService;
+  
+  
+  
+  @RequestMapping("/queryStore.do")
+  public String viewStore(ModelMap modelMap, Page<ArticleImg> page) throws Exception{
+    String keyword = page.optParamStr("keyword", null);
+    if(null != keyword){
+      keyword = URLDecoder.decode(keyword, "utf-8");
+      page.addParam("keyword", keyword);
+    }
+      page.setResults(articleImgService.queryArticleImgList(page));
+      modelMap.put("page", page);
+    return "/store/storeView";
+  }
+  
+  
+  
+   @RequestMapping("/detail.do")
+  public String storeDetail(ModelMap modelMap, Integer storeId) throws Exception{
+     StoreExtend storeExtend = this.storeService.queryStore(storeId);
+     if(null != storeExtend){
+      modelMap.put("storeExtend", storeExtend);
+      return "/store/storeDetail";
+    }
+    return "/store/storeView";
+  }
+  
+}

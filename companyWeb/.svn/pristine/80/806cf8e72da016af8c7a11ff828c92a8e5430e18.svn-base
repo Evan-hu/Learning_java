@@ -1,0 +1,354 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.company.shop.dao.SupplierMapper" >
+  <resultMap id="BaseResultMap" type="com.company.shop.entity.Supplier" >
+    <id column="SUPPLIER_ID" property="supplierId" jdbcType="INTEGER" />
+    <result column="AREA_ID" property="areaId" jdbcType="INTEGER" />
+    <result column="SUPPLIER_NAME" property="supplierName" jdbcType="VARCHAR" />
+    <result column="TYPE" property="type" jdbcType="INTEGER" />
+    <result column="MNEMONIC_CODE" property="mnemonicCode" jdbcType="VARCHAR" />
+    <result column="LINK_USER" property="linkUser" jdbcType="VARCHAR" />
+    <result column="LINK_TEL" property="linkTel" jdbcType="VARCHAR" />
+    <result column="ADDR" property="addr" jdbcType="VARCHAR" />
+    <result column="BANK" property="bank" jdbcType="VARCHAR" />
+    <result column="TAX" property="tax" jdbcType="VARCHAR" />
+    <result column="FOX" property="fox" jdbcType="VARCHAR" />
+    <result column="LICENSE_NO" property="licenseNo" jdbcType="VARCHAR" />
+    <result column="ZIP_CODE" property="zipCode" jdbcType="CHAR" />
+    <result column="EMAIL" property="email" jdbcType="VARCHAR" />
+    <result column="DELIVERY_PERIOD" property="deliveryPeriod" jdbcType="INTEGER" />
+    <result column="CHECK_TYPE" property="checkType" jdbcType="INTEGER" />
+    <result column="CHECK_CYCLE" property="checkCycle" jdbcType="INTEGER" />
+    <result column="CHECK_MONTH" property="checkMonth" jdbcType="INTEGER" />
+    <result column="QQ" property="qq" jdbcType="VARCHAR" />
+    <result column="LEVEL" property="level" jdbcType="INTEGER" />
+    <result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="STATE" property="state" jdbcType="INTEGER" />
+    <result column="NOTE" property="note" jdbcType="VARCHAR" />
+    <result column="CREATOR_ID" property="creatorId" jdbcType="INTEGER" />
+    <result column="DELETE_STATE" property="deleteState" jdbcType="INTEGER" />
+    <result column="CHECK_STATE" property="checkState" jdbcType="INTEGER" />
+    <result column="LAST_END_TIME" property="lastEndTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    SUPPLIER_ID, AREA_ID, SUPPLIER_NAME, TYPE, MNEMONIC_CODE, LINK_USER, LINK_TEL, ADDR, 
+    BANK, TAX, FOX, LICENSE_NO, ZIP_CODE, EMAIL, DELIVERY_PERIOD, CHECK_TYPE, CHECK_CYCLE, 
+    CHECK_MONTH, QQ, LEVEL, CREATE_TIME, STATE, NOTE, CREATOR_ID, DELETE_STATE, CHECK_STATE, 
+    LAST_END_TIME
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from supplier
+    where SUPPLIER_ID = #{supplierId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from supplier
+    where SUPPLIER_ID = #{supplierId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.company.shop.entity.Supplier" >
+    insert into supplier (SUPPLIER_ID, AREA_ID, SUPPLIER_NAME, 
+      TYPE, MNEMONIC_CODE, LINK_USER, 
+      LINK_TEL, ADDR, BANK, 
+      TAX, FOX, LICENSE_NO, 
+      ZIP_CODE, EMAIL, DELIVERY_PERIOD, 
+      CHECK_TYPE, CHECK_CYCLE, CHECK_MONTH, 
+      QQ, LEVEL, CREATE_TIME, 
+      STATE, NOTE, CREATOR_ID, 
+      DELETE_STATE, CHECK_STATE, LAST_END_TIME
+      )
+    values (#{supplierId,jdbcType=INTEGER}, #{areaId,jdbcType=INTEGER}, #{supplierName,jdbcType=VARCHAR}, 
+      #{type,jdbcType=INTEGER}, #{mnemonicCode,jdbcType=VARCHAR}, #{linkUser,jdbcType=VARCHAR}, 
+      #{linkTel,jdbcType=VARCHAR}, #{addr,jdbcType=VARCHAR}, #{bank,jdbcType=VARCHAR}, 
+      #{tax,jdbcType=VARCHAR}, #{fox,jdbcType=VARCHAR}, #{licenseNo,jdbcType=VARCHAR}, 
+      #{zipCode,jdbcType=CHAR}, #{email,jdbcType=VARCHAR}, #{deliveryPeriod,jdbcType=INTEGER}, 
+      #{checkType,jdbcType=INTEGER}, #{checkCycle,jdbcType=INTEGER}, #{checkMonth,jdbcType=INTEGER}, 
+      #{qq,jdbcType=VARCHAR}, #{level,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{state,jdbcType=INTEGER}, #{note,jdbcType=VARCHAR}, #{creatorId,jdbcType=INTEGER}, 
+      #{deleteState,jdbcType=INTEGER}, #{checkState,jdbcType=INTEGER}, #{lastEndTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.company.shop.entity.Supplier" >
+    insert into supplier
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="supplierId != null" >
+        SUPPLIER_ID,
+      </if>
+      <if test="areaId != null" >
+        AREA_ID,
+      </if>
+      <if test="supplierName != null" >
+        SUPPLIER_NAME,
+      </if>
+      <if test="type != null" >
+        TYPE,
+      </if>
+      <if test="mnemonicCode != null" >
+        MNEMONIC_CODE,
+      </if>
+      <if test="linkUser != null" >
+        LINK_USER,
+      </if>
+      <if test="linkTel != null" >
+        LINK_TEL,
+      </if>
+      <if test="addr != null" >
+        ADDR,
+      </if>
+      <if test="bank != null" >
+        BANK,
+      </if>
+      <if test="tax != null" >
+        TAX,
+      </if>
+      <if test="fox != null" >
+        FOX,
+      </if>
+      <if test="licenseNo != null" >
+        LICENSE_NO,
+      </if>
+      <if test="zipCode != null" >
+        ZIP_CODE,
+      </if>
+      <if test="email != null" >
+        EMAIL,
+      </if>
+      <if test="deliveryPeriod != null" >
+        DELIVERY_PERIOD,
+      </if>
+      <if test="checkType != null" >
+        CHECK_TYPE,
+      </if>
+      <if test="checkCycle != null" >
+        CHECK_CYCLE,
+      </if>
+      <if test="checkMonth != null" >
+        CHECK_MONTH,
+      </if>
+      <if test="qq != null" >
+        QQ,
+      </if>
+      <if test="level != null" >
+        LEVEL,
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME,
+      </if>
+      <if test="state != null" >
+        STATE,
+      </if>
+      <if test="note != null" >
+        NOTE,
+      </if>
+      <if test="creatorId != null" >
+        CREATOR_ID,
+      </if>
+      <if test="deleteState != null" >
+        DELETE_STATE,
+      </if>
+      <if test="checkState != null" >
+        CHECK_STATE,
+      </if>
+      <if test="lastEndTime != null" >
+        LAST_END_TIME,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="supplierId != null" >
+        #{supplierId,jdbcType=INTEGER},
+      </if>
+      <if test="areaId != null" >
+        #{areaId,jdbcType=INTEGER},
+      </if>
+      <if test="supplierName != null" >
+        #{supplierName,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        #{type,jdbcType=INTEGER},
+      </if>
+      <if test="mnemonicCode != null" >
+        #{mnemonicCode,jdbcType=VARCHAR},
+      </if>
+      <if test="linkUser != null" >
+        #{linkUser,jdbcType=VARCHAR},
+      </if>
+      <if test="linkTel != null" >
+        #{linkTel,jdbcType=VARCHAR},
+      </if>
+      <if test="addr != null" >
+        #{addr,jdbcType=VARCHAR},
+      </if>
+      <if test="bank != null" >
+        #{bank,jdbcType=VARCHAR},
+      </if>
+      <if test="tax != null" >
+        #{tax,jdbcType=VARCHAR},
+      </if>
+      <if test="fox != null" >
+        #{fox,jdbcType=VARCHAR},
+      </if>
+      <if test="licenseNo != null" >
+        #{licenseNo,jdbcType=VARCHAR},
+      </if>
+      <if test="zipCode != null" >
+        #{zipCode,jdbcType=CHAR},
+      </if>
+      <if test="email != null" >
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="deliveryPeriod != null" >
+        #{deliveryPeriod,jdbcType=INTEGER},
+      </if>
+      <if test="checkType != null" >
+        #{checkType,jdbcType=INTEGER},
+      </if>
+      <if test="checkCycle != null" >
+        #{checkCycle,jdbcType=INTEGER},
+      </if>
+      <if test="checkMonth != null" >
+        #{checkMonth,jdbcType=INTEGER},
+      </if>
+      <if test="qq != null" >
+        #{qq,jdbcType=VARCHAR},
+      </if>
+      <if test="level != null" >
+        #{level,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="state != null" >
+        #{state,jdbcType=INTEGER},
+      </if>
+      <if test="note != null" >
+        #{note,jdbcType=VARCHAR},
+      </if>
+      <if test="creatorId != null" >
+        #{creatorId,jdbcType=INTEGER},
+      </if>
+      <if test="deleteState != null" >
+        #{deleteState,jdbcType=INTEGER},
+      </if>
+      <if test="checkState != null" >
+        #{checkState,jdbcType=INTEGER},
+      </if>
+      <if test="lastEndTime != null" >
+        #{lastEndTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.company.shop.entity.Supplier" >
+    update supplier
+    <set >
+      <if test="areaId != null" >
+        AREA_ID = #{areaId,jdbcType=INTEGER},
+      </if>
+      <if test="supplierName != null" >
+        SUPPLIER_NAME = #{supplierName,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        TYPE = #{type,jdbcType=INTEGER},
+      </if>
+      <if test="mnemonicCode != null" >
+        MNEMONIC_CODE = #{mnemonicCode,jdbcType=VARCHAR},
+      </if>
+      <if test="linkUser != null" >
+        LINK_USER = #{linkUser,jdbcType=VARCHAR},
+      </if>
+      <if test="linkTel != null" >
+        LINK_TEL = #{linkTel,jdbcType=VARCHAR},
+      </if>
+      <if test="addr != null" >
+        ADDR = #{addr,jdbcType=VARCHAR},
+      </if>
+      <if test="bank != null" >
+        BANK = #{bank,jdbcType=VARCHAR},
+      </if>
+      <if test="tax != null" >
+        TAX = #{tax,jdbcType=VARCHAR},
+      </if>
+      <if test="fox != null" >
+        FOX = #{fox,jdbcType=VARCHAR},
+      </if>
+      <if test="licenseNo != null" >
+        LICENSE_NO = #{licenseNo,jdbcType=VARCHAR},
+      </if>
+      <if test="zipCode != null" >
+        ZIP_CODE = #{zipCode,jdbcType=CHAR},
+      </if>
+      <if test="email != null" >
+        EMAIL = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="deliveryPeriod != null" >
+        DELIVERY_PERIOD = #{deliveryPeriod,jdbcType=INTEGER},
+      </if>
+      <if test="checkType != null" >
+        CHECK_TYPE = #{checkType,jdbcType=INTEGER},
+      </if>
+      <if test="checkCycle != null" >
+        CHECK_CYCLE = #{checkCycle,jdbcType=INTEGER},
+      </if>
+      <if test="checkMonth != null" >
+        CHECK_MONTH = #{checkMonth,jdbcType=INTEGER},
+      </if>
+      <if test="qq != null" >
+        QQ = #{qq,jdbcType=VARCHAR},
+      </if>
+      <if test="level != null" >
+        LEVEL = #{level,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="state != null" >
+        STATE = #{state,jdbcType=INTEGER},
+      </if>
+      <if test="note != null" >
+        NOTE = #{note,jdbcType=VARCHAR},
+      </if>
+      <if test="creatorId != null" >
+        CREATOR_ID = #{creatorId,jdbcType=INTEGER},
+      </if>
+      <if test="deleteState != null" >
+        DELETE_STATE = #{deleteState,jdbcType=INTEGER},
+      </if>
+      <if test="checkState != null" >
+        CHECK_STATE = #{checkState,jdbcType=INTEGER},
+      </if>
+      <if test="lastEndTime != null" >
+        LAST_END_TIME = #{lastEndTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where SUPPLIER_ID = #{supplierId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.company.shop.entity.Supplier" >
+    update supplier
+    set AREA_ID = #{areaId,jdbcType=INTEGER},
+      SUPPLIER_NAME = #{supplierName,jdbcType=VARCHAR},
+      TYPE = #{type,jdbcType=INTEGER},
+      MNEMONIC_CODE = #{mnemonicCode,jdbcType=VARCHAR},
+      LINK_USER = #{linkUser,jdbcType=VARCHAR},
+      LINK_TEL = #{linkTel,jdbcType=VARCHAR},
+      ADDR = #{addr,jdbcType=VARCHAR},
+      BANK = #{bank,jdbcType=VARCHAR},
+      TAX = #{tax,jdbcType=VARCHAR},
+      FOX = #{fox,jdbcType=VARCHAR},
+      LICENSE_NO = #{licenseNo,jdbcType=VARCHAR},
+      ZIP_CODE = #{zipCode,jdbcType=CHAR},
+      EMAIL = #{email,jdbcType=VARCHAR},
+      DELIVERY_PERIOD = #{deliveryPeriod,jdbcType=INTEGER},
+      CHECK_TYPE = #{checkType,jdbcType=INTEGER},
+      CHECK_CYCLE = #{checkCycle,jdbcType=INTEGER},
+      CHECK_MONTH = #{checkMonth,jdbcType=INTEGER},
+      QQ = #{qq,jdbcType=VARCHAR},
+      LEVEL = #{level,jdbcType=INTEGER},
+      CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      STATE = #{state,jdbcType=INTEGER},
+      NOTE = #{note,jdbcType=VARCHAR},
+      CREATOR_ID = #{creatorId,jdbcType=INTEGER},
+      DELETE_STATE = #{deleteState,jdbcType=INTEGER},
+      CHECK_STATE = #{checkState,jdbcType=INTEGER},
+      LAST_END_TIME = #{lastEndTime,jdbcType=TIMESTAMP}
+    where SUPPLIER_ID = #{supplierId,jdbcType=INTEGER}
+  </update>
+</mapper>

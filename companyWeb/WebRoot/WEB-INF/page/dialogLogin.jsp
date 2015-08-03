@@ -1,0 +1,90 @@
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<script type="text/javascript">
+	$(function() {
+		
+		$.ajaxSetup ({ 
+		    cache: false //关闭AJAX相应的缓存 
+		});
+		
+		$("#ajaxLoginBtn").click(function() {
+			$("#ajaxLoginBtn").val('登录中...').attr("disabled", "disabled");
+			$("#ajaxLoginForm").ajaxSubmit(function(e) {
+				if (e.code == 1) {
+					if (ajaxLoginType == 1) {
+						window.location = ajaxLoginCallback;
+					}
+					else if(ajaxLoginType == 2){
+						eval(ajaxLoginCallback);
+					}
+					//刷新头部
+					$("#refreshHeader").load("/refreshHeader.do");
+					$('.dialogClose').click();
+				} else {
+					alert(e.message);
+				}
+				$("#ajaxLoginBtn").val('登 录').removeAttr("disabled");
+			});
+		})
+		
+		$('#ajaxLoginUsername,#ajaxLoginPassword,#authCode2').keypress(function (e) { 
+		    if (e.keyCode == 13) {
+		    	$("#ajaxLoginBtn").click();
+		    }
+		});
+	});
+
+	var ajaxLoginType;
+	var ajaxLoginCallback;
+	var dg;
+	//type 1代表url 2代表函数 只支持不带参数
+	function ajaxLogin(type,callback) {
+		ajaxLoginType = type;
+		ajaxLoginCallback = callback;
+		$.get("/checkLogin.do?m="+Math.random(), function(data) {
+			if (data == 'true') {
+				if (type == 1) {
+					window.location = callback;
+				}
+				else if(type == 2){
+					eval(callback);
+				}
+			} else {
+				$.Dialog({
+					width : 460,
+					height : 320,
+					title : "陆路联盟",
+					contentDom : '#DialogLogin'
+				});
+				$('#authImg2').attr("src","/authimg.jpg?m=ajax&r="+Math.random());
+			}
+		});
+	}
+	
+	
+	$(function(){
+		$('#authImg2').click(function(){
+			$(this).attr("src","/authimg.jpg?m=ajax&r="+Math.random());
+		});
+	});
+	
+</script>
+<div class="dialogLogin" id="DialogLogin">
+	<div class="con">
+		<form id="ajaxLoginForm" action="/doAjaxLogin.do" method="post">
+			<p><b>登录名：</b></p>
+			<p><input id="ajaxLoginUsername" type="text" class="inputText" name="username"></p>
+			<p><b>登录密码：</b><a href="/password.do">忘记登录密码</a></p>
+			<p><input id="ajaxLoginPassword" type="password" name="password" class="inputText"></p>
+			<p><b>验证码：</b></p>
+			<p>
+				<input type="text" class="inputText" maxlength="5" name="authCode" id="authCode2" style="width: 80px;">
+				<img id="authImg2" width="94" height="27" style="vertical-align:middle"/>
+			</p>
+			<p>
+				<input type="button" class="btnSubmit" id="ajaxLoginBtn" value="登 录">
+				<a href="/reg.do">免费注册</a>
+			</p>
+		</form>
+	</div>
+</div>
+

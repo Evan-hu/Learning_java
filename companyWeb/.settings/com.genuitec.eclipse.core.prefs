@@ -1,0 +1,4 @@
+#Fri Jul 18 21:30:32 CST 2014
+eclipse.preferences.version=1
+validator.Checked=WebRoot/WEB-INF/page/message.jsp,WebRoot/WEB-INF/ad.tld,src/applicationContext.xml,WebRoot/WEB-INF/area.tld,WebRoot/WEB-INF/page/news/include/review.jsp,WebRoot/WEB-INF/page.tld,WebRoot/WEB-INF/page/login.jsp,WebRoot/WEB-INF/page/areaTree.jsp,WebRoot/WEB-INF/showDate.tld,WebRoot/WEB-INF/function.tld
+validator.Unchecked=

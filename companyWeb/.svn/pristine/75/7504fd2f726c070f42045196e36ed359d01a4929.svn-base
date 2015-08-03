@@ -1,0 +1,56 @@
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@taglib prefix="page" uri="/WEB-INF/page.tld" %>
+<%
+String path = request.getContextPath();
+String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+%>
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <base href="<%=basePath%>">
+    
+    <title>My JSP 'myGift.jsp' starting page</title>
+    
+	<meta http-equiv="pragma" content="no-cache">
+	<meta http-equiv="cache-control" content="no-cache">
+	<meta http-equiv="expires" content="0">    
+	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+	<meta http-equiv="description" content="This is my page">
+
+  </head>
+  
+  <body>
+    <div align="center">
+              我的礼券
+     <div align="center">
+         <table border="0">
+            <tr>
+              <td width="20%" align="center">电子券号码</td>
+              <td width="20%" align="center">描述</td>
+              <td width="40%" align="center">有效时间</td>
+              <td width="20%" align="center">状态</td>
+            </tr>
+            <c:forEach var="i" items="${page.results}">
+            <tr>
+              <td align="center">${i.cardNum}</td>
+              <td align="center"><span style="color: red;">${i.cardBatch.name}</span></td>
+              <td align="center">
+                <fmt:formatDate pattern=" yyyy-MM-dd" value="${i.cardBatch.beginTime}" type="both"/>至
+                <fmt:formatDate pattern=" yyyy-MM-dd" value="${i.cardBatch.endTime}" type="both"/>
+              </td>
+              <td align="center">
+                <c:if test="${ i.state == 0 }">无效</c:if>
+                <c:if test="${ i.state == 1 }">未使用</c:if>
+                <c:if test="${ i.state == 2 }">已使用</c:if>
+                <c:if test="${ i.state == 3 }">未生效</c:if>
+              </td>
+            </tr>
+            </c:forEach>
+         </table>
+     </div>
+    </div>
+  </body>
+</html>

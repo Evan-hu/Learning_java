@@ -1,0 +1,42 @@
+/**
+ * 通用js
+ * @author	Rocky(296456018@qq.com)
+ * @date	2014-02-17
+ */
+
+$(function(){
+	$('.tab .tabSwitch li').hover(function(){
+		var _index = $(this).attr('index');
+		$(this).parent().find('li').removeClass('current')
+		$(this).addClass('current');
+
+		var _con = $(this).parents('.tab').find('.tabCon');
+		_con.hide();
+		_con.eq(_index).show();
+	});
+	
+	$('#authImg').click(function(){
+		$(this).attr("src","/authimg.jpg?r="+Math.random());
+	});
+	
+	$('.searchType').hover(function(){
+		$(this).addClass('active');
+	}, function(){
+		$(this).removeClass('active');
+	});
+	$('.searchType ul a').click(function(){
+		$('.searchType label').html($(this).html());
+		$('#searchTypeText').val($(this).attr('index'))
+		$('.searchType').removeClass('active');
+	})
+})
+
+/**文章、文库评论相关js**/
+$(function(){
+	$(".comment .submit .btnSubmit").click(function(){
+		ajaxLogin(2,"submitContentReview();");
+	})
+})
+
+function submitContentReview(){
+}

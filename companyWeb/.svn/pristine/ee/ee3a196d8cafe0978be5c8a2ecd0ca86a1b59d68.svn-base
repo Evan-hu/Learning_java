@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.lulu.shop.dao.ArticleMapper" >
+  <resultMap id="BaseResultMap" type="com.lulu.shop.entity.Article" >
+    <id column="ARTICLE_ID" property="articleId" jdbcType="INTEGER" />
+    <result column="ARTICLE_SORT_ID" property="articleSortId" jdbcType="INTEGER" />
+    <result column="TITLE" property="title" jdbcType="VARCHAR" />
+    <result column="STATE" property="state" jdbcType="INTEGER" />
+    <result column="IS_TOP" property="isTop" jdbcType="INTEGER" />
+    <result column="AUTHOR" property="author" jdbcType="VARCHAR" />
+    <result column="AUTHOR_EMAIL" property="authorEmail" jdbcType="VARCHAR" />
+    <result column="OUTSIDE_LINK" property="outsideLink" jdbcType="VARCHAR" />
+    <result column="RANK_NUM" property="rankNum" jdbcType="INTEGER" />
+    <result column="SCAN_COUNT" property="scanCount" jdbcType="INTEGER" />
+    <result column="START_TIME" property="startTime" jdbcType="DATE" />
+    <result column="END_TIME" property="endTime" jdbcType="DATE" />
+    <result column="TARGET_ID" property="targetId" jdbcType="INTEGER" />
+    <result column="CREATOR_TYPE" property="creatorType" jdbcType="INTEGER" />
+    <result column="CREATOR_ID" property="creatorId" jdbcType="INTEGER" />
+    <result column="USERNAME" property="username" jdbcType="VARCHAR" />
+    <result column="CREATE_TIME" property="createTime" jdbcType="DATE" />
+    <result column="IMG_URL" property="imgUrl" jdbcType="VARCHAR" />
+    <result column="BRIEFLY" property="briefly" jdbcType="VARCHAR" />
+    <result column="NOTE" property="note" jdbcType="VARCHAR" />
+    <result column="DOWN_URL" property="downUrl" jdbcType="VARCHAR" />
+    <result column="TYPE" property="type" jdbcType="INTEGER" />
+  </resultMap>
+  
+  <resultMap id="ResultMapWithBLOBs" type="com.lulu.shop.entity.Article" extends="BaseResultMap" >
+    <result column="CONTENT" property="content" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  
+  <sql id="Base_Column_List" >
+    ARTICLE_ID, ARTICLE_SORT_ID, TITLE, STATE, IS_TOP, AUTHOR, AUTHOR_EMAIL, OUTSIDE_LINK, 
+    RANK_NUM, SCAN_COUNT, START_TIME, END_TIME, TARGET_ID, CREATOR_TYPE, CREATOR_ID, 
+    USERNAME, CREATE_TIME, IMG_URL, BRIEFLY, NOTE, DOWN_URL, TYPE
+  </sql>
+  <sql id="reduce_Column_List" >
+    ARTICLE_ID, ARTICLE_SORT_ID, TITLE, STATE, AUTHOR_EMAIL, OUTSIDE_LINK, 
+    RANK_NUM, SCAN_COUNT,  TARGET_ID, CREATOR_TYPE,
+    USERNAME, CREATE_TIME, IMG_URL, TYPE
+  </sql>
+  <sql id="Blob_Column_List" >
+    CONTENT
+  </sql>
+  
+  <resultMap id="sortResultMap" type="com.lulu.shop.entity.ArticleSort" >
+ 	    <id column="ARTICLE_SORT_ID" property="articleSortId" jdbcType="INTEGER" />
+   		<result column="SORT_NAME" property="sortName" jdbcType="VARCHAR" />
+   		<result column="RANK_NUM" property="rankNum" jdbcType="INTEGER" />
+   		<association property="partent" column="ARTICLE_SORT_ID" javaType="com.lulu.shop.entity.ArticleSort" >
+ 	    		<id column="P_ID" property="articleSortId" jdbcType="INTEGER" />		
+   		</association>
+  </resultMap>  
+
+  
+  <resultMap type="com.lulu.shop.entity.Article" id="articleResultMap">
+    <id column="ARTICLE_ID" property="articleId" jdbcType="INTEGER" /> 
+   	<result column="ARTICLE_SORT_ID" property="articleSortId" jdbcType="INTEGER" />
+   	<result column="TITLE" property="title" jdbcType="VARCHAR" />
+ 		<result column="IS_TOP" property="isTop" jdbcType="INTEGER" />
+   	<result column="RANK_NUM" property="rankNum" jdbcType="INTEGER" />
+   	<result column="CREATE_TIME" property="createTime" jdbcType="DATE" />
+    <result column="IMG_URL" property="imgUrl" jdbcType="VARCHAR" />
+  </resultMap>
+	
+	<!-- 查询分类保证NLEVEL正确 -->
+	<select id="selectArticleSortWithOrder" resultMap="sortResultMap">
+		SELECT
+		ARTICLE_SORT_ID,
+		P_ID,
+		SORT_NAME,
+		RANK_NUM
+		FROM
+		article_sort
+		WHERE
+		STATE = 1
+		AND ID_PATH IS NOT NULL
+		AND STATE_PATH IS NOT NULL
+		AND NLEVEL IS NOT NULL
+		AND NLEVEL > -1
+		AND STATE_PATH NOT LIKE '/0/'
+		ORDER BY NLEVEL ASC, RANK_NUM desc
+	</select>
+  
+  <select id ="selectArticleBySort" resultMap="articleResultMap" parameterType="java.lang.Integer"  statementType="CALLABLE">
+  	{call proc_article_by_sort(#{top,jdbcType=INTEGER, mode=IN})}
+  </select>
+  
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from article
+    where ARTICLE_ID = #{articleId,jdbcType=INTEGER}
+  </select>
+  <!-- 新闻点击排行 -->
+  <select id="selectArticleByClick" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+	    select  A.ARTICLE_ID, A.TITLE,A.CREATE_TIME,A.SCAN_COUNT
+	    from article A
+	    join article_sort B on A.article_sort_id = B.article_sort_id
+	    where B.STATE_PATH NOT LIKE '%/0/%' 
+      and B.ID_PATH LIKE CONCAT('%/','2','/%' )
+	    and A.STATE = 1 
+	    order by SCAN_COUNT desc 
+	    limit #{top}
+  </select>
+  
+  <select id="selectArticleList" resultMap="BaseResultMap"  parameterType="com.lulu.pager.Page" >
+    select  A.ARTICLE_ID, A.TITLE, A.CREATE_TIME, AUTHOR, SCAN_COUNT,A.ARTICLE_SORT_ID
+    from article A
+    join article_sort B on A.article_sort_id = B.article_sort_id
+    where B.STATE_PATH NOT LIKE '%0%' and A.STATE = 1
+    <if test="params.sortId != null">
+        and B.ID_PATH LIKE CONCAT('%/',#{params.sortId},'/%' )
+    </if>
+    <if test="params.title != null">
+        and A.TITLE like CONCAT('%',#{params.title},'%' ) 
+    </if>
+    <if test="params.keyword != null">
+        and A.TITLE like CONCAT('%',#{params.keyword},'%' ) 
+    </if>
+    order by A.IS_TOP desc,A.RANK_NUM desc,A.CREATE_TIME desc 
+  </select>
+ 
+  <update id="updateScanCount" parameterType="Integer">
+  	update article set scan_count = scan_count + 1 where article_id = #{articleId}
+  </update> 
+ 
+</mapper>

@@ -1,0 +1,330 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.company.shop.dao.StoreMapper" >
+  <resultMap id="BaseResultMap" type="com.company.shop.entity.Store" >
+    <id column="STORE_ID" property="storeId" jdbcType="INTEGER" />
+    <result column="STORE_NAME" property="storeName" jdbcType="VARCHAR" />
+    <result column="STORE_NUM" property="storeNum" jdbcType="INTEGER" />
+    <result column="AREA_ID" property="areaId" jdbcType="INTEGER" />
+    <result column="STORE_TYPE_ID" property="storeTypeId" jdbcType="INTEGER" />
+    <result column="ACTIVE_CODE" property="activeCode" jdbcType="INTEGER" />
+    <result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="ACTIVE_TIME" property="activeTime" jdbcType="TIMESTAMP" />
+    <result column="LEFT_MONEY" property="leftMoney" jdbcType="INTEGER" />
+    <result column="ALL_CONSUME" property="allConsume" jdbcType="INTEGER" />
+    <result column="ALL_PAY" property="allPay" jdbcType="INTEGER" />
+    <result column="NOTE" property="note" jdbcType="VARCHAR" />
+    <result column="TYPE" property="type" jdbcType="INTEGER" />
+    <result column="LAS_MSG_TIME" property="lasMsgTime" jdbcType="TIMESTAMP" />
+    <result column="ALL_CONSUME_MONEY" property="allConsumeMoney" jdbcType="BIGINT" />
+    <result column="ALL_CONSUME_ORDER" property="allConsumeOrder" jdbcType="BIGINT" />
+    <result column="ALL_RETURN_MONEY" property="allReturnMoney" jdbcType="BIGINT" />
+    <result column="ALL_RETURN_ORDER" property="allReturnOrder" jdbcType="BIGINT" />
+    <result column="OP_ID" property="opId" jdbcType="INTEGER" />
+    <result column="STATE" property="state" jdbcType="INTEGER" />
+    <result column="CHECK_TYPE" property="checkType" jdbcType="INTEGER" />
+    <result column="CHECK_CYCLE" property="checkCycle" jdbcType="INTEGER" />
+    <result column="CHECK_MONTH" property="checkMonth" jdbcType="INTEGER" />
+    <result column="LAST_END_TIME" property="lastEndTime" jdbcType="TIMESTAMP" />
+    <result column="SYS_CODE_ID" property="sysCodeId" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    STORE_ID, STORE_NAME, STORE_NUM, AREA_ID, STORE_TYPE_ID, ACTIVE_CODE, CREATE_TIME, 
+    ACTIVE_TIME, LEFT_MONEY, ALL_CONSUME, ALL_PAY, NOTE, TYPE, LAS_MSG_TIME, ALL_CONSUME_MONEY, 
+    ALL_CONSUME_ORDER, ALL_RETURN_MONEY, ALL_RETURN_ORDER, OP_ID, STATE, CHECK_TYPE, 
+    CHECK_CYCLE, CHECK_MONTH, LAST_END_TIME, SYS_CODE_ID
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from store
+    where STORE_ID = #{storeId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from store
+    where STORE_ID = #{storeId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.company.shop.entity.Store" >
+    insert into store (STORE_ID, STORE_NAME, STORE_NUM, 
+      AREA_ID, STORE_TYPE_ID, ACTIVE_CODE, 
+      CREATE_TIME, ACTIVE_TIME, LEFT_MONEY, 
+      ALL_CONSUME, ALL_PAY, NOTE, 
+      TYPE, LAS_MSG_TIME, ALL_CONSUME_MONEY, 
+      ALL_CONSUME_ORDER, ALL_RETURN_MONEY, ALL_RETURN_ORDER, 
+      OP_ID, STATE, CHECK_TYPE, 
+      CHECK_CYCLE, CHECK_MONTH, LAST_END_TIME, 
+      SYS_CODE_ID)
+    values (#{storeId,jdbcType=INTEGER}, #{storeName,jdbcType=VARCHAR}, #{storeNum,jdbcType=INTEGER}, 
+      #{areaId,jdbcType=INTEGER}, #{storeTypeId,jdbcType=INTEGER}, #{activeCode,jdbcType=INTEGER}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{activeTime,jdbcType=TIMESTAMP}, #{leftMoney,jdbcType=INTEGER}, 
+      #{allConsume,jdbcType=INTEGER}, #{allPay,jdbcType=INTEGER}, #{note,jdbcType=VARCHAR}, 
+      #{type,jdbcType=INTEGER}, #{lasMsgTime,jdbcType=TIMESTAMP}, #{allConsumeMoney,jdbcType=BIGINT}, 
+      #{allConsumeOrder,jdbcType=BIGINT}, #{allReturnMoney,jdbcType=BIGINT}, #{allReturnOrder,jdbcType=BIGINT}, 
+      #{opId,jdbcType=INTEGER}, #{state,jdbcType=INTEGER}, #{checkType,jdbcType=INTEGER}, 
+      #{checkCycle,jdbcType=INTEGER}, #{checkMonth,jdbcType=INTEGER}, #{lastEndTime,jdbcType=TIMESTAMP}, 
+      #{sysCodeId,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.company.shop.entity.Store" >
+    insert into store
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="storeId != null" >
+        STORE_ID,
+      </if>
+      <if test="storeName != null" >
+        STORE_NAME,
+      </if>
+      <if test="storeNum != null" >
+        STORE_NUM,
+      </if>
+      <if test="areaId != null" >
+        AREA_ID,
+      </if>
+      <if test="storeTypeId != null" >
+        STORE_TYPE_ID,
+      </if>
+      <if test="activeCode != null" >
+        ACTIVE_CODE,
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME,
+      </if>
+      <if test="activeTime != null" >
+        ACTIVE_TIME,
+      </if>
+      <if test="leftMoney != null" >
+        LEFT_MONEY,
+      </if>
+      <if test="allConsume != null" >
+        ALL_CONSUME,
+      </if>
+      <if test="allPay != null" >
+        ALL_PAY,
+      </if>
+      <if test="note != null" >
+        NOTE,
+      </if>
+      <if test="type != null" >
+        TYPE,
+      </if>
+      <if test="lasMsgTime != null" >
+        LAS_MSG_TIME,
+      </if>
+      <if test="allConsumeMoney != null" >
+        ALL_CONSUME_MONEY,
+      </if>
+      <if test="allConsumeOrder != null" >
+        ALL_CONSUME_ORDER,
+      </if>
+      <if test="allReturnMoney != null" >
+        ALL_RETURN_MONEY,
+      </if>
+      <if test="allReturnOrder != null" >
+        ALL_RETURN_ORDER,
+      </if>
+      <if test="opId != null" >
+        OP_ID,
+      </if>
+      <if test="state != null" >
+        STATE,
+      </if>
+      <if test="checkType != null" >
+        CHECK_TYPE,
+      </if>
+      <if test="checkCycle != null" >
+        CHECK_CYCLE,
+      </if>
+      <if test="checkMonth != null" >
+        CHECK_MONTH,
+      </if>
+      <if test="lastEndTime != null" >
+        LAST_END_TIME,
+      </if>
+      <if test="sysCodeId != null" >
+        SYS_CODE_ID,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="storeId != null" >
+        #{storeId,jdbcType=INTEGER},
+      </if>
+      <if test="storeName != null" >
+        #{storeName,jdbcType=VARCHAR},
+      </if>
+      <if test="storeNum != null" >
+        #{storeNum,jdbcType=INTEGER},
+      </if>
+      <if test="areaId != null" >
+        #{areaId,jdbcType=INTEGER},
+      </if>
+      <if test="storeTypeId != null" >
+        #{storeTypeId,jdbcType=INTEGER},
+      </if>
+      <if test="activeCode != null" >
+        #{activeCode,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="activeTime != null" >
+        #{activeTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="leftMoney != null" >
+        #{leftMoney,jdbcType=INTEGER},
+      </if>
+      <if test="allConsume != null" >
+        #{allConsume,jdbcType=INTEGER},
+      </if>
+      <if test="allPay != null" >
+        #{allPay,jdbcType=INTEGER},
+      </if>
+      <if test="note != null" >
+        #{note,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        #{type,jdbcType=INTEGER},
+      </if>
+      <if test="lasMsgTime != null" >
+        #{lasMsgTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="allConsumeMoney != null" >
+        #{allConsumeMoney,jdbcType=BIGINT},
+      </if>
+      <if test="allConsumeOrder != null" >
+        #{allConsumeOrder,jdbcType=BIGINT},
+      </if>
+      <if test="allReturnMoney != null" >
+        #{allReturnMoney,jdbcType=BIGINT},
+      </if>
+      <if test="allReturnOrder != null" >
+        #{allReturnOrder,jdbcType=BIGINT},
+      </if>
+      <if test="opId != null" >
+        #{opId,jdbcType=INTEGER},
+      </if>
+      <if test="state != null" >
+        #{state,jdbcType=INTEGER},
+      </if>
+      <if test="checkType != null" >
+        #{checkType,jdbcType=INTEGER},
+      </if>
+      <if test="checkCycle != null" >
+        #{checkCycle,jdbcType=INTEGER},
+      </if>
+      <if test="checkMonth != null" >
+        #{checkMonth,jdbcType=INTEGER},
+      </if>
+      <if test="lastEndTime != null" >
+        #{lastEndTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="sysCodeId != null" >
+        #{sysCodeId,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.company.shop.entity.Store" >
+    update store
+    <set >
+      <if test="storeName != null" >
+        STORE_NAME = #{storeName,jdbcType=VARCHAR},
+      </if>
+      <if test="storeNum != null" >
+        STORE_NUM = #{storeNum,jdbcType=INTEGER},
+      </if>
+      <if test="areaId != null" >
+        AREA_ID = #{areaId,jdbcType=INTEGER},
+      </if>
+      <if test="storeTypeId != null" >
+        STORE_TYPE_ID = #{storeTypeId,jdbcType=INTEGER},
+      </if>
+      <if test="activeCode != null" >
+        ACTIVE_CODE = #{activeCode,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="activeTime != null" >
+        ACTIVE_TIME = #{activeTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="leftMoney != null" >
+        LEFT_MONEY = #{leftMoney,jdbcType=INTEGER},
+      </if>
+      <if test="allConsume != null" >
+        ALL_CONSUME = #{allConsume,jdbcType=INTEGER},
+      </if>
+      <if test="allPay != null" >
+        ALL_PAY = #{allPay,jdbcType=INTEGER},
+      </if>
+      <if test="note != null" >
+        NOTE = #{note,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        TYPE = #{type,jdbcType=INTEGER},
+      </if>
+      <if test="lasMsgTime != null" >
+        LAS_MSG_TIME = #{lasMsgTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="allConsumeMoney != null" >
+        ALL_CONSUME_MONEY = #{allConsumeMoney,jdbcType=BIGINT},
+      </if>
+      <if test="allConsumeOrder != null" >
+        ALL_CONSUME_ORDER = #{allConsumeOrder,jdbcType=BIGINT},
+      </if>
+      <if test="allReturnMoney != null" >
+        ALL_RETURN_MONEY = #{allReturnMoney,jdbcType=BIGINT},
+      </if>
+      <if test="allReturnOrder != null" >
+        ALL_RETURN_ORDER = #{allReturnOrder,jdbcType=BIGINT},
+      </if>
+      <if test="opId != null" >
+        OP_ID = #{opId,jdbcType=INTEGER},
+      </if>
+      <if test="state != null" >
+        STATE = #{state,jdbcType=INTEGER},
+      </if>
+      <if test="checkType != null" >
+        CHECK_TYPE = #{checkType,jdbcType=INTEGER},
+      </if>
+      <if test="checkCycle != null" >
+        CHECK_CYCLE = #{checkCycle,jdbcType=INTEGER},
+      </if>
+      <if test="checkMonth != null" >
+        CHECK_MONTH = #{checkMonth,jdbcType=INTEGER},
+      </if>
+      <if test="lastEndTime != null" >
+        LAST_END_TIME = #{lastEndTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="sysCodeId != null" >
+        SYS_CODE_ID = #{sysCodeId,jdbcType=INTEGER},
+      </if>
+    </set>
+    where STORE_ID = #{storeId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.company.shop.entity.Store" >
+    update store
+    set STORE_NAME = #{storeName,jdbcType=VARCHAR},
+      STORE_NUM = #{storeNum,jdbcType=INTEGER},
+      AREA_ID = #{areaId,jdbcType=INTEGER},
+      STORE_TYPE_ID = #{storeTypeId,jdbcType=INTEGER},
+      ACTIVE_CODE = #{activeCode,jdbcType=INTEGER},
+      CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      ACTIVE_TIME = #{activeTime,jdbcType=TIMESTAMP},
+      LEFT_MONEY = #{leftMoney,jdbcType=INTEGER},
+      ALL_CONSUME = #{allConsume,jdbcType=INTEGER},
+      ALL_PAY = #{allPay,jdbcType=INTEGER},
+      NOTE = #{note,jdbcType=VARCHAR},
+      TYPE = #{type,jdbcType=INTEGER},
+      LAS_MSG_TIME = #{lasMsgTime,jdbcType=TIMESTAMP},
+      ALL_CONSUME_MONEY = #{allConsumeMoney,jdbcType=BIGINT},
+      ALL_CONSUME_ORDER = #{allConsumeOrder,jdbcType=BIGINT},
+      ALL_RETURN_MONEY = #{allReturnMoney,jdbcType=BIGINT},
+      ALL_RETURN_ORDER = #{allReturnOrder,jdbcType=BIGINT},
+      OP_ID = #{opId,jdbcType=INTEGER},
+      STATE = #{state,jdbcType=INTEGER},
+      CHECK_TYPE = #{checkType,jdbcType=INTEGER},
+      CHECK_CYCLE = #{checkCycle,jdbcType=INTEGER},
+      CHECK_MONTH = #{checkMonth,jdbcType=INTEGER},
+      LAST_END_TIME = #{lastEndTime,jdbcType=TIMESTAMP},
+      SYS_CODE_ID = #{sysCodeId,jdbcType=INTEGER}
+    where STORE_ID = #{storeId,jdbcType=INTEGER}
+  </update>
+</mapper>

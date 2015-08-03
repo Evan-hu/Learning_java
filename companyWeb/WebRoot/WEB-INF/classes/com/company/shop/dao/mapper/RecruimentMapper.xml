@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.company.shop.dao.RecruimentMapper" >
+  <resultMap id="BaseResultMap" type="com.company.shop.entity.Recruiment" >
+    <id column="RECRUIMENT_ID" property="recruimentId" jdbcType="INTEGER" />
+    <result column="POSITION_ID" property="positionId" jdbcType="INTEGER" />
+    <result column="OP_ID" property="opId" jdbcType="INTEGER" />
+    <result column="ADDR" property="addr" jdbcType="VARCHAR" />
+    <result column="CNT" property="cnt" jdbcType="INTEGER" />
+    <result column="LINK_URL" property="linkUrl" jdbcType="VARCHAR" />
+    <result column="RANK_NUM" property="rankNum" jdbcType="INTEGER" />
+    <result column="CLICK_CNT" property="clickCnt" jdbcType="INTEGER" />
+    <result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="STATE" property="state" jdbcType="INTEGER" />
+    <result column="NOTE" property="note" jdbcType="VARCHAR" />
+      <association property="position" column="POSITION_ID" javaType="Position">
+        <id property="positionId" column="POSITION_ID"/>
+        <result property="positionName" column="POSITION_NAME"/>
+        <result property="salary" column="SALARY"/>
+        <result property="note" column="NOTE"/>
+      </association>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    RECRUIMENT_ID, POSITION_ID, OP_ID, ADDR, CNT, LINK_URL, RANK_NUM, CLICK_CNT, CREATE_TIME, 
+    STATE, NOTE
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from recruiment
+    where RECRUIMENT_ID = #{recruimentId,jdbcType=INTEGER}
+  </select>
+  
+  <select id="selectAllRecruiments" resultMap="BaseResultMap" parameterType="com.company.pager.Page" >
+    select 
+    r.*, p.POSITION_NAME, p.POSITION_ID
+    from recruiment r join 
+    position p on r.POSITION_ID = p.POSITION_ID
+  </select>
+  
+  <select id="selectByPositionId" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    r.*, p.POSITION_NAME, p.POSITION_ID, p.SALARY, p.NOTE 
+    from recruiment r join 
+    position p on r.POSITION_ID = p.POSITION_ID
+    where r.POSITION_ID = #{positionId,jdbcType=INTEGER}
+  </select>
+  
+  
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from recruiment
+    where RECRUIMENT_ID = #{recruimentId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.company.shop.entity.Recruiment" >
+    insert into recruiment (RECRUIMENT_ID, POSITION_ID, OP_ID, 
+      ADDR, CNT, LINK_URL, 
+      RANK_NUM, CLICK_CNT, CREATE_TIME, 
+      STATE, NOTE)
+    values (#{recruimentId,jdbcType=INTEGER}, #{positionId,jdbcType=INTEGER}, #{opId,jdbcType=INTEGER}, 
+      #{addr,jdbcType=VARCHAR}, #{cnt,jdbcType=INTEGER}, #{linkUrl,jdbcType=VARCHAR}, 
+      #{rankNum,jdbcType=INTEGER}, #{clickCnt,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{state,jdbcType=INTEGER}, #{note,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.company.shop.entity.Recruiment" >
+    insert into recruiment
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="recruimentId != null" >
+        RECRUIMENT_ID,
+      </if>
+      <if test="positionId != null" >
+        POSITION_ID,
+      </if>
+      <if test="opId != null" >
+        OP_ID,
+      </if>
+      <if test="addr != null" >
+        ADDR,
+      </if>
+      <if test="cnt != null" >
+        CNT,
+      </if>
+      <if test="linkUrl != null" >
+        LINK_URL,
+      </if>
+      <if test="rankNum != null" >
+        RANK_NUM,
+      </if>
+      <if test="clickCnt != null" >
+        CLICK_CNT,
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME,
+      </if>
+      <if test="state != null" >
+        STATE,
+      </if>
+      <if test="note != null" >
+        NOTE,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="recruimentId != null" >
+        #{recruimentId,jdbcType=INTEGER},
+      </if>
+      <if test="positionId != null" >
+        #{positionId,jdbcType=INTEGER},
+      </if>
+      <if test="opId != null" >
+        #{opId,jdbcType=INTEGER},
+      </if>
+      <if test="addr != null" >
+        #{addr,jdbcType=VARCHAR},
+      </if>
+      <if test="cnt != null" >
+        #{cnt,jdbcType=INTEGER},
+      </if>
+      <if test="linkUrl != null" >
+        #{linkUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="rankNum != null" >
+        #{rankNum,jdbcType=INTEGER},
+      </if>
+      <if test="clickCnt != null" >
+        #{clickCnt,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="state != null" >
+        #{state,jdbcType=INTEGER},
+      </if>
+      <if test="note != null" >
+        #{note,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.company.shop.entity.Recruiment" >
+    update recruiment
+    <set >
+      <if test="positionId != null" >
+        POSITION_ID = #{positionId,jdbcType=INTEGER},
+      </if>
+      <if test="opId != null" >
+        OP_ID = #{opId,jdbcType=INTEGER},
+      </if>
+      <if test="addr != null" >
+        ADDR = #{addr,jdbcType=VARCHAR},
+      </if>
+      <if test="cnt != null" >
+        CNT = #{cnt,jdbcType=INTEGER},
+      </if>
+      <if test="linkUrl != null" >
+        LINK_URL = #{linkUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="rankNum != null" >
+        RANK_NUM = #{rankNum,jdbcType=INTEGER},
+      </if>
+      <if test="clickCnt != null" >
+        CLICK_CNT = #{clickCnt,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="state != null" >
+        STATE = #{state,jdbcType=INTEGER},
+      </if>
+      <if test="note != null" >
+        NOTE = #{note,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where RECRUIMENT_ID = #{recruimentId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.company.shop.entity.Recruiment" >
+    update recruiment
+    set POSITION_ID = #{positionId,jdbcType=INTEGER},
+      OP_ID = #{opId,jdbcType=INTEGER},
+      ADDR = #{addr,jdbcType=VARCHAR},
+      CNT = #{cnt,jdbcType=INTEGER},
+      LINK_URL = #{linkUrl,jdbcType=VARCHAR},
+      RANK_NUM = #{rankNum,jdbcType=INTEGER},
+      CLICK_CNT = #{clickCnt,jdbcType=INTEGER},
+      CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      STATE = #{state,jdbcType=INTEGER},
+      NOTE = #{note,jdbcType=VARCHAR}
+    where RECRUIMENT_ID = #{recruimentId,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -1,0 +1,93 @@
+@charset "utf-8";
+/* CSS Document */
+.rp{
+ width:100%; height:38px;
+  line-height:38px;
+  font-size:20px; color:#e86e61;
+  margin-bottom: 18px;
+  background:#f2f2f2;f2f2f2;
+}
+
+.rp .myscore{
+	display:inline-block;
+	font-size:16px;
+	margin-left:20px;
+}
+
+.mcd{
+	width:760px; height:500px;
+	padding:19px 51px 0px;
+	border:1px solid #dcdcdc;
+	position:relative;
+}
+
+
+.mi{
+	width:100%; height:405px;
+}
+
+.fpwd{
+	width:760px; height:auto;
+	margin:136px auto 0px;
+}
+
+.mi ul{
+	list-style-position:inside;
+	width:381px; height:auto;
+	color:#9e9e9e;
+	margin:0px auto;
+}
+
+.mi ul li{
+	height:30px; line-height:30px;
+	margin-bottom:15px;
+}
+
+.mi ul li span.label{
+	display:inline-block;
+	width:94px;height:30px; 
+	line-height:30px;
+	color:#808080; font-family:"宋体";
+}
+
+.mi ul li span.mv{
+	display:inline-block;
+	height:30px; line-height:30px;
+	color:#808080; font-family:"宋体";
+}
+
+.mi ul li span.mv input.opwd,.mi ul li span.mv input.npwd,.mi ul li span.mv input.surePwd{
+	width:167px;height:28px; 
+	line-height:28px;
+	border:1px solid #d9d9d9;
+}
+
+.mi ul li span.mv span.import{
+	display:inline-block; 
+	width:30px; height:30px;
+	line-height:30px;
+	color:#f07568;
+}
+
+.mi ul li span.mv a{
+	display:inline-block; 
+	width:auto; height:30px;
+	line-height:30px;
+	font-size:12px;
+	color:#f07568;
+}
+
+
+
+.submitPanel{
+	width:763px; height:27px;
+	border-top:1px solid #d9d9d9;
+	margin:40px auto 0;
+	padding:24px 0px;
+	text-align:center;
+}
+
+.submit{
+	width:150px; height:27px;
+	background:url(../images/submit.png) no-repeat scroll 0 0;
+}

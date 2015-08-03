@@ -1,0 +1,136 @@
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<script type="text/javascript">
+	$(function(){
+		$('#searchText').keypress(function (e) { 
+		    if (e.keyCode == 13) {
+		    	searchKeyword();
+		    }
+		});
+		
+		$('.search_keyword').click(function(){	
+			  window.location="/commodity/list.do?params['keyword']="+encodeURI(encodeURI($(this).text()));
+		});
+		
+		$("#searchBtn").click(function(){
+			searchKeyword();
+		});
+		
+		var searchTypeCookieVal = getCookieValue("searchType");
+		if(searchTypeCookieVal){
+			var lableVal = $(".searchType ul a").eq(searchTypeCookieVal).html();
+			$('.searchType label').html(lableVal);
+			$('#searchTypeText').val(searchTypeCookieVal);
+		}
+	});
+	
+	function searchKeyword(){
+	  var searchText = $("#searchText").val();
+	  if(!searchText || searchText=="输入关键字"){
+	    alert("请输入搜索关键字");
+	    return;
+	  }
+	  var searchType = $("#searchTypeText").val();
+	  searchText = encodeURI(encodeURI(searchText));
+	  setCookie("searchType",searchType,48,"/");
+	  if(searchType == '1'){//品牌
+		  window.location="/commodity/brandList.do?params['keyword']="+searchText;
+	  }
+	  else if(searchType == '2'){//积分商品
+		  window.location="/commodity/list.do?params[%27sortId%27]=5&params['keyword']="+searchText;
+	  }
+	  else if(searchType == '3'){//资讯
+		  window.location="/news/list.do?params['keyword']="+searchText;
+	  }
+	  else if(searchType == '4'){//文库
+		  window.location="/library/list.do?params['keyword']="+searchText;
+	  }
+	  else if(searchType == '5'){//关于我们
+		  window.location="/help/list.do?params['keyword']="+searchText;
+	  }  
+	  else{//商城商品
+	  	window.location="/commodity/list.do?params['keyword']="+searchText;
+	  }
+	}
+	
+	function loginout(){
+		if(confirm("确认退出?")){
+			$.get("/loginout.do?m="+Math.random(), function(data){
+				if(data == '1'){
+					alert('退出成功');
+					window.location="/"
+				}
+				else{
+					alert('退出失败');	
+				}
+			}); 
+		}
+	}
+	
+	function addFavorite() {
+  		try {
+      		window.external.addFavorite("http://www.lululm.com", "陆路联盟");
+  		}catch (e) {
+      		try {
+          		window.sidebar.addPanel("陆路联盟", "http://www.lululm.com", "");
+      		}catch (e) {
+          		alert("加入收藏失败（您的浏览器暂不支持快捷收藏），请手动使用Ctrl+D进行添加");
+      		}
+  		}
+	}
+</script>
+<div class="wrap">
+	<div class="shortcut" id="refreshHeader">
+		<jsp:include page="/WEB-INF/page/common/refreshHeader.jsp"></jsp:include>
+	</div>
+	
+	<div class="header">
+		<a href="" class="logo"><img src="images/logo.png"></a>
+		<div class="search">
+			<%--
+			<div class="searchCon">
+				<input type="text" class="searchInput gray" id="searchText" value="${not empty page.params['keyword'] ? page.params['keyword']: '搜索 路陆 商品/品牌'}" autocomplete="off" onfocus="this.className='searchInput'; if(this.value!='搜索 路陆 商品/品牌'){this.value='';this.className='searchInput';}else{this.value='';this.className='searchInput';}" onblur="if(this.value==''){this.value='搜索 路陆 商品/品牌';this.className='searchInput gray';}">
+				<input type="button" class="searchBtn" value="搜品牌" onclick="searchKeyword(2);">
+				<input type="button" class="searchBtn" value="搜商品" onclick="searchKeyword(1);">
+			</div>
+			--%>
+			<div class="searchCon">
+				<div class="searchType">
+					<label>商城商品</label>
+					<ul>
+						<li><a href="javascript:;" index="0">商城商品</a></li>
+						<li><a href="javascript:;" index="1">品牌</a></li>
+						<li><a href="javascript:;" index="2">积分商品</a></li>
+						<li><a href="javascript:;" index="3">资讯</a></li>
+						<li><a href="javascript:;" index="4">文库</a></li>
+						<li><a href="javascript:;" index="5">关于我们</a></li>
+					</ul>
+				</div>
+				<input id="searchTypeText" type="hidden" value="1">
+				<input type="text" id="searchText" class="searchInput gray" value="${not empty page.params.keyword ? page.params.keyword : '输入关键字'}" autocomplete="off" onfocus="this.className='searchInput'; if(this.value!='输入关键字'){this.className='searchInput';}else{this.value='';this.className='searchInput';}" onblur="if(this.value==''){this.value='输入关键字';this.className='searchInput gray';}">
+				<input id="searchBtn" type="button" class="searchBtn" value="搜 索">
+			</div>
+			<div class="keywords">
+				热门搜索：
+				<c:forEach var="j" items="${keywords}">
+				  <a href="javascript:;" class="search_keyword">${j.keywordName}</a>  
+				</c:forEach>
+			</div>
+		</div>
+	  <!--<div class="tel">服务热线：400-833-9527</div>  -->
+	</div>
+	
+	<div class="nav">
+		<ul><!-- class="current" -->
+			<li ><a href="/index.do">首页</a></li>
+			<li><a href="/shop/index.do">汽配商城</a></li>
+			<li><a href="/service/index.do">行业服务</a></li>
+			<li><a href="/activity/groupBuy.do">车辆服务</a></li>
+			<li><a href="/commodity/scoreIndex.do">积分兑换</a></li>
+			<li><a href="/news/index.do">资讯</a></li>
+			<li><a href="/library/index.do">文库</a></li>
+			<li><a href="/info/index.do">信息中心</a></li>
+			<li><a href="/help.do">关于我们</a></li>
+		</ul>
+	</div>
+</div>

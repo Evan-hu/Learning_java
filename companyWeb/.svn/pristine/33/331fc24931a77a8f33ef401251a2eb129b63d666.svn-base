@@ -1,0 +1,3 @@
+SITE_ROOT = E:/lulu/src/LuluMgr/WebRoot
+FILE_ROOT = D:/LuluMgr/photos
+LUCENEINDEX_ROOT =d\:/luceneIndex

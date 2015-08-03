@@ -1,0 +1,43 @@
+<%@page language="java" import="java.util.*" pageEncoding="UTF-8" contentType="text/html; charset=UTF-8"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+  <head>
+	<jsp:include page="/publicMeta.jsp">
+	  <jsp:param value="页面不存在" name="addTitle"/>
+	</jsp:include>
+	<%@include file="/WEB-INF/page/common/include.jsp"%>
+	<link rel="stylesheet" href="/css/common.css"/>
+	<link rel="stylesheet" href="/css/mall.css"/>
+  </head>
+  
+  <body>
+  <div class="main">
+   	
+	<div class="wrap">
+		<div class="errorPage">
+			<div class="fl">
+			<div class="con">
+				<h2>抱歉！页面无法访问。。。</h2>
+				<br/>
+				<p class="fontGray">可能因为：</p>
+				<p>
+					资源不存在&nbsp;&nbsp;<span class="fontGray">系统暂没有相关的资源信息</span><br/>
+					网址有错误&nbsp;&nbsp;<span class="fontGray">请检查网址是否完全或存在多余字符</span><br/>
+					网址已失效&nbsp;&nbsp;<span class="fontGray">可能页面已删除，或者活动已下架</span><br/>
+	
+				</p>
+				<br/>
+				<p>
+					您可以：<a href="/index.do">返回首页</a><br/>
+					<%--
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="">刷新当前页>></a>
+					 --%>
+				</p>
+			</div>
+		</div>
+	</div>
+</div>
+    <!-- 底部 -->
+	</div>
+  </body>
+</html>

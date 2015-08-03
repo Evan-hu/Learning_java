@@ -1,0 +1,29 @@
+/**
+ * Copyright (c) 2014 GA
+ * All right reserved.
+ */
+package com.company.shop.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.company.shop.dao.SupplierMapper;
+import com.company.shop.entity.Supplier;
+
+/**
+ * ÀàÃèÊö
+ * @author ht
+ * @create_time 2014-7-18 ÏÂÎç3:19:40
+ * @project companyWeb
+ */
+@Service
+public class SupplierService {
+  
+    @Autowired
+    SupplierMapper supplierMapper;
+     
+//  add supplier
+    public boolean addSupplier(Supplier supplier){
+      return this.supplierMapper.updateByPrimaryKeySelective(supplier) > 1 ? true : false;
+    }
+}

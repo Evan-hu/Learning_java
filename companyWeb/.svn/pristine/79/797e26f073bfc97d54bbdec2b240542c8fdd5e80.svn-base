@@ -1,0 +1,58 @@
+<%@page language="java" import="java.util.*" pageEncoding="UTF-8" contentType="text/html; charset=UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@taglib prefix="page" uri="/WEB-INF/page.tld" %>
+<%
+String path = request.getContextPath();
+String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<link rel="stylesheet" href="/css/news.css"/>
+<script type="text/javascript">
+	setCookie("searchType",3,48,"/");
+</script>
+
+</head>
+<body>
+<div class="main">
+	<div class="wrap">
+		<div class="section_newslist">
+			<div class="leftSide">
+				<div class="head">
+				  <h2><c:out value="非泊新闻"/> </h2>
+					<div class="more">
+					您所在的位置：<a href="/">首页</a> 
+					 <a href="<%=basePath%>/article/list.do?sortId=1">非泊新闻</a> 
+           <a href="<%=basePath%>/article/list.do?sortId=2">最新活动</a> 
+           <a href="<%=basePath%>/article/list.do?sortId=4">非泊风采</a> 
+					   列表
+					</div> 
+				</div>
+	
+				<ul class="news">
+				<c:forEach var="i" items="${page.results}">
+			      <li>
+			      	<a target="_blank" href="<%=basePath%>/article/detail.do?articleId=${i.articleId}">
+              <fmt:formatDate pattern=" yyyy-MM-dd" value="${i.createTime}" type="both"/><span >${i.title}</span>
+	      	  </a>
+            </li>
+			    </c:forEach>
+				</ul>
+				<page:nav page="${page}" url="/news/list.do"/>
+			</div>
+	
+			<div class="rightSide">
+			</div>
+		</div>
+		<!--
+		<div class="bannerCommon"><a href=""><img src="images/banner/banner_3.jpg"></a></div>
+		 -->
+	</div>
+	
+	<!-- 底部 -->
+
+</div>
+</body>
+</html>

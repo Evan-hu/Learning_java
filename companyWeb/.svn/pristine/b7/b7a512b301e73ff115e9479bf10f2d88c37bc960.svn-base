@@ -1,0 +1,319 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.company.shop.dao.MemberMapper" >
+  <resultMap id="BaseResultMap" type="com.company.shop.entity.Member" >
+    <id column="MEMBER_ID" property="memberId" jdbcType="INTEGER" />
+    <result column="STORE_ID" property="storeId" jdbcType="INTEGER" />
+    <result column="MEMBER_NUM" property="memberNum" jdbcType="VARCHAR" />
+    <result column="TEL" property="tel" jdbcType="VARCHAR" />
+    <result column="PWD" property="pwd" jdbcType="VARCHAR" />
+    <result column="TRUENAME" property="truename" jdbcType="VARCHAR" />
+    <result column="BIRTH" property="birth" jdbcType="TIMESTAMP" />
+    <result column="SEX" property="sex" jdbcType="INTEGER" />
+    <result column="REG_TIME" property="regTime" jdbcType="TIMESTAMP" />
+    <result column="EMAIL" property="email" jdbcType="VARCHAR" />
+    <result column="LAST_TIME" property="lastTime" jdbcType="TIMESTAMP" />
+    <result column="LAST_STORE_ID" property="lastStoreId" jdbcType="INTEGER" />
+    <result column="LAST_STORE_NAME" property="lastStoreName" jdbcType="VARCHAR" />
+    <result column="ALL_AMOUNT" property="allAmount" jdbcType="INTEGER" />
+    <result column="ALL_ORDER" property="allOrder" jdbcType="INTEGER" />
+    <result column="SCORE_AMOUNT" property="scoreAmount" jdbcType="INTEGER" />
+    <result column="SCORE_BALANCE" property="scoreBalance" jdbcType="INTEGER" />
+    <result column="STATE" property="state" jdbcType="INTEGER" />
+    <result column="NOTE" property="note" jdbcType="VARCHAR" />
+    <result column="ACTIVATE_STATE" property="activateState" jdbcType="INTEGER" />
+    <result column="ACTIVATE_TIME" property="activateTime" jdbcType="TIMESTAMP" />
+    <result column="DELETE_STATE" property="deleteState" jdbcType="INTEGER" />
+    <result column="VIP_RULE_ID" property="vipRuleId" jdbcType="INTEGER" />
+  </resultMap>
+  
+  <resultMap  id="BaseResultSingle" type="com.company.shop.entity.Member" >
+    <result column="PWD" property="pwd" jdbcType="VARCHAR" />
+  </resultMap>
+  
+  <sql id="Base_Column_List" >
+    MEMBER_ID, STORE_ID, MEMBER_NUM, TEL, PWD, TRUENAME, BIRTH, SEX, REG_TIME, EMAIL, 
+    LAST_TIME, LAST_STORE_ID, LAST_STORE_NAME, ALL_AMOUNT, ALL_ORDER, SCORE_AMOUNT, SCORE_BALANCE, 
+    STATE, NOTE, ACTIVATE_STATE, ACTIVATE_TIME, DELETE_STATE, VIP_RULE_ID
+  </sql>
+  
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from member
+    where MEMBER_ID = #{memberId,jdbcType=INTEGER}
+  </select>
+  
+  <select id="selectMember" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from member
+    where MEMBER_NUM = #{memberNum,jdbcType=VARCHAR}
+  </select>
+  
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from member
+    where MEMBER_ID = #{memberId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.company.shop.entity.Member" >
+    insert into member (MEMBER_ID, STORE_ID, MEMBER_NUM, 
+      TEL, PWD, TRUENAME, 
+      BIRTH, SEX, REG_TIME, 
+      EMAIL, LAST_TIME, LAST_STORE_ID, 
+      LAST_STORE_NAME, ALL_AMOUNT, ALL_ORDER, 
+      SCORE_AMOUNT, SCORE_BALANCE, STATE, 
+      NOTE, ACTIVATE_STATE, ACTIVATE_TIME, 
+      DELETE_STATE, VIP_RULE_ID)
+    values (#{memberId,jdbcType=INTEGER}, #{storeId,jdbcType=INTEGER}, #{memberNum,jdbcType=VARCHAR}, 
+      #{tel,jdbcType=VARCHAR}, #{pwd,jdbcType=VARCHAR}, #{truename,jdbcType=VARCHAR}, 
+      #{birth,jdbcType=TIMESTAMP}, #{sex,jdbcType=INTEGER}, #{regTime,jdbcType=TIMESTAMP}, 
+      #{email,jdbcType=VARCHAR}, #{lastTime,jdbcType=TIMESTAMP}, #{lastStoreId,jdbcType=INTEGER}, 
+      #{lastStoreName,jdbcType=VARCHAR}, #{allAmount,jdbcType=INTEGER}, #{allOrder,jdbcType=INTEGER}, 
+      #{scoreAmount,jdbcType=INTEGER}, #{scoreBalance,jdbcType=INTEGER}, #{state,jdbcType=INTEGER}, 
+      #{note,jdbcType=VARCHAR}, #{activateState,jdbcType=INTEGER}, #{activateTime,jdbcType=TIMESTAMP}, 
+      #{deleteState,jdbcType=INTEGER}, #{vipRuleId,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.company.shop.entity.Member" >
+    insert into member
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="memberId != null" >
+        MEMBER_ID,
+      </if>
+      <if test="storeId != null" >
+        STORE_ID,
+      </if>
+      <if test="memberNum != null" >
+        MEMBER_NUM,
+      </if>
+      <if test="tel != null" >
+        TEL,
+      </if>
+      <if test="pwd != null" >
+        PWD,
+      </if>
+      <if test="truename != null" >
+        TRUENAME,
+      </if>
+      <if test="birth != null" >
+        BIRTH,
+      </if>
+      <if test="sex != null" >
+        SEX,
+      </if>
+      <if test="regTime != null" >
+        REG_TIME,
+      </if>
+      <if test="email != null" >
+        EMAIL,
+      </if>
+      <if test="lastTime != null" >
+        LAST_TIME,
+      </if>
+      <if test="lastStoreId != null" >
+        LAST_STORE_ID,
+      </if>
+      <if test="lastStoreName != null" >
+        LAST_STORE_NAME,
+      </if>
+      <if test="allAmount != null" >
+        ALL_AMOUNT,
+      </if>
+      <if test="allOrder != null" >
+        ALL_ORDER,
+      </if>
+      <if test="scoreAmount != null" >
+        SCORE_AMOUNT,
+      </if>
+      <if test="scoreBalance != null" >
+        SCORE_BALANCE,
+      </if>
+      <if test="state != null" >
+        STATE,
+      </if>
+      <if test="note != null" >
+        NOTE,
+      </if>
+      <if test="activateState != null" >
+        ACTIVATE_STATE,
+      </if>
+      <if test="activateTime != null" >
+        ACTIVATE_TIME,
+      </if>
+      <if test="deleteState != null" >
+        DELETE_STATE,
+      </if>
+      <if test="vipRuleId != null" >
+        VIP_RULE_ID,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="memberId != null" >
+        #{memberId,jdbcType=INTEGER},
+      </if>
+      <if test="storeId != null" >
+        #{storeId,jdbcType=INTEGER},
+      </if>
+      <if test="memberNum != null" >
+        #{memberNum,jdbcType=VARCHAR},
+      </if>
+      <if test="tel != null" >
+        #{tel,jdbcType=VARCHAR},
+      </if>
+      <if test="pwd != null" >
+        #{pwd,jdbcType=VARCHAR},
+      </if>
+      <if test="truename != null" >
+        #{truename,jdbcType=VARCHAR},
+      </if>
+      <if test="birth != null" >
+        #{birth,jdbcType=TIMESTAMP},
+      </if>
+      <if test="sex != null" >
+        #{sex,jdbcType=INTEGER},
+      </if>
+      <if test="regTime != null" >
+        #{regTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="email != null" >
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="lastTime != null" >
+        #{lastTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastStoreId != null" >
+        #{lastStoreId,jdbcType=INTEGER},
+      </if>
+      <if test="lastStoreName != null" >
+        #{lastStoreName,jdbcType=VARCHAR},
+      </if>
+      <if test="allAmount != null" >
+        #{allAmount,jdbcType=INTEGER},
+      </if>
+      <if test="allOrder != null" >
+        #{allOrder,jdbcType=INTEGER},
+      </if>
+      <if test="scoreAmount != null" >
+        #{scoreAmount,jdbcType=INTEGER},
+      </if>
+      <if test="scoreBalance != null" >
+        #{scoreBalance,jdbcType=INTEGER},
+      </if>
+      <if test="state != null" >
+        #{state,jdbcType=INTEGER},
+      </if>
+      <if test="note != null" >
+        #{note,jdbcType=VARCHAR},
+      </if>
+      <if test="activateState != null" >
+        #{activateState,jdbcType=INTEGER},
+      </if>
+      <if test="activateTime != null" >
+        #{activateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deleteState != null" >
+        #{deleteState,jdbcType=INTEGER},
+      </if>
+      <if test="vipRuleId != null" >
+        #{vipRuleId,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.company.shop.entity.Member" >
+    update member
+    <set >
+      <if test="storeId != null" >
+        STORE_ID = #{storeId,jdbcType=INTEGER},
+      </if>
+      <if test="memberNum != null" >
+        MEMBER_NUM = #{memberNum,jdbcType=VARCHAR},
+      </if>
+      <if test="tel != null" >
+        TEL = #{tel,jdbcType=VARCHAR},
+      </if>
+      <if test="pwd != null" >
+        PWD = #{pwd,jdbcType=VARCHAR},
+      </if>
+      <if test="truename != null" >
+        TRUENAME = #{truename,jdbcType=VARCHAR},
+      </if>
+      <if test="birth != null" >
+        BIRTH = #{birth,jdbcType=TIMESTAMP},
+      </if>
+      <if test="sex != null" >
+        SEX = #{sex,jdbcType=INTEGER},
+      </if>
+      <if test="regTime != null" >
+        REG_TIME = #{regTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="email != null" >
+        EMAIL = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="lastTime != null" >
+        LAST_TIME = #{lastTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastStoreId != null" >
+        LAST_STORE_ID = #{lastStoreId,jdbcType=INTEGER},
+      </if>
+      <if test="lastStoreName != null" >
+        LAST_STORE_NAME = #{lastStoreName,jdbcType=VARCHAR},
+      </if>
+      <if test="allAmount != null" >
+        ALL_AMOUNT = #{allAmount,jdbcType=INTEGER},
+      </if>
+      <if test="allOrder != null" >
+        ALL_ORDER = #{allOrder,jdbcType=INTEGER},
+      </if>
+      <if test="scoreAmount != null" >
+        SCORE_AMOUNT = #{scoreAmount,jdbcType=INTEGER},
+      </if>
+      <if test="scoreBalance != null" >
+        SCORE_BALANCE = #{scoreBalance,jdbcType=INTEGER},
+      </if>
+      <if test="state != null" >
+        STATE = #{state,jdbcType=INTEGER},
+      </if>
+      <if test="note != null" >
+        NOTE = #{note,jdbcType=VARCHAR},
+      </if>
+      <if test="activateState != null" >
+        ACTIVATE_STATE = #{activateState,jdbcType=INTEGER},
+      </if>
+      <if test="activateTime != null" >
+        ACTIVATE_TIME = #{activateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deleteState != null" >
+        DELETE_STATE = #{deleteState,jdbcType=INTEGER},
+      </if>
+      <if test="vipRuleId != null" >
+        VIP_RULE_ID = #{vipRuleId,jdbcType=INTEGER},
+      </if>
+    </set>
+    where MEMBER_ID = #{memberId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.company.shop.entity.Member" >
+    update member
+    set STORE_ID = #{storeId,jdbcType=INTEGER},
+      MEMBER_NUM = #{memberNum,jdbcType=VARCHAR},
+      TEL = #{tel,jdbcType=VARCHAR},
+      PWD = #{pwd,jdbcType=VARCHAR},
+      TRUENAME = #{truename,jdbcType=VARCHAR},
+      BIRTH = #{birth,jdbcType=TIMESTAMP},
+      SEX = #{sex,jdbcType=INTEGER},
+      REG_TIME = #{regTime,jdbcType=TIMESTAMP},
+      EMAIL = #{email,jdbcType=VARCHAR},
+      LAST_TIME = #{lastTime,jdbcType=TIMESTAMP},
+      LAST_STORE_ID = #{lastStoreId,jdbcType=INTEGER},
+      LAST_STORE_NAME = #{lastStoreName,jdbcType=VARCHAR},
+      ALL_AMOUNT = #{allAmount,jdbcType=INTEGER},
+      ALL_ORDER = #{allOrder,jdbcType=INTEGER},
+      SCORE_AMOUNT = #{scoreAmount,jdbcType=INTEGER},
+      SCORE_BALANCE = #{scoreBalance,jdbcType=INTEGER},
+      STATE = #{state,jdbcType=INTEGER},
+      NOTE = #{note,jdbcType=VARCHAR},
+      ACTIVATE_STATE = #{activateState,jdbcType=INTEGER},
+      ACTIVATE_TIME = #{activateTime,jdbcType=TIMESTAMP},
+      DELETE_STATE = #{deleteState,jdbcType=INTEGER},
+      VIP_RULE_ID = #{vipRuleId,jdbcType=INTEGER}
+    where MEMBER_ID = #{memberId,jdbcType=INTEGER}
+  </update>
+</mapper>

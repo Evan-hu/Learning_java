@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.company.shop.dao.CardBatchMapper" >
+  <resultMap id="BaseResultMap" type="com.company.shop.entity.CardBatch" >
+    <id column="CARD_BATCH_ID" property="cardBatchId" jdbcType="INTEGER" />
+    <result column="NAME" property="name" jdbcType="VARCHAR" />
+    <result column="BATCH_COUNT" property="batchCount" jdbcType="INTEGER" />
+    <result column="BEGIN_TIME" property="beginTime" jdbcType="DATE" />
+    <result column="END_TIME" property="endTime" jdbcType="DATE" />
+    <result column="STATE" property="state" jdbcType="INTEGER" />
+    <result column="OP_ID" property="opId" jdbcType="INTEGER" />
+    <result column="CREATE_TIME" property="createTime" jdbcType="DATE" />
+    <result column="MIN_MONEY" property="minMoney" jdbcType="INTEGER" />
+    <result column="SAVE_MONEY" property="saveMoney" jdbcType="INTEGER" />
+    <result column="NOTE" property="note" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    CARD_BATCH_ID, NAME, BATCH_COUNT, BEGIN_TIME, END_TIME, STATE, OP_ID, CREATE_TIME, 
+    MIN_MONEY, SAVE_MONEY, NOTE
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from card_batch
+    where CARD_BATCH_ID = #{cardBatchId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from card_batch
+    where CARD_BATCH_ID = #{cardBatchId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.company.shop.entity.CardBatch" >
+    insert into card_batch (CARD_BATCH_ID, NAME, BATCH_COUNT, 
+      BEGIN_TIME, END_TIME, STATE, 
+      OP_ID, CREATE_TIME, MIN_MONEY, 
+      SAVE_MONEY, NOTE)
+    values (#{cardBatchId,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{batchCount,jdbcType=INTEGER}, 
+      #{beginTime,jdbcType=DATE}, #{endTime,jdbcType=DATE}, #{state,jdbcType=INTEGER}, 
+      #{opId,jdbcType=INTEGER}, #{createTime,jdbcType=DATE}, #{minMoney,jdbcType=INTEGER}, 
+      #{saveMoney,jdbcType=INTEGER}, #{note,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.company.shop.entity.CardBatch" >
+    insert into card_batch
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="cardBatchId != null" >
+        CARD_BATCH_ID,
+      </if>
+      <if test="name != null" >
+        NAME,
+      </if>
+      <if test="batchCount != null" >
+        BATCH_COUNT,
+      </if>
+      <if test="beginTime != null" >
+        BEGIN_TIME,
+      </if>
+      <if test="endTime != null" >
+        END_TIME,
+      </if>
+      <if test="state != null" >
+        STATE,
+      </if>
+      <if test="opId != null" >
+        OP_ID,
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME,
+      </if>
+      <if test="minMoney != null" >
+        MIN_MONEY,
+      </if>
+      <if test="saveMoney != null" >
+        SAVE_MONEY,
+      </if>
+      <if test="note != null" >
+        NOTE,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="cardBatchId != null" >
+        #{cardBatchId,jdbcType=INTEGER},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="batchCount != null" >
+        #{batchCount,jdbcType=INTEGER},
+      </if>
+      <if test="beginTime != null" >
+        #{beginTime,jdbcType=DATE},
+      </if>
+      <if test="endTime != null" >
+        #{endTime,jdbcType=DATE},
+      </if>
+      <if test="state != null" >
+        #{state,jdbcType=INTEGER},
+      </if>
+      <if test="opId != null" >
+        #{opId,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=DATE},
+      </if>
+      <if test="minMoney != null" >
+        #{minMoney,jdbcType=INTEGER},
+      </if>
+      <if test="saveMoney != null" >
+        #{saveMoney,jdbcType=INTEGER},
+      </if>
+      <if test="note != null" >
+        #{note,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.company.shop.entity.CardBatch" >
+    update card_batch
+    <set >
+      <if test="name != null" >
+        NAME = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="batchCount != null" >
+        BATCH_COUNT = #{batchCount,jdbcType=INTEGER},
+      </if>
+      <if test="beginTime != null" >
+        BEGIN_TIME = #{beginTime,jdbcType=DATE},
+      </if>
+      <if test="endTime != null" >
+        END_TIME = #{endTime,jdbcType=DATE},
+      </if>
+      <if test="state != null" >
+        STATE = #{state,jdbcType=INTEGER},
+      </if>
+      <if test="opId != null" >
+        OP_ID = #{opId,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME = #{createTime,jdbcType=DATE},
+      </if>
+      <if test="minMoney != null" >
+        MIN_MONEY = #{minMoney,jdbcType=INTEGER},
+      </if>
+      <if test="saveMoney != null" >
+        SAVE_MONEY = #{saveMoney,jdbcType=INTEGER},
+      </if>
+      <if test="note != null" >
+        NOTE = #{note,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where CARD_BATCH_ID = #{cardBatchId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.company.shop.entity.CardBatch" >
+    update card_batch
+    set NAME = #{name,jdbcType=VARCHAR},
+      BATCH_COUNT = #{batchCount,jdbcType=INTEGER},
+      BEGIN_TIME = #{beginTime,jdbcType=DATE},
+      END_TIME = #{endTime,jdbcType=DATE},
+      STATE = #{state,jdbcType=INTEGER},
+      OP_ID = #{opId,jdbcType=INTEGER},
+      CREATE_TIME = #{createTime,jdbcType=DATE},
+      MIN_MONEY = #{minMoney,jdbcType=INTEGER},
+      SAVE_MONEY = #{saveMoney,jdbcType=INTEGER},
+      NOTE = #{note,jdbcType=VARCHAR}
+    where CARD_BATCH_ID = #{cardBatchId,jdbcType=INTEGER}
+  </update>
+</mapper>

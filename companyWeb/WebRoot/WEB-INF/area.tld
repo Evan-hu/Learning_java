@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="gbk" ?>
+<taglib xmlns="http://java.sun.com/xml/ns/j2ee"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-jsptaglibrary_2_4.xsd"
+    version="2.4">
+    
+  <description></description>
+  <display-name>显示地区全路径标签</display-name>
+  <tlib-version>1.0</tlib-version>
+  <short-name>area</short-name>
+  <uri>http://www.areaTag.com/taglib</uri>
+  
+  <tag>
+    <description>生成地区全名称（四川成都）</description>
+    <name>namePath</name>
+    <tag-class>com.lulu.shop.util.jstl.AreaTag</tag-class>
+    <body-content>empty</body-content>
+    <attribute>
+        <description>地区ID</description>
+        <name>id</name>
+        <type>java.lang.Integer</type>
+        <required>true</required>
+        <fragment>true</fragment>
+    </attribute>
+    <attribute>
+        <description>间隔符</description>
+        <name>separator</name>
+        <type>java.lang.String</type>
+        <required>false</required>
+        <fragment>true</fragment>
+    </attribute>
+  </tag>
+</taglib>

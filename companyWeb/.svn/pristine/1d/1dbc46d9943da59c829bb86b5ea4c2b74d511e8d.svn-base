@@ -1,0 +1,16 @@
+#Mon Jul 21 19:20:53 CST 2014
+eclipse.preferences.version=1
+encoding//src/com/company/pager/Page.java=UTF-8
+encoding//src/com/company/pager/PageInterceptor.java=UTF-8
+encoding//src/com/company/shop/action/web/StockController.java=GBK
+encoding//src/com/company/shop/util/BaseDAO.java=UTF-8
+encoding//src/com/company/shop/util/CommonUtil.java=UTF-8
+encoding//src/com/company/shop/util/ConvertHelper.java=UTF-8
+encoding//src/com/company/shop/util/DbUtil.java=UTF-8
+encoding//src/com/company/shop/util/ImageUtil.java=UTF-8
+encoding//src/com/company/shop/util/PinyinUtil.java=UTF-8
+encoding//src/com/company/shop/util/SiteConfig.java=UTF-8
+encoding//src/com/company/shop/util/SmsSender.java=UTF-8
+encoding//src/com/company/shop/util/jstl/ShowDateTag.java=UTF-8
+encoding//src/ehcache.xml=UTF-8
+encoding/<project>=UTF-8

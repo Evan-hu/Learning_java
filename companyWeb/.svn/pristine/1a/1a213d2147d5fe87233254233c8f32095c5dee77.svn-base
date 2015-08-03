@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.company.shop.dao.MessagesendMapper" >
+  <resultMap id="BaseResultMap" type="com.company.shop.entity.Messagesend" >
+    <id column="MESSAGE_SEND_ID" property="messageSendId" jdbcType="INTEGER" />
+    <result column="STATION_MSG_ID" property="stationMsgId" jdbcType="INTEGER" />
+    <result column="OBJECT_TYPE" property="objectType" jdbcType="INTEGER" />
+    <result column="OBJECT_ID" property="objectId" jdbcType="INTEGER" />
+    <result column="STATE" property="state" jdbcType="INTEGER" />
+    <result column="DOWNLOAD_NUM" property="downloadNum" jdbcType="CHAR" />
+    <result column="CHECK_NUM" property="checkNum" jdbcType="CHAR" />
+      <association property="stationmsg" column="STATION_MSG_ID" javaType="Stationmsg">
+        <id property="stationMsgId" column="STATION_MSG_ID" />
+        <result property="createTime" column="CREATE_TIME" />
+        <result property="title" column="TITLE" />
+        <result property="content" column="CONTENT" />
+      </association>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    MESSAGE_SEND_ID, STATION_MSG_ID, OBJECT_TYPE, OBJECT_ID, STATE, DOWNLOAD_NUM, CHECK_NUM
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from message_send
+    where MESSAGE_SEND_ID = #{messageSendId,jdbcType=INTEGER}
+  </select>
+  
+  <select id="selectMessagesends" resultMap="BaseResultMap" parameterType="com.company.pager.Page" >
+    select 
+    ms.*, sm.CREATE_TIME, sm.TITLE, sm.CONTENT, sm.STATION_MSG_ID
+    from message_send ms join
+    station_msg sm on sm.STATION_MSG_ID = ms.STATION_MSG_ID
+    where ms.OBJECT_ID = #{params.memberId}
+  </select>
+  
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from message_send
+    where MESSAGE_SEND_ID = #{messageSendId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.company.shop.entity.Messagesend" >
+    insert into message_send (MESSAGE_SEND_ID, STATION_MSG_ID, OBJECT_TYPE, 
+      OBJECT_ID, STATE, DOWNLOAD_NUM, 
+      CHECK_NUM)
+    values (#{messageSendId,jdbcType=INTEGER}, #{stationMsgId,jdbcType=INTEGER}, #{objectType,jdbcType=INTEGER}, 
+      #{objectId,jdbcType=INTEGER}, #{state,jdbcType=INTEGER}, #{downloadNum,jdbcType=CHAR}, 
+      #{checkNum,jdbcType=CHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.company.shop.entity.Messagesend" >
+    insert into message_send
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="messageSendId != null" >
+        MESSAGE_SEND_ID,
+      </if>
+      <if test="stationMsgId != null" >
+        STATION_MSG_ID,
+      </if>
+      <if test="objectType != null" >
+        OBJECT_TYPE,
+      </if>
+      <if test="objectId != null" >
+        OBJECT_ID,
+      </if>
+      <if test="state != null" >
+        STATE,
+      </if>
+      <if test="downloadNum != null" >
+        DOWNLOAD_NUM,
+      </if>
+      <if test="checkNum != null" >
+        CHECK_NUM,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="messageSendId != null" >
+        #{messageSendId,jdbcType=INTEGER},
+      </if>
+      <if test="stationMsgId != null" >
+        #{stationMsgId,jdbcType=INTEGER},
+      </if>
+      <if test="objectType != null" >
+        #{objectType,jdbcType=INTEGER},
+      </if>
+      <if test="objectId != null" >
+        #{objectId,jdbcType=INTEGER},
+      </if>
+      <if test="state != null" >
+        #{state,jdbcType=INTEGER},
+      </if>
+      <if test="downloadNum != null" >
+        #{downloadNum,jdbcType=CHAR},
+      </if>
+      <if test="checkNum != null" >
+        #{checkNum,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.company.shop.entity.Messagesend" >
+    update message_send
+    <set >
+      <if test="stationMsgId != null" >
+        STATION_MSG_ID = #{stationMsgId,jdbcType=INTEGER},
+      </if>
+      <if test="objectType != null" >
+        OBJECT_TYPE = #{objectType,jdbcType=INTEGER},
+      </if>
+      <if test="objectId != null" >
+        OBJECT_ID = #{objectId,jdbcType=INTEGER},
+      </if>
+      <if test="state != null" >
+        STATE = #{state,jdbcType=INTEGER},
+      </if>
+      <if test="downloadNum != null" >
+        DOWNLOAD_NUM = #{downloadNum,jdbcType=CHAR},
+      </if>
+      <if test="checkNum != null" >
+        CHECK_NUM = #{checkNum,jdbcType=CHAR},
+      </if>
+    </set>
+    where MESSAGE_SEND_ID = #{messageSendId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.company.shop.entity.Messagesend" >
+    update message_send
+    set STATION_MSG_ID = #{stationMsgId,jdbcType=INTEGER},
+      OBJECT_TYPE = #{objectType,jdbcType=INTEGER},
+      OBJECT_ID = #{objectId,jdbcType=INTEGER},
+      STATE = #{state,jdbcType=INTEGER},
+      DOWNLOAD_NUM = #{downloadNum,jdbcType=CHAR},
+      CHECK_NUM = #{checkNum,jdbcType=CHAR}
+    where MESSAGE_SEND_ID = #{messageSendId,jdbcType=INTEGER}
+  </update>
+</mapper>

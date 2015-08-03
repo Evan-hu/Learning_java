@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.company.shop.dao.CardMapper" >
+  <resultMap id="BaseResultMap" type="com.company.shop.entity.Card" >
+    <id column="CARD_ID" property="cardId" jdbcType="INTEGER" />
+    <result column="CARD_NUM" property="cardNum" jdbcType="VARCHAR" />
+    <result column="CARD_BATCH_ID" property="cardBatchId" jdbcType="INTEGER" />
+    <result column="GET_TYPE" property="getType" jdbcType="INTEGER" />
+    <result column="GET_ID" property="getId" jdbcType="INTEGER" />
+    <result column="ORDER_FORM_ID" property="orderFormId" jdbcType="BIGINT" />
+    <result column="MEMBER_ID" property="memberId" jdbcType="INTEGER" />
+    <result column="STATE" property="state" jdbcType="INTEGER" />
+    <result column="CREATE_TIME" property="createTime" jdbcType="DATE" />
+    <result column="GET_TIME" property="getTime" jdbcType="DATE" />
+    <result column="USE_TIME" property="useTime" jdbcType="DATE" />
+      <association property="cardBatch" column="CARD_BATCH_ID" javaType="CardBatch">
+        <id property="cardBatchId" column="CARD_BATCH_ID"/>
+        <result property="name" column="NAME"/>
+        <result property="beginTime" column="BEGIN_TIME"/>
+        <result property="endTime" column="END_TIME"/>
+      </association>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    CARD_ID, CARD_NUM, CARD_BATCH_ID, GET_TYPE, GET_ID, ORDER_FORM_ID, MEMBER_ID, STATE, 
+    CREATE_TIME, GET_TIME, USE_TIME
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from card
+    where CARD_ID = #{cardId,jdbcType=INTEGER}
+  </select>
+  
+  <select id="selectCardList" resultMap="BaseResultMap" parameterType="com.company.pager.Page" >
+    select 
+    c.CARD_NUM,cb.NAME,cb.BEGIN_TIME,cb.END_TIME,c.STATE
+    from card c
+    join card_batch cb on c.CARD_BATCH_ID = cb.CARD_BATCH_ID
+    where c.MEMBER_ID = #{params.memberId}
+  </select>
+  
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from card
+    where CARD_ID = #{cardId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.company.shop.entity.Card" >
+    insert into card (CARD_ID, CARD_NUM, CARD_BATCH_ID, 
+      GET_TYPE, GET_ID, ORDER_FORM_ID, 
+      MEMBER_ID, STATE, CREATE_TIME, 
+      GET_TIME, USE_TIME)
+    values (#{cardId,jdbcType=INTEGER}, #{cardNum,jdbcType=VARCHAR}, #{cardBatchId,jdbcType=INTEGER}, 
+      #{getType,jdbcType=INTEGER}, #{getId,jdbcType=INTEGER}, #{orderFormId,jdbcType=BIGINT}, 
+      #{memberId,jdbcType=INTEGER}, #{state,jdbcType=INTEGER}, #{createTime,jdbcType=DATE}, 
+      #{getTime,jdbcType=DATE}, #{useTime,jdbcType=DATE})
+  </insert>
+  <insert id="insertSelective" parameterType="com.company.shop.entity.Card" >
+    insert into card
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="cardId != null" >
+        CARD_ID,
+      </if>
+      <if test="cardNum != null" >
+        CARD_NUM,
+      </if>
+      <if test="cardBatchId != null" >
+        CARD_BATCH_ID,
+      </if>
+      <if test="getType != null" >
+        GET_TYPE,
+      </if>
+      <if test="getId != null" >
+        GET_ID,
+      </if>
+      <if test="orderFormId != null" >
+        ORDER_FORM_ID,
+      </if>
+      <if test="memberId != null" >
+        MEMBER_ID,
+      </if>
+      <if test="state != null" >
+        STATE,
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME,
+      </if>
+      <if test="getTime != null" >
+        GET_TIME,
+      </if>
+      <if test="useTime != null" >
+        USE_TIME,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="cardId != null" >
+        #{cardId,jdbcType=INTEGER},
+      </if>
+      <if test="cardNum != null" >
+        #{cardNum,jdbcType=VARCHAR},
+      </if>
+      <if test="cardBatchId != null" >
+        #{cardBatchId,jdbcType=INTEGER},
+      </if>
+      <if test="getType != null" >
+        #{getType,jdbcType=INTEGER},
+      </if>
+      <if test="getId != null" >
+        #{getId,jdbcType=INTEGER},
+      </if>
+      <if test="orderFormId != null" >
+        #{orderFormId,jdbcType=BIGINT},
+      </if>
+      <if test="memberId != null" >
+        #{memberId,jdbcType=INTEGER},
+      </if>
+      <if test="state != null" >
+        #{state,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=DATE},
+      </if>
+      <if test="getTime != null" >
+        #{getTime,jdbcType=DATE},
+      </if>
+      <if test="useTime != null" >
+        #{useTime,jdbcType=DATE},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.company.shop.entity.Card" >
+    update card
+    <set >
+      <if test="cardNum != null" >
+        CARD_NUM = #{cardNum,jdbcType=VARCHAR},
+      </if>
+      <if test="cardBatchId != null" >
+        CARD_BATCH_ID = #{cardBatchId,jdbcType=INTEGER},
+      </if>
+      <if test="getType != null" >
+        GET_TYPE = #{getType,jdbcType=INTEGER},
+      </if>
+      <if test="getId != null" >
+        GET_ID = #{getId,jdbcType=INTEGER},
+      </if>
+      <if test="orderFormId != null" >
+        ORDER_FORM_ID = #{orderFormId,jdbcType=BIGINT},
+      </if>
+      <if test="memberId != null" >
+        MEMBER_ID = #{memberId,jdbcType=INTEGER},
+      </if>
+      <if test="state != null" >
+        STATE = #{state,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME = #{createTime,jdbcType=DATE},
+      </if>
+      <if test="getTime != null" >
+        GET_TIME = #{getTime,jdbcType=DATE},
+      </if>
+      <if test="useTime != null" >
+        USE_TIME = #{useTime,jdbcType=DATE},
+      </if>
+    </set>
+    where CARD_ID = #{cardId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.company.shop.entity.Card" >
+    update card
+    set CARD_NUM = #{cardNum,jdbcType=VARCHAR},
+      CARD_BATCH_ID = #{cardBatchId,jdbcType=INTEGER},
+      GET_TYPE = #{getType,jdbcType=INTEGER},
+      GET_ID = #{getId,jdbcType=INTEGER},
+      ORDER_FORM_ID = #{orderFormId,jdbcType=BIGINT},
+      MEMBER_ID = #{memberId,jdbcType=INTEGER},
+      STATE = #{state,jdbcType=INTEGER},
+      CREATE_TIME = #{createTime,jdbcType=DATE},
+      GET_TIME = #{getTime,jdbcType=DATE},
+      USE_TIME = #{useTime,jdbcType=DATE}
+    where CARD_ID = #{cardId,jdbcType=INTEGER}
+  </update>
+</mapper>

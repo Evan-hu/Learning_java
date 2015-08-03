@@ -1,0 +1,139 @@
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<br/>
+<div class="footer">
+	<div class="help">
+		<div class="wrap">
+			<dl>
+				<dt class="help_1"><c:out value="购物指南"/></dt>
+					<dd>
+						<a href="/reg.do" target="_blank">免费注册</a>
+					</dd>
+					<dd>
+						<a href="/help.do?articleId=2407" target="_blank">交易安全</a>
+					</dd>
+					<dd>
+						<a href="http://www.baidu.com" target="_blank">在线帮助</a>
+					</dd>
+					<dd>
+						<a href="/help.do?articleId=40" target="_blank">陆路联盟规则</a>
+					</dd>
+			</dl>
+			
+			<dl>
+				<dt class="help_2"><c:out value="陆路保障"/></dt>
+					<dd>
+						<a href="/help.do?articleId=3398" target="_blank">保障范围</a>
+					</dd>
+					<dd>
+						<a href="/member/membercenter/myOrderList.do" target="_blank">服务中心</a>
+					</dd>
+					<dd>
+						<a href="/help/list.do?params[%27keyword%27]=%25E9%2580%2580" target="_blank">退货退款流程</a>
+					</dd>
+					<dd>
+						<a href="/help.do?articleId=53" target="_blank">发票保障</a>
+					</dd>
+			</dl>
+			
+			<dl>
+				<dt class="help_3"><c:out value="付款方式"/></dt>
+					<dd>
+						<a href="/help.do?articleId=42" target="_blank">银联支付</a>
+					</dd>
+					<dd>
+						<a href="/help.do?articleId=42" target="_blank">支付宝</a>
+					</dd>
+					<dd>
+						<a href="/help.do?articleId=42" target="_blank">农行支付</a>
+					</dd>
+					<dd>
+						<a href="/help.do?articleId=3399" target="_blank">货到付款</a>
+					</dd>
+			</dl>
+			<dl>
+				<dt class="help_4"><c:out value="商家服务"/></dt>
+					<dd>
+						<a href="/member/aplayIndex.do" target="_blank">商家入驻</a>
+					</dd>
+					<dd>
+						<a href="/member/aplayIndex.do" target="_blank">商家中心</a>
+					</dd>
+					<dd>
+						<a href="/help.do?articleId=1524" target="_blank">卖家规则</a>
+					</dd>
+					<dd>
+						<a href="/" target="_blank">暂无</a>
+					</dd>
+			</dl>
+
+			<dl>
+				<dt class="help_5">
+					<c:out value="暂无" />
+				</dt>
+				<dd>
+					<a href="/" target="_blank">暂无</a>
+				<dd>
+				<dd>
+					<a href="/" target="_blank">暂无</a>
+				<dd>
+				<dd>
+					<a href="/" target="_blank">暂无</a>
+				<dd>
+				<d>
+					<a href="/" target="_blank">暂无</a>
+				</dd>
+			</dl>
+			<%--		
+			<c:forEach var="sort" items="${footerHelpSort.children}" varStatus="i" begin="0" end="4">
+				<dl>
+					<dt class="help_${i.index+1}"><c:out value="${sort.sortName}"/></dt>
+					<c:forEach var="sortArticle" items="${sort.articles}" begin="0" end="3">
+						<dd>
+							<a href="/help.do?articleId=${sortArticle.articleId}" target="_blank">
+								<c:out value="${sortArticle.title}"/>
+							</a>
+						</dd>
+					</c:forEach>
+				</dl>
+			</c:forEach>		
+		--%>
+		</div>
+	</div>
+
+	<div class="service">
+		<div class="wrap"><img src="/images/service.png"></div>
+	</div>
+
+	<div class="quickLink">
+		<a href="/">首页</a> | 
+		<a href="/shop/index.do">汽配商城</a> | 
+		<a href="/help.do">关于我们</a> | 
+		<a href="/commodity/scoreIndex.do">积分兑换</a> | 
+		<a href="/news/index.do">资讯</a> | 
+		<a href="/library/index.do">文库</a> | 
+		<a href="/info/index.do">信息中心</a> |
+		<a href="${MGR_URL}">商家登录</a>
+	</div>
+
+	<div class="copyright">
+		Copyright © 2014 陆路联盟-让天下没有难行的路 ! 版权所有 陆路联盟 lululm.com 粤ICP备 000000000000<br/>
+		未经授权禁止转载、摘编、复制或建立镜像，如有违反，追究法律责任   服务电话:400-833-9527 <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1000420428'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "v1.cnzz.com/z_stat.php%3Fid%3D1000420428%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));</script><br/>
+	</div>
+	
+	<div class="auth">
+		<a target=blank href=tencent://message/?uin=1773259077&Site=http://www.lululm.com/&Menu=yes><img border="0" SRC="http://wpa.qq.com/pa?p=1:1773259077:1" alt="点击这里给我发消息"></a>&nbsp;&nbsp;&nbsp;&nbsp;
+		<a target=blank href=tencent://message/?uin=2720360489&Site=http://www.lululm.com/&Menu=yes><img border="0" SRC="http://wpa.qq.com/pa?p=1:2720360489:1" alt="点击这里给我发消息"></a>
+	</div>
+	<%-- 
+	<div class="auth">
+		<a href=""><img src="/images/auth_1.png"></a>
+		<a href=""><img src="/images/auth_2.png"></a>
+		<a href=""><img src="/images/auth_3.png"></a>
+		<a href=""><img src="/images/auth_4.png"></a>
+	</div>
+	--%>
+</div>
+
+<!-- 登录弹出 -->
+<jsp:include page="/WEB-INF/page/dialogLogin.jsp"></jsp:include>

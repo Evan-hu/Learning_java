@@ -1,0 +1,21 @@
+/**
+ * 关于我们
+ * @author	Rocky
+ * @date	2014-02-16
+ */
+
+.aboutus{ margin: 30px 0 50px; overflow: hidden;}
+.aboutusLeft{ float: left; width: 200px; padding-bottom: 30px; background: #F3F3F3; border: 1px solid #d7d7d7;}
+.aboutusRight{ float: left; width: 760px; margin-left: 18px;}
+
+.aboutusLeft dl{margin: 15px 0 0 25px;}
+.aboutusLeft dl dt{ line-height: 30px; font-size: 14px; font-weight: bold; cursor: pointer;}
+.aboutusLeft dl dt span{ float: left; width: 18px; height: 18px; font-family: Simsun; font-size: 18px; text-align: center;}
+.aboutusLeft dl dd{ display: none; margin-top: 5px; margin-left: 15px; font-family: Simsun; color: #333;}
+.aboutusLeft dl dd a{ color: #333; font:12px/24px Tahoma,Helvetica,Arial,'Simsun',sans-serif; }
+.aboutusLeft dl dd.show{ display: block;}
+.aboutusLeft dl dd a.current{font-weight: bold;}
+
+
+.aboutusRight h2{ line-height: 40px; border-bottom: 1px solid #d7d7d7; font-weight: normal; font-size: 12px;}
+.aboutusRight .con{ padding: 15px 0; font-size: 14px; line-height: 28px; }

@@ -1,0 +1,201 @@
+﻿/**
+ * 论坛页面
+ * @author	Rocky
+ * @date	2014-02-16
+ */
+
+.bannerCommon{ padding: 15px 0;}
+.section_top{ height: 270px; margin-bottom: 15px; margin-top: 20px; border: 1px solid #e5e5e5; overflow: hidden;}
+.section_top .col_1{ float: left; width: 330px; height: 275px; margin: 10px 0 10px 10px;}
+
+
+/* 幻灯片 */
+.slideBox{ position:relative; width: 330px; height: 250px; background: #f8f8f8;}
+.slideBox .bigImg{ display: none; height: 250px;}
+.slideBox .bigImg img{ position:absolute; width: 330px; height: 250px; top:0; left:0;}
+
+/* 幻灯片数字 */
+.slideBox .slideUl{position:absolute; overflow: hidden; bottom: 10px; width: 330px; text-align: center;}
+.slideBox .slideUl li{ display:inline-block; *display:inline; *zoom:1;}
+.slideBox .slideUl span{ display:inline-block; *display:inline; *zoom:1; width: 10px; height:10px;  margin: 0 5px; background:#ccc; border-radius:5px; cursor:pointer;}
+.slideBox .slideUl span.on{ background: #3699DC;}
+
+.section_top .col_2{ float: left; margin-left: 10px; width: 400px;}
+.section_top .col_2 .tab{width: 100%; margin-top: 10px;}
+.section_top .col_2 .tab .tabSwitch{ height: 36px; border-bottom: 2px solid #21A6E7;}
+.section_top .col_2 .tab .tabSwitch li{ float: left; width: 85px; line-height: 36px; font-size: 14px; text-align: center; cursor: pointer;}
+
+.section_top .col_2 .tab .tabSwitch li.current{ background: #21A6E7; font-weight: bold; color: #fff;}
+.section_top .col_2 .tab .tabCon{ display: none;}
+
+.section_top .col_2 .news{ padding-top: 5px; }
+.section_top .col_2 .news li{ font-family: Simsun; color: #333; font-size: 16px;}
+.section_top .col_2 .news li a{ color: #333; font:12px/26px Tahoma,Helvetica,Arial,'Simsun',sans-serif; }
+
+.section_top .col_3{ float: left; width: 217px; margin-left: 10px; border-left: 1px solid #e5e5e5;}
+.section_top .col_3 .loginWrap{ position: relative; height: 49px; margin-right: -2px; line-height: 48px; border-bottom: 1px solid #e5e5e5;}
+.section_top .col_3 .loginWrap a{ float: left; width: 108px; border-right: 1px solid #e5e5e5; text-align: center; font-size: 16px;}
+
+.section_top .col_3 .loginOther{ height: 74px; padding: 10px 0 0 12px; background: url(../images/bbs/login_bg.png) right top no-repeat; border-bottom: 1px solid #e5e5e5; line-height: 24px;}
+
+.section_top .col_3 .sign{ display: block; height: 44px; line-height: 20px; padding: 2px 0 2px 10px; background: url(../images/bbs/sign_bg.png); border-top: 8px solid #EBEBE9; border-bottom: 8px solid #EBEBE9; color: #fff;}
+
+.section_top .col_3 .links{ position: relative; height: 70px; margin-right: -2px; border-top: 1px solid #e5e5e5;}
+.section_top .col_3 .links a{ float: left; width: 72px; border-right: 1px solid #e5e5e5;}
+.section_top .col_3 .links a img{ display: block; width: 50px; height: 50px; margin: 10px auto; }
+.section_top .col_3 .links a:hover img{ opacity: 0.6; filter: Alpha(opacity=60);}  
+
+.section_list{ margin-bottom: 15px; border: 1px solid #e5e5e5;}
+
+.section_list .head{ height: 24px; padding: 10px 15px; border-bottom: 1px dashed #e5e5e5; line-height: 24px;}
+.section_list .head h2{ float: left; padding-left: 8px; border-left: 4px solid #21A6E7; font-size: 18px; font-family: microsoft yahei;}
+.section_list .head h2 span{ margin-left: 15px; font-size: 16px; color: #21A6E7; font-weight: normal;}
+.section_list .head .host{float: right;}
+
+.section_list ul{ margin: 0 28px; padding: 30px 0; overflow: hidden;}
+.section_list ul.first{ border-bottom: 1px dashed #e5e5e5;}
+.section_list ul li{ float: left; width: 305px;}
+.section_list ul li .forumIcon{ float: left; width: 60px;}
+.section_list ul li .info{ float: left; width: 210px; margin-left: 20px;}
+.section_list ul li .info h3{ line-height: 20px; font-size: 12px;}
+.section_list ul li .info h3 span{ margin-left: 5px; color: #b20000; font-weight: normal;}
+.section_list ul li .info p{ line-height: 20px;}
+
+/* 论坛列表 */
+.crumbLink{ margin-top: 20px; line-height: 24px;}
+.crumbLink a.home{display: inline-block; *display: inline; *zoom: 1; vertical-align: middle; width: 16px; height: 12px; background: url(../images/bbs/icon_home.png);}
+
+
+.forumPush{ margin-top: 15px; border: 1px solid #CDCDCD;}
+.forumPush h2{ height: 36px; padding:0 15px; margin-top: 1px; line-height: 36px; background: #E5ECF2; font-size: 16px; font-family: microsoft yahei} 
+.forumPush .con{ padding: 15px; overflow: hidden;}
+.forumPush .con .pic{ float: left; width: 200px; height: 150px;}
+.forumPush .con .pic img{width: 200px; height: 150px;}
+.forumPush .con .info{ float: left; width: 400px; margin-left: 15px; line-height: 24px;}
+
+.btnPost{ display: block; width: 80px; height: 33px; background: url(../images/bbs/btn_post.png);}
+.forumOpt{ height: 33px; margin-top: 15px;}
+.forumOpt .btnPost{ float: left;}
+.forumOpt .pages{ float: right;}
+
+.pg a,
+.pg strong{ 
+	float: left;
+	display: inline;
+	margin-left: 5px;
+	padding: 0 8px;
+	height: 26px;
+	line-height: 26px;
+	border: 1px solid;
+	border-color: #C2D5E3;
+	background-color: #FFF;
+	background-repeat: no-repeat;
+	color: #333;
+	overflow: hidden;
+	text-decoration: none;
+}
+.pg a:hover{border-color: #369;	color: #369;}
+.pg strong{ background-color: #E5EDF2;}
+.pg .prev{ padding-left: 18px; background: url(../images/bbs/arw_l.gif) 3px center no-repeat;}
+.pg .next{padding-right: 18px; background: url(../images/bbs/arw_r.gif) 45px center no-repeat;}
+
+.threadlist{ margin-top: 15px; border: 1px solid #CDCDCD;}
+
+.threadlist .th{ height: 34px; margin-top: 1px; padding: 0 10px; background: #F2F2F2; border-bottom: 1px solid #CDCDCD; line-height: 34px; }
+.threadlist .tb{ padding: 0 10px; }
+.threadlist table{width: 100%;}
+.threadlist table .title{ width: 640px; text-align: left; color: #999;}
+.threadlist table .title a{ margin-right: 5px;}
+.threadlist table .by{ width: 100px; text-align: left; line-height: 16px;}
+.threadlist table .num{ width: 60px; text-align: left; line-height: 16px;}
+
+.threadlist .tb .fontBlue{ color: #2B65B7; font-weight: bold;}
+.threadlist .tb .fontRed{ color: red; font-weight: bold;}
+.threadlist .tb .fontGreen{ color: #3C9D40;}
+
+.threadlist .tb .icon{ display: inline-block; *display: inline; *zoom: 1; vertical-align: middle; margin-right: 5px;}
+.threadlist .tb .title{ height: 38px; line-height: 38px; font-size: 14px;}
+
+.threadlist .tb table tr:hover{ background: #F2F2F2}
+.threadlist .tb table .title,
+.threadlist .tb table .by,
+.threadlist .tb table .num{
+	border-bottom: 1px solid #C2D5E3;
+}
+.threadlist .tb table .trRefresh{ height: 30px; background: #F2F2F2;}
+.threadlist .tb table .trRefresh td{ border-bottom: #cdcdcd;}
+.threadlist .tb table .trRefresh span{ margin-left: 25px;}
+
+.threadlist .tb table .trRefreshLoading{ height:32px; background: #FFFAF4; line-height: 32px; text-align: center; }
+.threadlist .tb table .trRefreshLoading td{ border-top: 1px solid #F4E3B5; border-bottom: 1px solid #F4E3B5; }
+.threadlist .tb table .trRefreshLoading td a{color: #EEAA00;}
+.threadlist .tb .title .fontBlue{ font-weight: normal;}
+
+.inputText{ height: 18px; line-height: 18px; padding: 3px;  border: 1px solid; border-color: #848484 #E0E0E0 #E0E0E0 #848484;}
+.newPost{ margin-top: 40px; margin-bottom: 30px; border: 1px solid #cdcdcd;}
+.newPost h2{ height: 34px; background: #f2f2f2; margin-top: 1px; padding-left: 15px; border-bottom: 1px solid #cdcdcd; line-height: 34px; font-family: microsoft yahei; font-size: 16px;}
+.newPost .con{ padding: 20px;} 
+
+.newPost .btnSubmit{ width: 100px; height: 32px; margin-top: 15px; background: #06C; line-height: 32px; font-size: 14px; cursor: pointer; color: #fff; border: 0; text-align: center;}
+
+
+
+
+.postList{ margin-top: 20px; border: 1px solid #CDCDCD;}
+.postList .con{ overflow: hidden; padding-bottom: 4px; background: url(../images/bbs/post_bg.png) left bottom;}
+.postList .leftSide{ float: left; width: 160px; padding-bottom: 30px;}
+.postList .rightSide{ float: left; width: 780px; margin-left: 20px;}
+.postList .total{ line-height: 40px; text-align: center; color: #999;}
+.postList .postTitle{ height: 40px; overflow: hidden; line-height: 40px; font-size: 20px; font-family: microsoft yahei; font-weight: bold;}
+
+
+.postList .username{  padding-left: 15px; border-bottom: 1px dashed #CDCDCD; line-height: 36px; font-weight: bold;}
+.postList .flag{ width: 120px; height: 30px; margin: 15px 0 0 15px; background: url(../images/bbs/flag_bg.png); line-height: 30px; color: #fff;}
+.postList .flag .level{ float: left; width: 30px; height: 30px; text-align: center;}
+.postList .flag .name{ float: left; width: 70px; height: 30px; text-align: center;}
+.postList ul{ margin: 15px 0 0 15px; line-height: 24px;}
+.postList ul label{ float: left; width: 64px;}
+
+
+
+.postList .postTime{border-bottom: 1px dashed #CDCDCD; line-height: 36px;}
+.postList .postTime img{ display: inline-block; *display: inline; *zoom: 1; vertical-align: middle; margin-right: 3px;}
+.postList .postTime .floorNum{ float: right;}
+
+.postDetail{ padding: 10px 0 20px; line-height: 28px; font-size: 14px; }
+
+
+
+.section{ margin-bottom: 20px; border: 1px solid #e5e5e5; overflow: hidden;}
+.section .head{ height: 42px; margin-bottom: 10px; padding: 0 15px; background: #f8f8f8; border-bottom: 1px solid #e5e5e5; line-height: 42px;}
+.section .head h2{ float: left; font-size: 18px; font-family: microsoft yahei;}
+.section .head h2 span{ margin: 15px 0 0 10px; line-height: 18px; font-size: 14px;}
+.section .head .more{ float: right; color: #777;}
+.section .hotword{ float: left; margin-left: 20px; color: #999;}
+.section .hotword a{ margin: 0 10px; color: #777}
+
+.section .col{ float: left; width: 350px; margin: 0 0 10px 10px;}
+.section .col .bigImg{ display: block; width: 350px; height: 200px;}
+.section .col ul{ overflow: hidden; padding: 10px; border: 1px solid #e5e5e5; background: #f8f8f8;}
+.section .col ul li{ float: left; width: 45%; margin-right: 3%; padding: 4px 0; line-height: 20px;}
+
+.section .newslist{ float: left; width: 275px; margin-left: 25px;}
+.section .newslist .title{ height: 32px; line-height: 32px;}
+.section .newslist .title h2{ float: left; font-size: 16px; font-family: microsoft yahei;}
+.section .newslist .title .more{ float: right; color: #777;}
+
+.section .newslist .line{ height: 0; margin: 15px 0 10px; border-top: 2px solid #D7D6DB;}
+.section .newslist .news{ padding-top: 3px;}
+.section .newslist .news li{ line-height: 26px; font-family: Simsun; color: #bbb; font-size: 14px;}
+.section .newslist .news li a{ margin-right: 10px; color: #333; font:14px/24px Tahoma,Helvetica,Arial,'Simsun',sans-serif; }
+
+.scrollWord{padding: 10px; line-height: 1.5;}
+
+
+
+
+
+
+
+
+

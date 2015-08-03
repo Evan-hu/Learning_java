@@ -1,0 +1,363 @@
+@charset "utf-8";
+/* CSS Document */
+* {
+  margin:0px; 
+  border:0px;
+  padding:0px;
+  font-family:'微软雅黑','宋体';
+  font-size:14px;
+}
+
+body {
+  width:100%;
+  min-width:1100px;
+  min-height:100%;
+  position: relative;
+}
+
+a {
+  text-decoration:none;
+}
+
+.clear {
+	width:100%; height:0px;
+	clear:both;
+}
+
+.header {
+  width:100%; height: 128px;
+  background:url(../images/header_bg.jpg) repeat-x scroll 0 0;
+}
+
+.header div.main{
+  width:1100px; height:100%; 
+  margin:0px auto;
+  position:relative;
+}
+
+.header div.flink{
+  width:1100px;; height:57px;
+  margin:0px auto;
+}
+
+.wrapfix:after {
+    content: "."; 
+    display: block;
+    height: 0; 
+    clear: both; 
+    visibility: hidden;
+} 
+
+.link_right{
+  width:430px; 
+  *width:450px;
+  height:30px;
+  padding:14px 0px 13px 0px;
+  float:right;
+}
+
+.mc{
+  display:inline-block;
+  width:153px; height:30px;
+  margin-right:10px;
+  cursor:pointer;
+}
+
+.su {
+  display:inline-block;
+  width:164px; height:30px;
+  margin-right:10px;
+  cursor:pointer;
+}
+
+.coll {
+  display:inline-block;
+  width:30px; height:30px;
+  margin-right:10px;
+  cursor:pointer;
+}
+
+.share {
+  display:inline-block;
+  width:38px; height:30px;
+  cursor:pointer;
+}
+
+.header div.navBar{
+  height:46px; 
+  /*position:relative;
+  background-image: -moz-linear-gradient(top, #fa710b, #f56603); 
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #fa710b), color-stop(1,#f56603));
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fa710b', endColorstr='#f56603', GradientType='0'); */
+}
+
+.logo {
+  width: 212px; height:128px;
+  position:absolute; 
+  top:-57px; left:0px;
+  background:url(../images/logo.jpg) no-repeat scroll;
+  z-index:10; 
+  cursor:pointer;
+}
+
+.nav {
+  width:1100px; height:46px;
+  margin:0px auto;
+  position:relative;
+}
+
+.nav ul{
+  list-style:none outside none;
+  float:right;
+}
+
+.nav ul li {
+  width:118px; height:46px;
+  float:left;
+  position:relative;
+  z-index:99;
+}
+
+.nav ul li a span {
+  display:inline-block; 
+  width:100%; height:42px;
+  line-height:42px; 
+  font-size:14px;color:#FFF;
+  text-align:center;
+}
+
+.drop-menu-effect a:link,.drop-menu-effect a:visited{
+  display:inline-block; 
+  width:100%; height:46px;
+  color:#FFF; font-size:16px;
+}
+
+.drop-menu-effect a:hover,.drop-menu-effect a:active{
+  display:inline-block; 
+  width:100%; height:46px;
+  text-decoration:underline;
+}
+
+.nav ul li a span.current {
+  display:inline-block; 
+  width:100%; height:42px;
+  line-height:42px; 
+  font-size:14px;color:#FFF;
+  text-align:center;
+  border-bottom:3px solid #ffedd0;
+}
+
+.drop-menu-effect .submenu{
+  width:116px; height:auto;
+  list-style: none outside none;
+  border:1px solid #ffcec9;
+  background:none repeat scroll 0 0 #fff;
+  margin-top:-3px;
+  padding:3px 0px;
+  overflow:hidden;
+}
+
+.drop-menu-effect .submenu li{
+  width:100%; height:25px;
+  margin:9px auto 0px;
+}
+
+.drop-menu-effect .submenu li A:link,.drop-menu-effect .submenu li A:visited{
+  display:inline-block;
+  width:100%; height:25px;
+  line-height:25px;
+  font-size:12px;color:#999;font-family:"宋体"; 
+  text-align:center; text-decoration:none; text-indent:20px;
+  background:url("../images/nocur.jpg") no-repeat scroll 10px 1px;
+}
+
+.drop-menu-effect .submenu li A:hover,.drop-menu-effect .submenu li A:active{
+  display:inline-block;
+  width:100%; height:25px;
+  line-height:25px;
+  font-size:12px;color:#e86e61;font-family:"宋体"; 
+  text-align:center; text-decoration:none; text-indent:20px;
+  background:url("../images/cur.jpg") no-repeat scroll 10px 1px;
+}
+
+.footer {
+  width: 100%; height:61px;
+  padding:30px 0px 0px;
+  background:#6e6e6e;
+  text-align:center;
+  color:#b3b3b3;
+}
+
+.bn {
+  width:100%; height:70px;
+  padding:33px 0px;
+  background:#ececec;
+}
+
+.bn .bn_service{
+  width: 1100px; height:100;
+  margin:0px auto;
+}
+
+.bn .bn_service .tel {
+  width:372px; height:70px;
+  float:left;
+  background:url(../../common/images/tel.jpg) no-repeat scroll 0 0;
+  cursor:pointer;
+}
+
+.bn .bn_service .link{
+  width: 500px; height:100%;
+  float:right;
+}
+
+.bn .bn_service .link a{
+  display:inline-block;
+  width:80px; height:100%;
+  text-align:center;
+}
+
+.bn .bn_service .link a span {
+  display : inline-block;
+  width:100%; height:100%;
+  text-align:center;
+}
+
+.rb {
+  border-right:1px solid #ddd;
+}
+
+.container{
+  width:100%; height:auto;
+  min-height:545px;
+  margin-bottom:15px;
+}
+
+.container .cz{
+  width:1100px; height:auto;
+  min-height:545px;
+  margin:0px auto;
+}
+
+.hl {
+	width:100%; height:29px;
+	border-top:1px solid #ebebeb;
+  background:url(../../common/images/barBg.jpg) repeat-x scroll 0 0;
+  margin-bottom:20px;
+}
+
+.mh{
+  width:1100px; height:100%;
+  line-height:29px;
+  background:url(../../common/images/cur.png) no-repeat scroll 0 0 transparent;
+  color:#999;text-indent:28px;
+  margin:0px auto;
+}
+
+.ct {
+  width:100%; height:31px;
+  margin-bottom:15px;
+}
+
+.ct div.shoplogo {
+  display:inline-block;
+  width:117px; height:31px;
+  background:url(../../common/images/shop_list.png) no-repeat scroll 0 0 transparent;
+  float:left;
+}
+
+.ct div.memberlogo {
+  display:inline-block;
+  width:117px; height:31px;
+  background:url(../../common/images/center.png) no-repeat scroll 0 0 transparent;
+  float:left;
+}
+
+.ct div.contactlogo {
+  display:inline-block;
+  width:117px; height:31px;
+  background:url(../../common/images/contract_logo.png) no-repeat scroll 0 0 transparent;
+  float:left;
+}
+
+/* ht add:公司简介logo */
+.ct div.companylogo {
+  display:inline-block;
+  width:117px; height:31px;
+  background:url(../../common/images/company_logo.jpg) no-repeat scroll 0 0 transparent;
+  float:left;
+}
+.ct div.storelogo {
+  display:inline-block;
+  width:117px; height:31px;
+  background:url(../../common/images/store_logo.png) no-repeat scroll 0 0 transparent;
+  float:left;
+}
+.ct div.advicelogo {
+  display:inline-block;
+  width:117px; height:31px;
+  background:url(../../common/images/advice_logo.png) no-repeat scroll 0 0 transparent;
+  float:left;
+}
+.ct div.lastlogo {
+  display:inline-block;
+  width:117px; height:31px;
+  background:url(../../common/images/last_logo.png) no-repeat scroll 0 0 transparent;
+  float:left;
+}
+
+.ct div.recruitment {
+  display:inline-block;
+  width:117px; height:31px;
+  background:url(../../common/images/recruitment_logo.png) no-repeat scroll 0 0 transparent;
+  float:left;
+}
+
+.ct div.mborder{
+  display:inline-block;
+  width:983px; height:31px;
+  background:url(../../common/images/bg.png) repeat-x scroll 0 0 transparent;
+  left:left;
+}
+
+.cz div.mc{
+  width:1100px; height:auto;
+  min-height:368px;
+}
+
+.cNav {
+	width:219px; height:auto;
+	border-top:1px solid #ebebeb;
+	padding-top: 2px;
+	float:left;
+}
+
+.navPanel {
+  width:219px; height:auto;
+  min-height:368px;
+  background:#f2f2f2;
+  color:#808080;
+}
+
+.navPanel div.navItem{
+  width:100%; height:37px;
+  line-height:37px;
+  font-size:16px; color: #a6a6a6;
+  text-indent:40px;
+  cursor:pointer;
+  border-bottom:1px solid #dcdcdc;
+
+}
+
+.navPanel div.curItem{
+  color:#fff;
+  background-image: -moz-linear-gradient(top, #f97e71, #e86c5f); 
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #f97e71), color-stop(1,#e86c5f));
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f97e71', endColorstr='#e86c5f', GradientType='0');
+}
+
+.content{
+  width:864px; height:auto;
+  margin-left:17px;
+  float:left;
+}

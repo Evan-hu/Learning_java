@@ -1,0 +1,74 @@
+@charset "utf-8";
+/* CSS Document */
+.ad_bar{
+  /*width:1423px;  height:414px;*/
+  position:relative;
+  margin:0px auto;
+}
+
+.ad_bar ul{
+  list-style:none outside none;
+}
+
+.ad_bar ul li{
+  /*width:1423px; height:414px;*/
+  float:left;
+}
+
+.ad_bar ul li img{
+  /*width:1423px; height:414px;*/
+}
+
+.adNav {
+  width:100%; height:70px;
+  position:absolute;
+  top:172px;
+  z-index:20;
+}
+
+.transition {
+  width:1100px; height:70px;
+  margin:0px auto;
+}
+
+.transition .aprev{
+  width:70px; height:100%;
+  float:left;
+}
+
+.transition .anext{
+  width:70px; height:100%;
+  float:right;
+}
+
+.smailSlider {
+  width:100%; height:auto;
+  position:absolute;
+  left:0px; bottom:15px;
+  z-index:20;
+  text-align:center;
+}
+
+.home_service {
+  width:100%; height:260px;
+  padding:95px 0px;
+}
+
+.home_service div {
+  width:1100px; height:100%;
+  margin:0px auto;
+}
+
+.home_service div span{
+  position:relative;
+  display:inline-block;
+  width:230px; height:230px;
+  cursor:pointer;
+  margin-top:30px;
+  border-radius:100px;
+}
+
+.nd {
+  margin-right:55px;
+}
+

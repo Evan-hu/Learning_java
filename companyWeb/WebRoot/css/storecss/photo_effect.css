@@ -1,0 +1,43 @@
+@charset "utf-8";
+/* CSS Document */
+*{margin:0;padding:0;list-style-type:none;}
+a,img{border:0;}
+a, a:link, a:visited{color:#006699;text-decoration:none;}
+a:hover{color:#ff7031;}
+
+.HS10, .HS15{overflow:hidden;clear:both;}
+.HS10{height:10px;}
+.HS15{height:15px;}
+.Hidden{display:none;}
+.Clearer{display:block;clear:both;font-size:1px;line-height:1px;margin:0;padding:0;}
+.FlLeft{float:left;}
+.FlRight{float:right;}
+/*幻灯片区域背景*/
+.MainBg{width:100%;margin:0 auto;}
+/*标题和页码*/
+.Title{color:#000;padding:5px 20px 0 20px;text-align:center;line-height:40px;height:40px;}
+.Title h1{display:inline; font-size:32px;}
+.Title .Counter{color:#666; font-size:32px;}
+.Title .CounterCurrent{color:#C00;font-size:32px;font-weight:bold;}
+/*灰色分隔线*/
+.SpaceLine{border-bottom:1px solid #333;height:1px;font-size:1px; visibility:hidden;}
+/*大图展示区域*/
+.OriginalPicBorder{padding:15px 0px 0px;}
+#OriginalPic{width:761px;overflow:hidden;position:relative;font-size:12px; margin:0px auto;}
+#OriginalPic img{display:block;margin:0 auto; width:761px; height:521px;}
+/*鼠标手势*/
+.CursorL{position:absolute;z-index:999;width:35px;height:521px;color:#FFF;left:30px;background:url(../../images/shopimages/leftbig_1.png) no-repeat scroll center center transparent;}
+.CurrentCursorL{position:absolute;z-index:999;width:35px;height:521px;color:#FFF;left:30px;background:url(../../images/shopimages/leftbig_2.png) no-repeat scroll center center transparent;}
+.CursorR{position:absolute;z-index:999;width:35px;height:521px;color:#FFF;right:30px;background:url(../../images/shopimages/rightbig_1.png) no-repeat scroll center center transparent;}
+.CurrentCursorR{position:absolute;z-index:999;width:35px;height:521px;color:#FFF;right:30px;background:url(../../images/shopimages/rightbig_2.png) no-repeat scroll center center transparent;}
+/*小图预览和滑动*/
+.SliderPicBorder{width:761px;height:521px;overflow:hidden;}
+.Summary{line-height:20px;display:none;width:100px;margin-right:10px;color:#999;overflow:hidden;background-color:#333;padding:10px;}
+.More{text-align:right;color:#666;line-height:40px;height:40px;font-size:12px; visibility:hidden;}        
+.ThumbPicBorder {width:730px;margin:0 auto;}
+#ThumbPic img{border:3px solid #B7B7B7;cursor:pointer;background-color:#666;margin:0 4px;width:117px;height:80px;display:block;}
+#ThumbPic img.active{border:3px solid #F97466;}
+</STYLE>
+
+
+

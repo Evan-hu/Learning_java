@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="gbk" ?>
+<taglib xmlns="http://java.sun.com/xml/ns/j2ee"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-jsptaglibrary_2_0.xsd"
+    version="2.0">
+    
+  <description></description>
+  <display-name>用于分页的标签</display-name>
+  <tlib-version>1.0</tlib-version>
+  <short-name>page</short-name>
+  
+  <tag>
+    <description>
+  	  默认分页样式.
+    </description>
+    <name>nav</name>
+    <tag-class>com.company.shop.util.jstl.PageNavTag</tag-class>
+    <body-content>empty</body-content>
+    <attribute>
+        <description>
+       	page对象.
+        </description>
+        <name>page</name>
+        <type>java.lang.Object</type>
+        <required>true</required>
+        <fragment>true</fragment>
+    </attribute>
+    <attribute>
+        <description>
+       	page根url
+        </description>
+        <name>url</name>
+        <type>java.lang.String</type>
+        <required>true</required>
+        <fragment>true</fragment>
+    </attribute>
+  </tag>
+  
+   <tag>
+    <description>
+    默认分页样式.
+    </description>
+    <name>jsnav</name>
+    <tag-class>com.company.shop.util.jstl.PageJsNavTag</tag-class>
+    <body-content>empty</body-content>
+    <attribute>
+        <description>
+       page对象.
+        </description>
+        <name>page</name>
+        <type>java.lang.Object</type>
+        <required>true</required>
+        <fragment>true</fragment>
+    </attribute>
+    <attribute>
+        <description>
+       分页js函数名.
+        </description>
+        <name>jsFunc</name>
+        <type>java.lang.String</type>
+        <required>true</required>
+        <fragment>true</fragment>
+    </attribute>
+  </tag>
+  
+  
+</taglib>

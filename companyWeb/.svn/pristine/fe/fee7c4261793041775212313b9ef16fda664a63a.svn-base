@@ -1,0 +1,65 @@
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<script type="text/javascript">
+    function reviewPageNext(pageNo){
+    	 $("#reloadReviewDiv").showLoading();
+       $("#reloadReviewDiv").load(
+	    	 "/content/review.do",
+	    	 {"pageNo": pageNo,
+	    		"params['targetName']":'${param.targetName}',
+	    		"params['targetId']":${param.targetId},
+	    		"params['targetType']":${param.targetType}
+	    		},
+	    	 function(){
+	    		 $("#reloadReviewDiv").hideLoading();
+	    	 }
+    	 );
+   	}
+  	
+    function reviewSubmit(){
+	    var contentVal = $("#content").val();
+	    var authCodeVal = $("#authCode").val();
+	    if (contentVal.length < 5 || contentVal.length > 2000){
+	      alert("内容长度不正确(长度5-2000位)!");
+	    }
+	    else if(authCodeVal.length != 4){
+	      alert("验证码不合法!");
+	    }
+	    else{
+	    	$("#reloadReviewDiv").showLoading();
+				$("#reviewForm").ajaxSubmit(function(e) {
+					$("#reloadReviewDiv").hideLoading();
+					if (e.code == 1) {
+						alert("发表评论成功");
+						reviewPageNext(1);
+					} else {
+						$('#authImg').attr("src","/authimg.jpg?r="+Math.random());
+						alert(e.message);
+					}
+				});
+	    }
+    }
+    
+    function addReviewClick(id){
+    	$("#reloadReviewDiv").showLoading();
+    	$.getJSON("/content/addReviewClick.do",
+    			{'reviewId' : id},
+    			function(e){
+    		    $("#reloadReviewDiv").hideLoading();
+						if (e.code == 1) {
+							var oldVal = parseInt($("#review_click_"+id).text());
+							$("#review_click_"+id).text(oldVal + 1);
+							alert("支持成功！");
+						} else {
+							alert(e.message);
+						}
+    			});
+   	}
+</script>
+
+<div id="reloadReviewDiv">
+	<jsp:include page="/content/review.do">
+		<jsp:param value="${param.targetName}" name="params['targetName']"/>
+		<jsp:param value="${param.targetId}" name="params['targetId']"/>
+		<jsp:param value="${param.targetType}" name="params['targetType']"/>
+	</jsp:include>
+</div>

@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:ehcache="http://ehcache-spring-annotations.googlecode.com/svn/schema/ehcache-spring"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans   
+     http://www.springframework.org/schema/beans/spring-beans-3.0.xsd  
+     http://www.springframework.org/schema/tx
+	 	 http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
+	 	 http://www.springframework.org/schema/context
+	 	 http://www.springframework.org/schema/context/spring-context-3.0.xsd
+     http://ehcache-spring-annotations.googlecode.com/svn/schema/ehcache-spring  
+     http://ehcache-spring-annotations.googlecode.com/svn/schema/ehcache-spring/ehcache-spring-1.1.xsd">
+
+	<!-- enable component scanning (beware that this does not enable mapper 
+		scanning!) 使组件扫描(注意,这并不使映射器扫描!) -->
+		
+	<context:component-scan base-package="com.lulu.shop.service,com.lulu.shop.job" />
+
+	<!-- enable autowire 等同于context:component-scan -->
+	<context:annotation-config />
+	<!-- 开启注解方式声明事务 -->
+
+	<tx:annotation-driven transaction-manager="transactionManager" />
+
+
+	<ehcache:annotation-driven cache-manager="ehCacheManager"/>
+	<bean id="ehCacheManager"
+		class="org.springframework.cache.ehcache.EhCacheManagerFactoryBean" />
+
+	<!-- 使用属性文件配置数据源 -->
+	<bean id="propertyPlaceholderConfigurer"
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="location" value="classpath:jdbc.properties" />
+	</bean>
+
+	<!-- 定义数据源连接 -->
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
+		destroy-method="close">
+		<property name="driverClassName" value="${jdbc.driverClassName}" />
+		<property name="url" value="${jdbc.url}" />
+		<property name="username" value="${jdbc.username}" />
+		<property name="password" value="${jdbc.password}" />
+		<property name="maxActive" value="${jdbc.maxActive}" />
+		<property name="maxIdle" value="${jdbc.maxIdle}" />
+		<property name="maxWait" value="${jdbc.maxWait}" />
+		<property name="defaultAutoCommit" value="${jdbc.defaultAutoCommit}" />
+		<property name="removeAbandoned" value="${jdbc.removeAbandoned}" />
+		<property name="removeAbandonedTimeout" value="${jdbc.removeAbandonedTimeout}" />
+		<property name="logAbandoned" value="${jdbc.logAbandoned}" />
+	</bean>
+
+	<!-- 定义全局的事务控制 -->
+	<bean id="transactionManager"
+		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+
+	<bean id="pageInterceptor" class="com.lulu.pager.PageInterceptor" />
+
+	<!-- 定义SqlSessionFactory -->
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="typeAliasesPackage" value="com.lulu.shop.entity" />
+		<property name="mapperLocations" value="classpath:com/lulu/shop/dao/mapper/*.xml" />
+		<property name="plugins">
+			<array>
+				<ref bean="pageInterceptor" />
+			</array>
+		</property>
+	</bean>
+
+	<!-- 自动扫描mapper,允许自动注入(根据类型匹配),不需要逐个配置mapper -->
+	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+		<property name="basePackage" value="com.lulu.shop.dao" />
+	</bean>
+	
+</beans>  

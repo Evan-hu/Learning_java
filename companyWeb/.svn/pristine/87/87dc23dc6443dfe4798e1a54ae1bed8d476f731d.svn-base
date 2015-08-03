@@ -1,0 +1,123 @@
+/* 
+  Resets defualt browser settings
+  reset.css
+*/
+#container {
+  width:100%; height:520px;
+  margin:0 auto;
+  position:relative;
+  z-index:0;
+  max-width:1920px;
+}
+
+#example {
+  width:100%; height:100%;
+  position:relative;
+}
+
+#frame {
+  position:absolute;
+  z-index:0;
+  width:739px;
+  height:341px;
+  top:-3px;
+  left:-80px;
+}
+
+#slides {
+  width:100%;
+  position:absolute;
+  z-index:100;
+}
+
+#slides .next,#slides .prev {
+  /*position:absolute;*/
+  top:107px;
+  left:-39px;
+  width:24px;
+  height:43px;
+  display:block;
+  z-index:101;
+}
+
+.slides_container {
+  width:100%; height:100%;
+  overflow:hidden;
+  position:relative;
+}
+
+#slides .next {
+  left:100%;
+}
+
+.pagination {
+  display:inline-block;
+  width:auto; height:15px;
+  margin:0px auto;
+}
+
+.pagination li {
+  float:left;
+  margin:0 4px; 
+  list-style:none outside none;
+}
+
+.pagination li a {
+  display:block;
+  width:15px;height:15px;
+  font-size:0px;
+  /*padding-top:12px;*/
+  background-image:url(../images/nocurrent.png);
+  background-position:0 0;
+  float:left;
+  overflow:hidden;
+}
+
+.pagination li.current a {
+  display:block;
+  width:15px;height:15px;
+  font-size:0px;
+  /*padding-top:12px;*/
+  background-image:url(../images/current.png);
+  background-position:0 0;
+  float:left;
+  overflow:hidden;
+}
+
+.caption {
+  position:absolute;
+  bottom:-35px;
+  height:30px;
+  padding:5px 20px 0 20px;
+  background:#000;
+  background:rgba(0,0,0,.5);
+  width:540px;
+  font-size:1.3em;
+  line-height:1.33;
+  color:#fff;
+  border-top:1px solid #000;
+  text-shadow:none;
+}
+
+#footer {
+  text-align:center;
+  width:580px;
+  margin-top:9px;
+  padding:4.5px 0 18px;
+  border-top:1px solid #dfdfdf;
+}
+
+#footer p {
+  margin:4.5px 0;
+  font-size:12px;
+}
+
+a:link,a:visited {
+  color:#599100;
+  text-decoration:none;
+}
+
+a:hover,a:active {
+  color:#599100;
+  text-decoration:underline;
+}

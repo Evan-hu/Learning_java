@@ -1,0 +1,165 @@
+/**
+ * Copyright (c) 2014 GA
+ * All right reserved.
+ */
+package com.company.shop.action.web;
+
+import java.net.URLDecoder;
+
+import javax.servlet.http.HttpServletRequest;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import com.company.pager.Page;
+import com.company.shop.action.BaseController;
+import com.company.shop.entity.Application;
+import com.company.shop.entity.Card;
+import com.company.shop.entity.Member;
+import com.company.shop.entity.ScoreLog;
+import com.company.shop.service.CardService;
+import com.company.shop.service.ScoreService;
+import com.company.shop.service.MemberService;
+
+/**
+ * 类描述
+ * @author ht
+ * @create_time 2014-7-15 下午5:13:13
+ * @project companyWeb
+ */
+
+@Controller
+@RequestMapping("/user")
+public class MemberController extends BaseController{
+
+  @Autowired
+  MemberService memberService;
+  @Autowired
+  ScoreService scoreService;
+  @Autowired
+  CardService cardService;
+  
+  //更新数据跳转
+  @RequestMapping("/goto.do")
+  public String gotoPage(ModelMap modelMap, @RequestParam(value="memberId", required=false)int memberId,@RequestParam(value="type", required=false)String type) throws Exception {
+    Member member = memberService.findMember(memberId);
+    modelMap.put("member", member);
+    if("1".contains(type)){// "1" 更新member 资料
+      return "/user/updateInfo";
+    } // "2" 更新 passwd 
+      return "/user/updataPasswd";
+  }
+  
+  @RequestMapping("/gotoval.do")
+  public String gotovalidate(ModelMap modelMap,@RequestParam(value="type", required=false)String type) throws Exception{
+    if("3".contains(type)){
+      return "/user/validate";
+    } else if("4".contains(type)){
+      Application application = new Application();
+      modelMap.put("application", application);
+      return "/application/addAppl";
+    }
+    return "/login";
+  }
+  
+  @RequestMapping("/validate.do")
+  public String validate(ModelMap modelMap, @RequestParam(value="tel")String tel,  @RequestParam(value="memberNum")String memberNum) throws Exception{
+    if(1 == this.memberService.validate(tel, memberNum)){
+      modelMap.put("msg", "密码已更新，请重新登陆");
+      return "/login";
+    }
+    modelMap.put("msg", "用户不存在或者电话号码错误");
+    return "/user/validate";
+  }
+  
+  //member登陆  
+  @RequestMapping(value="/login.do", method=RequestMethod.POST)
+  public String Login(ModelMap modelMap, @RequestParam(value="userName" ,required=false)String userName, @RequestParam(value="passwd", required=false)String passwd, Page<Member> page) throws Exception {
+    try {
+      if(userName != null && passwd != null){
+        Member member = memberService.quUser(userName, passwd);
+        if(passwd.equals(member.getPwd())){
+          modelMap.put("member", member);
+          return "/user/userindex";
+        }
+      }
+    } catch (Exception e) {
+      e.printStackTrace();
+    }
+    modelMap.put("msg", "密码错误！");
+    return "/login";
+  }
+  
+
+  //member 修改资料updateInfo.do
+  @RequestMapping(value="/updateInfo.do", method=RequestMethod.POST)
+  public String updateInfo(HttpServletRequest request, ModelMap modelMap, Member member) throws Exception {
+    member.setEmail(member.getEmail());
+    if(1 == memberService.updateInfo(member)){
+      return "/user/updateSuccess";
+    }
+    return "/user/updateInfo";
+  }
+  
+
+  //member 管理礼券
+  @RequestMapping("/mangGift.do")
+  public String mangGift(ModelMap modelMap, @RequestParam(value="memberId", required=false)Integer memberId, Page<Card> page) throws Exception {
+    memberId = page.optParamInt("memberId", memberId);
+    String keyword = page.optParamStr("keyword", null);
+    if(null != keyword){
+      keyword = URLDecoder.decode(keyword, "utf-8");
+      page.addParam("keyword", keyword);
+    }
+      page.setResults(cardService.queryCard(page));
+      modelMap.put("page", page);
+      return "/user/myGift";
+  }
+  
+  
+  //member 积分查询
+  @RequestMapping("/queryScore.do")
+  public String queryScore(ModelMap modelMap, @RequestParam(value="memberId", required=false)Integer memberId) throws Exception {
+    ScoreLog sLog = scoreService.queryScore(memberId);
+    if(null != sLog){
+      modelMap.put("scoreLog", sLog);
+      return "/user/myScore";
+    }
+    return "/user/userindex";
+  }
+  
+  
+  //member 查看站内信
+  @RequestMapping("/myMessageList.do")
+  public String myMessageList(ModelMap modelMap, @RequestParam(value="memberId", required=false)Integer memberId) throws Exception {
+    
+    return "myMessage";
+  }
+  
+  
+  //member 修改密码
+  @RequestMapping(value="/updatePasswd.do", method=RequestMethod.POST)
+  public String updatePasswd(ModelMap modelMap, @RequestParam(value="memberId", required=false)Integer memberId,
+      @RequestParam(value="passwdOld", required=false)String passwdOld, @RequestParam(value="passwd", required=false)String passwd
+      ) throws Exception {
+    String msg="";
+    Member member = memberService.findMember(memberId);
+    if(!passwdOld.equals(member.getPwd())){
+      msg="密码错误！";
+    } else {
+      member.setPwd(passwd);
+      if(memberService.updatePasswd(member)){
+        msg="更新密码成功！";
+      } else {
+        msg="更新密码出错！";
+      }
+    }
+    modelMap.put("msg", msg);
+    return "/user/updataPasswd";
+  }
+  
+}

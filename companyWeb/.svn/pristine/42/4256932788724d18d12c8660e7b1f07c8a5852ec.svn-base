@@ -1,0 +1,23 @@
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
+<div class="module">
+	<h2>
+	<c:choose>
+		<c:when test="${param.type==2}">文章点击排行榜</c:when>
+		<c:when test="${param.type==1}">文章推荐排行榜</c:when>
+	</c:choose>
+	</h2>
+	<ul class="news">
+		<c:forEach var="artilce" items="${newsRankList}" varStatus="i" begin="0" end="9">
+			<c:choose>
+				<c:when test="${i.index < 3}">
+					<li><span class="num topNum">${i.index + 1}</span><a href="/news/detail.do?articleId=${artilce.articleId}">${artilce.title}</a></li>
+				</c:when>
+				<c:otherwise>
+					<li><span class="num">${i.index + 1}</span><a href="/news/detail.do?articleId=${artilce.articleId}">${artilce.title}</a></li>
+				</c:otherwise>
+			</c:choose>
+		</c:forEach>
+	</ul>
+</div>

@@ -1,0 +1,28 @@
+/**
+ * Copyright (c) 2014 GA
+ * All right reserved.
+ */
+package com.company.shop.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.company.shop.dao.StoreExtendMapper;
+import com.company.shop.entity.StoreExtend;
+
+/**
+ * ¿‡√Ë ˆ
+ * @author ht
+ * @create_time 2014-7-21 œ¬ŒÁ4:49:26
+ * @project companyWeb
+ */
+@Service
+public class StoreService {
+
+  @Autowired
+  StoreExtendMapper storeExtendMapper;
+  
+  public StoreExtend queryStore(Integer storeId){
+    return this.storeExtendMapper.selectByStoreKey(storeId);
+  }
+}

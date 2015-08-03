@@ -1,0 +1,141 @@
+@charset "utf-8";
+/* CSS Document */
+.rp{
+width:100%; height:38px;
+  line-height:38px;
+  font-size:20px; color:#e86e61;
+  margin-bottom: 18px;
+  background:#f2f2f2;
+}
+
+.rp .myscore{
+	display:inline-block;
+	font-size:16px;
+	margin-left:20px;
+}
+
+.rp .scoreLabel{
+	display:inline-block;
+	height:100%; line-height:41px;
+	font-size:12px; color:#000;
+	font-family:"宋体";
+	margin-left:20px;
+}
+
+.rp .scoreValue{
+	display:inline-block;
+	height:100%; line-height:41px;
+	font-size:16px; color:#e86e61;
+}
+
+.rp .condition{
+	display:inline-block;
+	width:auto; height:auto;
+	margin-top:8px;padding:1px;
+	border:1px solid #ababab;
+	min-width:85px; min-height:19px;
+	float:right;
+}
+
+.mcd {
+	width:810px; height:auto;
+	padding:30px 24px 0px 28px;
+	border:1px solid #dcdcdc;
+	min-height:912px;
+}
+
+.detail_info {
+	width:100%; height:310px;
+	margin-bottom: 47px;
+}
+
+.detail_pic {
+	width:490px; height: 302px;
+	margin-right:23px;
+	padding:3px; 
+	border:1px solid #d1d1d1;
+	float:left;
+}
+
+.adviser_intro {
+	float:left;
+	width:287px; height:310px; 
+}
+
+.adviser_name {
+	width:100%; height:29px;
+	border-bottom:1px solid #e0e0e0;
+	padding:17px 0px 9px;
+	font-size:29px; color:#f67b6e;
+	line-height:29px;
+	overflow:hidden; white-space:nowrap; text-overflow:ellipsis;
+}
+
+
+.mcd ul{
+	width:100%; height:auto;
+	list-style-position:inside;
+	list-style-type:square;
+	color:#999;
+
+}
+
+.mcd ul li{
+	width:100%; height:35px;
+	line-height:35px;
+	border-bottom:1px solid #e0e0e0;
+	position:relative;
+}
+
+.mcd ul li span.la{
+	display:inline-block;
+	width:auto; height:35px;
+	line-height:35px;
+	font-family:"宋体"; font-size:12px;
+}
+
+.mcd ul li span.va{
+	color:#000; font-size:12px;
+	font-family:"微软雅黑";
+}
+
+.ui{
+	color:#000; font-size:8px;
+	font-family:"微软雅黑";
+}
+
+.adviser_intro .intro{
+	width:100%; height:28px;
+	padding:23px 0px;
+}
+
+.adviser_intro .intro .adviser, .adviser_intro .intro .photo{
+	display:inline-block;
+	width:133px; height:28px;
+}
+
+.map {
+	width:26px; height:26px;
+	position:absolute;
+	right:4px; top:4px;
+}
+
+.shop_intro{
+	width:810px; height:auto;
+	min-height:63px;
+	margin:0px auto;
+}
+
+.st {
+	width:100%; height:20px;
+	font-size:20px; color:#e86e61;
+	line-height:20px;
+	padding:14px 0px;
+	border-bottom:1px solid #d4d4d4;
+}
+
+.si {
+	width:100%; height:auto;
+	padding-top:30px;
+	color:#828282; 
+}

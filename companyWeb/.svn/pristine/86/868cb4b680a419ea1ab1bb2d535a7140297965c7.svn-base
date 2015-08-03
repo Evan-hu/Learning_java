@@ -1,0 +1,324 @@
+/**
+ * user'css
+ * @author	Rocky
+ * @date	2014-03-10
+ */
+
+.userTop{padding: 10px; background: #F2EFE8; font-size: 20px; font-weight: bold; font-family: microsoft Yahei}
+.crumb{ line-height: 40px;}
+
+.userLeft{ float: left; width: 150px; background: #fff; border: 1px solid #d1d1d1;}
+.userLeft h2{ height:29px; padding-left:35px; 
+background-color: #d9d9d9;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#f8f8f8), to(#d9d9d9)); /* Chrome, Safari 4+ */
+  background-image: -webkit-linear-gradient(top, #f8f8f8, #d9d9d9); /* Chrome 10-25, iOS 5+, Safari 5.1+ */
+  background-image:    -moz-linear-gradient(top, #f8f8f8, #d9d9d9); /* Firefox 3.6-15 */
+  background-image:      -o-linear-gradient(top, #f8f8f8, #d9d9d9); /* Opera 11.10-12.00 */
+  background-image:         linear-gradient(to bottom, #f8f8f8, #d9d9d9); /* Chrome 26, Firefox 16+, IE 10+, Opera 12.10+ */
+ line-height: 28px; font-size: 14px;}
+
+.userLeft dl{padding-bottom:15px;}
+.userLeft dl dt{height:24px; padding-left:35px; background:#f2f2f2; line-height: 24px; font-weight: bold; }
+.userLeft dl dd{ height: 22px; margin: 6px 10px 0;}
+.userLeft dl dd a{ display: block; height: 22px; padding-left:25px; line-height: 22px; color: #333}
+.userLeft dl dd a:hover{ background: #f2f2f2; text-decoration: none}
+.userLeft dl dd.current{ background: #f2f2f2;}
+.userLeft dl dd.current a{padding-left:25px;}
+
+.userLeft .line{height:5px; margin:0 -1px; background: #E7EFD8; border-top:1px solid #82B70D;}
+
+.userRight{float: left; width: 808px; min-height: 600px; margin-left:15px; padding-bottom: 30px; display: inline;}
+.userRight .mainCon{ margin-bottom: 10px; background: #fff; border: 1px solid #d1d1d1;}
+.userRight .mainTitle{ overflow: hidden; padding:0 15px 5px; line-height: 30px; font-weight: bold; font-size: 14px; border-bottom: 1px solid #ddd;}
+.userRight .mainTitleSec{ height:40px; padding: 5px 0 0 20px; border-bottom: 1px solid #d1d1d1; line-height: 40px; font-weight: bold;}
+.userRight .mainTitleSec .fl{font-weight: normal;}
+.userRight .mainTip{line-height: 34px; padding-left:20px;}
+
+.userRight .mainConTop{padding: 10px; background: #f8f8f8;}
+
+.userTabWrap{margin-bottom: 10px; }
+.userTabWrap .tab{height:30px; line-height:30px; border-bottom: 2px solid #b20000;}
+.userTabWrap .tab li{float:left; width:129px; height:30px; margin-right: 5px; background: #f2f2f2;}
+.userTabWrap .tab a{display:block; height:30px; text-align:center; font-size: 14px; font-family: microsoft Yahei}
+.userTabWrap .tab a:hover{background-color:#b20000; color:#fff}
+.userTabWrap .tab li.active{background: none;}
+.userTabWrap .tab li.active a{background:#b20000; color:#fff;}
+.userTabWrap .tab li.last{background: none}
+
+.userTabWrap .tabCon{ background:#fff; overflow: hidden;}
+.userTabWrap .tabCon .proList{margin-top: 20px; overflow: hidden;}
+.userTabWrap .tabCon .proList li{ margin: 0 30px;}
+
+
+.userOrderList{ margin-top: 10px;}
+.userOrderList th{height: 28px; padding-left: 10px; background: #f2f2f2; line-height: 28px; font-weight: normal; }
+.userOrderList td{ padding:15px 0; border-bottom:1px solid #ddd; text-align:center;}
+.userOrderList td a{color: #0068b7;}
+.userOrderList td a.fontRed{color:#b20000;} 
+.userOrderList .alignLeft{text-align: left;}
+.userOrderList .orderBuy{ display: block; width:72px; height:21px; margin:3px auto; background: url(../images/order_buy_bg.jpg);}
+.userOrderList .proImg img{ width: 80px; height:80px; border:1px solid #ccc;}
+.userOrderList .addCart{display: block; width:85px; height:25px; margin:3px auto; background:#b20000; color: #fff;}
+
+.userOrderListNew{ margin-top: 10px; border: 1px solid #e6e6e6; border-collapse: collapse;}
+.userOrderListNew th{height: 28px; padding-left: 10px; background: #f3f3f3; border-bottom: 1px solid #e6e6e6; line-height: 28px; font-weight: normal; text-align: left;}
+.userOrderListNew td{ padding:15px 0; border:1px solid #e6e6e6; border-collapse: collapse; text-align:center;}
+.userOrderListNew td a{color: #0068b7;}
+.userOrderListNew td a.fontRed{color:#b20000;} 
+.userOrderListNew .alignLeft{text-align: left;}
+.userOrderListNew .orderBuy{ display: block; width:72px; height:21px; margin:3px auto; background: url(../images/order_buy_bg.jpg);}
+.userOrderListNew .proImg img{ width: 80px; height:80px; border:1px solid #ccc;}
+.userOrderListNew .addCart{display: block; width:85px; height:25px; margin:3px auto; background:#b20000; color: #fff;}
+.userOrderListNew .proInfoTd{ width: 480px; padding: 0; text-align: left;}
+.userOrderListNew .pro{ position: relative; bottom: -1px; width: 480px; padding: 15px 0; overflow: hidden; border-bottom: 1px solid #e6e6e6;}
+.userOrderListNew .pro .img{ float: left; width: 50px; height: 50px; margin-left: 10px; }
+.userOrderListNew .pro .proName{ float: left; width: 170px; margin-left: 10px;}
+.userOrderListNew .pro .proName p{ line-height: 18px;}
+.userOrderListNew .price,
+.userOrderListNew .num,
+.userOrderListNew .manage{
+	float: left; width: 70px; margin-left: 10px;
+	text-align: center;
+}
+.userOrderListNew .btnConfirm{ display: inline-block; width: 68px; height: 24px; background: #3399FE; border-radius: 3px; line-height: 24px; color: #fff;}
+.userOrderListNew .fontGreen{ color: green}
+.userOrderListNew .fontOrange{ color: #ffaa00;}
+
+.userOrder .tab{height:32px; line-height:32px;}
+.userOrder .tab li{ height:32px;}
+.userOrder .tab a{ height:32px;}
+
+.userOrder .filterBox{ height:25px; margin-top: 10px}
+.userOrder .filterBox select{border:1px solid #ccc;}
+.userOrder .filterBox .text{ width:200px; height:16px; padding:4px; background: #f4f4f4; vertical-align: top; border:1px solid #ccc; line-height: 16px;}
+.userOrder .filterBox .searchBtn{width:60px; height:25px; line-height: 25px; background: #b20000; border: none; cursor: pointer; color: #fff}
+
+.jifenOrder{ height: 22px; margin-top: 10px; padding:3px 15px; background: #f2f2f2; }
+.jifenOrder a{ float: left; height: 20px; padding:0 26px 0 16px; background: url(../images/order_bg.png) no-repeat 45px 0 #fff; border:1px solid #ccc; border-right:none; line-height: 20px; color: #333;}
+.jifenOrder a.active{ color:#b20000; background-position: 45px -20px;}
+
+.jifenProList{ padding:20px 15px; overflow: hidden;}
+.jifenProList li{ float:left; width:162px; height:216px; padding:0 10px;}
+.jifenProList li a.pic{ display:block; width:160px; height:160px; border:1px solid #DAEAB9;}
+.jifenProList li a.pic:hover{ border:1px solid #82B70D;}
+.jifenProList li a.title{ display:block; width:162px; margin-top:5px; line-height:20px; color:#333; text-align:center;}
+.jifenProList li b{ display:block; width:162px; line-height:20px; color:#FE2216; text-align:center;}
+
+.rechargeTable td{ padding:15px 20px; border-collapse:collapse; border-bottom:1px solid #CAE098; border-right:1px solid #CAE098;}
+.rechargeTable td.last{ border-right:none;}
+.rechargeTable .rechargeBtn{ display: block; width:106px; height:25px; margin:10px auto; background: url(../images/recharge_btn.png)}
+.rechargeTable td a{font-weight: bold; color:#FF8400;}
+
+.rechargeSuccess{ padding:50px 0 150px; text-align: center; font-family: microsoft Yahei}
+.rechargeSuccess h2{ line-height: 32px; font-size:26px; color: #83B80E}
+.rechargeSuccess p{ margin-bottom: 50px; color: #4d4d4d; font-size: 14px; line-height:34px}
+.rechargeSuccess .besure{display: block; width:151px; height: 41px; margin:0 auto; background: url(../images/btn_sure.png);}
+
+.vouchers{ height: 360px; padding:40px; overflow: hidden;}
+.vouchers .con{ height: 80px; padding:55px 84px; background: #E6F4C3; border:1px solid #82B70D;}
+.vouchers .con h3{ padding-bottom: 5px; line-height: 30px; font-size: 16px; color: #666; font-family: microsoft Yahei}
+.vouchers .con .codeText{float: left; width:290px; height:18px; margin-top:5px; padding:5px 4px; line-height: 18px; border: 1px solid #ccc}
+.vouchers .con .rechargeBtn{float: left; width:151px; height: 41px; margin-left:20px; display: inline; background: url(../images/recharge_btn_bg.png); }
+
+.vouchers .help{margin-top:40px;}
+.vouchers .help .fr{ margin:15px 25px 0 0; color: #808080} 
+
+.recharge{ height: 250px; padding:30px; overflow: hidden;}
+.rechargeMethod{height:70px; line-height:70px;}
+.rechargeMethod label, .rechargeMethod .methodImg{float: left;}
+.recharge p{ padding-left: 25px; line-height: 50px;}
+.recharge .moneyText{width:80px; height:18px; padding: 3px; line-height: 18px; border: 1px solid #ccc; background: #f4f4f4; text-align: center;}
+.recharge .besure{float: right; width:151px; height: 41px; margin:10px auto; background: url(../images/btn_sure.png);}
+
+
+.userOrderDetail{padding:16px 20px; border-bottom: 1px solid #d1d1d1; line-height: 24px;}
+.userOrderDetail h3{ line-height: 28px; font-size: 12px;}
+
+.userOrderPro{padding:10px 0;}
+.userOrderPro h3{padding-left: 42px; font-size: 12px; line-height: 28px;}
+
+.userOrderProList{ width: 800px; margin:0 5px;}
+.userOrderProList tr td{ text-align: center;}
+.userOrderProList tr.head{ height:28px; line-height:28px; background: #f2f2f2; }
+.userOrderProList tr.head td{ border-bottom:1px solid #ddd;}
+.userOrderProList .proInfo{border: 0;text-align: left;}
+
+.userOrderProList tr.pro{ height:65px; border-left:1px solid #c1c1c1; border-right:1px solid #c1c1c1;}
+.userOrderProList tr.pro td{border-bottom: 1px solid #ddd}
+.userOrderProList tr.pro td.left{border-left:1px solid #ddd; }
+.userOrderProList tr.pro td.right{border-right:1px solid #ddd;}
+.userOrderProList .buy{display:block; width:85px; height:25px; margin:0 auto; background:url(../images/order_buy_bg.png)}
+
+.userOrderProMoney{ width: 758px; height:78px; margin:0 5px; padding:10px 20px; overflow: hidden; line-height:18px; border-left: 1px solid #ddd; border-right: 1px solid #ddd;}
+.userOrderProMoney label{ float: left; width:100px; margin-right:5px; display: inline; text-align: right;}
+
+.userOrderProMoneyUnPay{ width: 778px;  height:46px; margin:0 5px; padding-right: 20px; background: #f2f2f2; border:1px solid #ddd; border-top:none; line-height: 46px; text-align: right; font-size: 14px;}
+.userOrderProMoneyUnPay b{font-size: 18px; color: #FF8400;}
+
+/* 密码修改 */
+.userSecurity ul{ width:670px; margin:0 auto; padding:20px 0 40px;}
+.userSecurity ul li{ padding: 8px 0; overflow: hidden; line-height: 30px;}
+.userSecurity ul li label{ float: left; width:150px; margin-right:5px; display: inline; font-size: 14px; text-align: right;}
+.userSecurity ul li .text{ width: 300px; height:18px; padding:5px; line-height: 18px; border: 1px solid #ccc;}
+.userSecurity ul li .text:hover{ border: 1px solid #b20000;}
+.userSecurity ul li .con{float: left;}
+.userSecurity ul li .tip{ float: left; margin-left: 10px; display: inline; color:#FF8500; font-size:14px; }
+.userSecurity ul li .tipInfo{ clear: both; margin-left:140px; line-height: 20px; color: #bbb;}
+.userSecurity ul li .sendVeriCode{height:20px; margin-top:5px; padding:0 8px; font-size: 12px; line-height: 20px;}
+.userSecurity ul li select{border:1px solid #b2b2b2; height:24px; line-height: 24px;}
+.userSecurity ul li .passwordStrong {display: inline; margin-top: 3px;}
+.userSecurity ul li .passwordStrong span{display: inline-block; width:40px; hight:16px; background: #E7EFD8; line-height: 16px; border-right: 1px solid #fff; text-align: center;}
+.userSecurity ul li .passwordStrong span.active{ background: #FE931F; color: #fff;}
+
+.userSecurity .inputBtnRed{ margin-top: 20px;}
+
+.gray {color: #aaa;}
+
+/* 地址薄管理 */
+.userAddress{margin-top: 10px; border: 1px solid #d1d1d1;}
+.userAddress h3{height: 28px; margin: 1px; padding-left: 18px; background: #f2f2f2; line-height: 28px; font-size: 12px;}
+.userAddress .con{padding:0 20px;}
+.userAddress .addressList{ padding:12px 0; border-bottom: 1px dashed #ccc; line-height: 20px;}
+.userAddress .noBorder{border-bottom: none;}
+.userAddress a{ float: right; margin-left: 15px; display: inline;}
+
+.userAddressNew { border: 1px solid #ECDEC1;}
+.userAddressNew h3{ background: #F9F3E4; color: #81511C;}
+
+.newAddress{ width: 600px; height: 260px; padding:30px 0 40px 20px; overflow: hidden;}
+.newAddress li{ width: 100%; padding:9px 0; overflow: hidden;}
+.newAddress li .text{ height: 17px; padding: 2px 3px;} 
+.newAddress li label{float: left; width: 100px; line-height: 23px;}
+.newAddress li .content{ float: left; color: #999}
+.newAddress li .content .inputBtnRed{ float: left; margin: 0 30px 0 0;}
+
+/* 电子钱包 */
+.userRight .mainTitleSec .walletBtn{ float: left; width:106px; height: 25px; margin:8px 0 0 60px; display: inline; background: url(../images/wallet_btn.png);}
+.userWallet{width:680px; margin:20px auto;}
+.userWallet tr.head td{ height: 26px; background: #CAE098; line-height: 26px; margin-bottom:10px; color: #fff; border-bottom: none;}
+.userWallet tr td{ height: 30px; border-bottom: 1px solid #CAE098; text-align: center;}
+
+/* 投诉 */
+.userComplaints{width: 100%;}
+.userComplaints tr.head{margin-bottom: 10px;}
+.userComplaints tr.head td{ height: 26px; background: #f2f2f2; line-height: 26px; border-bottom: none;}
+.userComplaints tr td{ height: 30px; text-align: center;}
+
+.newComplaints{ height: 400px; padding:30px 0 0 60px; }
+.newComplaints li{ width:100%; overflow: hidden; padding:10px 0;}
+.newComplaints li label{float: left; width:72px; line-height: 23px;}
+.newComplaints li .content{ float: left;}
+.newComplaints .text{height:17px; padding:2px 3px; line-height: 17px;}
+.newComplaints textarea{border:1px solid #b2b2b2; padding:2px 3px;}
+.newComplaints li .verifCode{float: left; margin:-3px 8px 0 15px; display: inline;}
+.newComplaints li .changeCode{float: left; margin-top: 11px; line-height: 14px; color: #777}
+.newComplaints li .changeCode a{ color:#FE8127;}
+.newComplaints .btnSure{float:left; width:151px; height: 41px; margin:20px auto 0; background: url(../images/btn_submit.png);}
+.newComplaints .reset{ float: left; margin:42px 0 0 50px;}
+
+/* 优惠券 */
+.userCoupon{width:680px; margin:0 auto; }
+.userCoupon tr.head td{ height: 26px; background: #CAE098; line-height: 26px; color: #fff; border-bottom: none;}
+.userCoupon tr td{ height: 50px; border-bottom: 1px dashed #ccc; text-align: center;}
+
+/* 消息精灵 */
+.userMessage th{height: 26px; background: #CAE098; line-height: 26px; color:#fff;}
+.userMessage td{ height:40px; text-align:center;}
+
+/* 退换货 */
+.userReturn{margin-top: 10px;}
+.userReturn th{height: 26px; background: #f2f2f2; line-height: 26px; font-size: 12px; font-weight: normal;}
+.userReturn td{ border-bottom: 1px solid #d1d1d1; text-align:center;}
+.userReturn .userReturnPro{float: left; width:220px; margin:15px 0;} 
+.userReturn .userReturnPro .proImg{float: left;  width:72px; height: 72px; border:1px solid #ccc;}
+.userReturn .userReturnPro .proImg img{ width: 72px; height: 72px;}
+.userReturn .userReturnPro .fl{width:145px;}
+.userReturn .userReturnPro .fl h4{ margin-top: 10px; line-height:18px; font-size:12px; font-weight: normal;}
+.userReturn .userReturnPro .fl .btnReturn{display: block; width:48px; height: 25px; margin:10px 0 0 10px; background: url(../images/return_btn.png);}
+
+.userReturnNoBorder td{height:40px; border-bottom:none;}
+
+.userOrderList .pro{width:340px; margin:0 auto;}
+.userOrderList .pro .proimg{ float: left; width:72px; height:72px; border:1px solid #ccc;}
+.userOrderList .pro .proimg img{width:72px; height:72px;}
+.userOrderList .pro .proname{ float: left; margin-left:10px; display: inline; line-height: 72px;}
+
+.newUserReturnList td{border-bottom: none}
+.newUserReturn{ padding-top:10px; border-top:1px solid #d1d1d1;}
+.newUserReturn .title{height:28px; padding-left:18px; background: #f2f2f2; line-height: 28px; }
+.newUserReturn ul{ padding-bottom:20px;}
+.newUserReturn li{width:100%; overflow: hidden; margin:20px 0;}
+.newUserReturn li label{float: left; width:120px; padding-right:5px; line-height: 20px; text-align: right;}
+.newUserReturn li .inputRadio{ vertical-align: middle; margin-right: 3px;}
+.newUserReturn li textarea{ width:450px; height:75px; border:1px solid #b2b2b2; padding:3px;}
+.newUserReturn .btnSubmit{float:left; width:151px; height: 41px; margin-top:20px; background: url(../images/btn_submit.png);}
+.newUserReturn .btnCancel{float:left; width:151px; height: 41px; margin:20px 0 0 30px; display: inline; background: url(../images/btn_cancel.png);}
+
+.userReturnStep{ width:550px; height:80px; margin:15px auto;}
+.userReturnDetail{margin:5px 10px 10px;}
+.userReturnDetail h3{height: 25px; padding-left: 18px; background: #ddd; line-height: 25px; font-weight: normal; font-size: 12px;}
+.userReturnDetail .con{padding:15px; border: 1px solid #ddd; border-top: none; overflow: hidden;}
+.userReturnDetail .con li{ clear:both; width:100%; height: 24px; line-height: 24px;}
+.userReturnDetail .con li.noBorder{border:none;}
+
+/* 新闻 */
+.newsTop{height:25px; background: #CAE098; line-height: 25px; color: #fff;}
+.newsTop .col1{ float: left; width:468px; margin-left: 150px; display: inline;}
+.newsTop .col2{ float: left; width:100px;}
+
+.newsList{padding:5px 15px;}
+.newsList li{ height:40px; padding-left:30px; border-bottom: 1px dotted #CAE098; line-height: 40px;}
+.newsList li span{ float: right; margin-right: 70px; display: inline;}
+.newsList li a{ color: #333;}
+
+.newsContent{ width:670px; overflow: hidden; padding:20px 45px;}
+.newsContent h2{ line-height: 40px; font-size:24px; text-align: center;}
+.newsContent .time{ line-height: 30px; text-align: center;}
+.newsContent .text{ line-height: 24px;}
+
+.page{height:26px; padding:10px 0 15px 80px; line-height: 26px; color:#1BA128;}
+.page .pageList{float: left;}
+.page .pageList a{ display: inline-block; padding:0 10px; border:1px solid #ccc; line-height: 24px; color:#1CA12A; }
+.page .pageList a.active{border:1px solid #FF8B10; color:#FF8B10;}
+.page .pageList a.pagePre{padding-left:15px; background: url(../images/icon_page_pre_gray.png) 5px 8px no-repeat;}
+.page .pageList a.pageNext{padding-right:15px; background: url(../images/icon_page_next_gray.png) 50px 8px no-repeat;}
+.page .pageList a:hover{text-decoration: none; border:1px solid #FF8B10; color:#FF8B10;}
+.page .pageList a.pageMore,.page .pageList a.pageMore:hover{border:none;}
+.page .pageNum{ width:35px; height: 24px; border:1px solid #ccc; text-align: center; color:#1CA12A;}
+.page .pageGo{ display: inline-block; width:48px; height:22px; background: url(../images/icon_pagego.png);vertical-align: middle;}
+
+
+/* 豆瓜农场 */
+.farmBanner{margin-bottom:6px;}
+.farmLogin{padding:10px 15px; background: #82B70D;}
+.farmLogin b{ font-size: 14px; color: #FF8400;}
+.farmLogin .thisBtn, .farmLogin .thisBtn:hover{ float:left; width:105px; height:25px; line-height: 25px; border: 1px solid #EE6400; background: #FF7900; color: #FFFE01; text-align: center; font-size: 14px;}
+
+.farmLogin span{ margin:0 10px; line-height: 24px; font-size: 18px; color: #FF8400;}
+.farmLogin .fontWhite{font-size: 14px; color: #fff;}
+.farmLogin .text{ width:175px; height: 17px; padding:2px 3px; line-height: 17px; border:1px solid #5D8900;}
+.farmLogin p{width:100%; line-height: 24px; overflow: hidden;}
+.farmLogin p .regLink{margin-left:15px; font-size:14px; color:#425C05;}
+
+.farmLeftCon{padding:16px;}
+.farmLeftCon p{line-height: 24px;}
+.farmLeftCon p a{color:#333;}
+
+.proItem{overflow: hidden;}
+.proItem li{ float:left; width:162px; height:225px; margin-right:8px;}
+.proItem li a.pic{ display:block; width:160px; height:160px; border:1px solid #DAEAB9;}
+.proItem li a.pic:hover{ border:1px solid #82B70D;}
+.proItem li a.title{ display:block; width:162px; margin-top:5px; line-height:20px; color:#333; text-align:center;}
+.proItem li b{ display:block; width:162px; line-height:20px; color:#FE2216; text-align:center;}
+
+.farmTableWrap{ width:100%; height:230px; overflow: hidden; overflow-y:auto}
+.farmTable th{height:30px; background: #CAE098; line-height: 30px; font-weight: normal; color: #fff }
+.farmTable td{ text-align: center; border-bottom: 1px solid #CAE098; line-height: 38px;}
+
+
+.payTable{ width: 700px; margin: 40px auto;}
+
+.payTable td{ padding: 15px 0; border-bottom: 1px solid #dedede; font-size: 14px;}
+
+
+

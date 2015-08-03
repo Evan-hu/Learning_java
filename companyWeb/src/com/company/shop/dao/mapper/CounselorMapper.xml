@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.company.shop.dao.CounselorMapper" >
+  <resultMap id="BaseResultMap" type="com.company.shop.entity.Counselor" >
+    <id column="COUNSELOR_ID" property="counselorId" jdbcType="INTEGER" />
+    <result column="COUNSELOR_NAME" property="counselorName" jdbcType="VARCHAR" />
+    <result column="TEL" property="tel" jdbcType="VARCHAR" />
+    <result column="STORE_ID" property="storeId" jdbcType="INTEGER" />
+    <result column="EXCEPT" property="except" jdbcType="INTEGER" />
+    <result column="SPECIALITY" property="speciality" jdbcType="VARCHAR" />
+    <result column="INTRO" property="intro" jdbcType="VARCHAR" />
+    <result column="HEAD_IMG" property="headImg" jdbcType="VARCHAR" />
+    <association property="store" column="STORE_ID" javaType="Store">
+     <!--  <id property="storeId" column="STORE_ID"/> -->
+      <result property="storeName" column="STORE_NAME"/>
+    </association>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    COUNSELOR_ID, COUNSELOR_NAME, TEL, STORE_ID, EXCEPT, SPECIALITY, INTRO, HEAD_IMG
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    c.COUNSELOR_ID,c.COUNSELOR_NAME,c.TEL,c.EXCEPT,c.SPECIALITY,c.INTRO,c.HEAD_IMG,s.STORE_NAME
+    from counselor c join 
+    store s on s.STORE_ID = c.STORE_ID
+    where COUNSELOR_ID = #{counselorId,jdbcType=INTEGER}
+  </select>
+  
+  
+  <select id="selectByStoreId" resultMap="BaseResultMap" parameterType="com.company.pager.Page" >
+    select 
+    c.COUNSELOR_ID,c.COUNSELOR_NAME,c.TEL,c.EXCEPT,c.SPECIALITY,c.INTRO,c.HEAD_IMG,s.STORE_NAME
+    from counselor c join 
+    store s on s.STORE_ID = c.STORE_ID
+    where c.STORE_ID = #{params.storeId}
+  </select>
+  
+  <select id="selectAllCounselor" resultMap="BaseResultMap" parameterType="com.company.pager.Page" >
+    select 
+    c.COUNSELOR_ID,c.COUNSELOR_NAME,c.HEAD_IMG,s.STORE_NAME
+    from counselor c join 
+    store s on c.STORE_ID = s.STORE_ID
+  </select>
+  
+  
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from counselor
+    where COUNSELOR_ID = #{counselorId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.company.shop.entity.Counselor" >
+    insert into counselor (COUNSELOR_ID, COUNSELOR_NAME, TEL, 
+      STORE_ID, EXCEPT, SPECIALITY, 
+      INTRO, HEAD_IMG)
+    values (#{counselorId,jdbcType=INTEGER}, #{counselorName,jdbcType=VARCHAR}, #{tel,jdbcType=VARCHAR}, 
+      #{storeId,jdbcType=INTEGER}, #{except,jdbcType=INTEGER}, #{speciality,jdbcType=VARCHAR}, 
+      #{intro,jdbcType=VARCHAR}, #{headImg,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.company.shop.entity.Counselor" >
+    insert into counselor
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="counselorId != null" >
+        COUNSELOR_ID,
+      </if>
+      <if test="counselorName != null" >
+        COUNSELOR_NAME,
+      </if>
+      <if test="tel != null" >
+        TEL,
+      </if>
+      <if test="storeId != null" >
+        STORE_ID,
+      </if>
+      <if test="except != null" >
+        EXCEPT,
+      </if>
+      <if test="speciality != null" >
+        SPECIALITY,
+      </if>
+      <if test="intro != null" >
+        INTRO,
+      </if>
+      <if test="headImg != null" >
+        HEAD_IMG,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="counselorId != null" >
+        #{counselorId,jdbcType=INTEGER},
+      </if>
+      <if test="counselorName != null" >
+        #{counselorName,jdbcType=VARCHAR},
+      </if>
+      <if test="tel != null" >
+        #{tel,jdbcType=VARCHAR},
+      </if>
+      <if test="storeId != null" >
+        #{storeId,jdbcType=INTEGER},
+      </if>
+      <if test="except != null" >
+        #{except,jdbcType=INTEGER},
+      </if>
+      <if test="speciality != null" >
+        #{speciality,jdbcType=VARCHAR},
+      </if>
+      <if test="intro != null" >
+        #{intro,jdbcType=VARCHAR},
+      </if>
+      <if test="headImg != null" >
+        #{headImg,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.company.shop.entity.Counselor" >
+    update counselor
+    <set >
+      <if test="counselorName != null" >
+        COUNSELOR_NAME = #{counselorName,jdbcType=VARCHAR},
+      </if>
+      <if test="tel != null" >
+        TEL = #{tel,jdbcType=VARCHAR},
+      </if>
+      <if test="storeId != null" >
+        STORE_ID = #{storeId,jdbcType=INTEGER},
+      </if>
+      <if test="except != null" >
+        EXCEPT = #{except,jdbcType=INTEGER},
+      </if>
+      <if test="speciality != null" >
+        SPECIALITY = #{speciality,jdbcType=VARCHAR},
+      </if>
+      <if test="intro != null" >
+        INTRO = #{intro,jdbcType=VARCHAR},
+      </if>
+      <if test="headImg != null" >
+        HEAD_IMG = #{headImg,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where COUNSELOR_ID = #{counselorId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.company.shop.entity.Counselor" >
+    update counselor
+    set COUNSELOR_NAME = #{counselorName,jdbcType=VARCHAR},
+      TEL = #{tel,jdbcType=VARCHAR},
+      STORE_ID = #{storeId,jdbcType=INTEGER},
+      EXCEPT = #{except,jdbcType=INTEGER},
+      SPECIALITY = #{speciality,jdbcType=VARCHAR},
+      INTRO = #{intro,jdbcType=VARCHAR},
+      HEAD_IMG = #{headImg,jdbcType=VARCHAR}
+    where COUNSELOR_ID = #{counselorId,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -1,0 +1,164 @@
+@charset "utf-8";
+/* CSS Document */
+.container {
+    width: 100%; height: auto;
+    min-height: 784px;
+	margin-bottom:0px;
+	border-top: 1px solid #d9d9d9;
+	background:#edf1f2;
+}
+
+.container .loginC {
+	width:1100px; height:552px;
+	background:url(../images/loginimages/lc.jpg) no-repeat scroll 0 0;
+	margin:0px auto;
+	position:relative;
+}
+
+.container .loginC .loginP {
+	width:315px; height:246px;
+	position:absolute;
+	right:147px; bottom:0px;
+	padding:30px 32px 38px;
+}
+
+.container .loginC .loginP .input_focus{
+	width:315px; height:46px;
+	background:url(../images/loginimages/input_focus.png) no-repeat scroll 0 0;
+	margin:0px auto;
+	margin-bottom:19px;
+}
+
+.container .loginC .loginP .input_normal{
+	width:315px; height:46px;
+	background:url(../images/loginimages/input_normal.png) no-repeat scroll 0 0;
+	margin:0px auto;
+	margin-bottom:19px;
+}
+
+
+.container .loginC .loginP .input_focus .ulaf, .container .loginC .loginP .input_focus .plaf{
+	display:inline-block;
+	width:44px; height:44px;
+	margin-left:6px; margin-top:1px;
+	vertical-align:middle;
+	float:left;
+}
+
+.container .loginC .loginP .input_normal .ula, .container .loginC .loginP .input_normal .pla, .container .loginC .loginP .authPanel .auth_normal .ala{
+	display:inline-block;
+	width:44px; height:44px;
+	margin-left:6px; margin-top:1px;
+	vertical-align:middle;
+	float:left;
+}
+
+.container .loginC .loginP .input_focus .vaf, .container .loginC .loginP .input_normal .vaf {
+	display:inline-block;
+	width:265px; height:44px;
+	margin-top:1px; margin-bottom:1px;
+	vertical-align:middle;
+	float:left;
+}
+
+.container .loginC .loginP .input_focus .vaf input, .container .loginC .loginP .input_normal .vaf input{
+	display:inline-block;
+	width:260px; height:100%;
+	line-height:44px;
+	font-size:16px; color:#dadada;
+}
+
+.container .loginC .loginP .authPanel{
+	width:315px; height:46px;
+	margin:0px auto;
+	margin-bottom:19px;
+}
+
+.container .loginC .loginP .authPanel .authZ{
+	display:inline-block;
+	width:184px; height:46px;
+	margin-bottom:19px; margin-right:48px;
+	float:left;
+}
+
+.container .loginC .loginP .authPanel .authZ .va{
+	display:inline-block;
+	width:130px; height:44px;
+	margin-top:1px; margin-bottom:1px;
+	float:left;
+}
+
+.container .loginC .loginP .authPanel .authZ .va input{
+	display:inline-block;
+	width:100%; height:100%;
+	line-height:44px;
+	font-size:16px; color:#dadada;
+}
+
+.container .loginC .loginP .authPanel .authImg{
+	display:inline-block;
+	width:79px; height:100%;
+}
+
+.container .loginC .loginP .authPanel .authImg img{
+	width:79px; height:34px;
+	margin:6px 0px;
+}
+
+.submitPanel {
+	width:313px; height:48px;
+	margin:0px auto;
+	padding:0px 1px;
+}
+
+.submitPanel .login {
+	display:inline-block;
+	width:313px; height:100%;
+	background:url(../images/loginimages/submit.png) no-repeat scroll 0 0;
+}
+
+.regPanel {
+	width:315px; height:14px;
+	margin:0px auto;
+	background:#f00;
+	position:relative;
+	display:none;
+}
+
+.regPanel span{
+	width:75px; height:100%;
+	position:absolute;
+	right:0px;
+}
+
+.user_logo_normal {
+	background:url(../images/loginimages/user_1.png) no-repeat scroll 0 0;
+}
+
+.user_logo_focus {
+	background:url(../images/loginimages/user_2.png) no-repeat scroll 0 0;
+}
+
+.pwd_logo_normal {
+	background:url(../images/loginimages/pwd_1.png) no-repeat scroll 0 0;
+}
+
+.pwd_logo_focus {
+	background:url(../images/loginimages/pwd_2.png) no-repeat scroll 0 0;
+}
+
+.auth_logo_normal {
+	background:url(../images/loginimages/auth_1.png) no-repeat scroll 0 0;
+}
+
+.auth_logo_focus {
+	background:url(../images/loginimages/auth_2.png) no-repeat scroll 0 0;
+}
+
+.auth_normal {
+	background:url(../images/loginimages/auth_normal.png) no-repeat scroll 0 0;
+}
+
+.auth_focus {
+	background:url(../images/loginimages/auth_focus.png) no-repeat scroll 0 0;
+}

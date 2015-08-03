@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.company.shop.dao.ResumeMapper">
+  <resultMap id="BaseResultMap" type="com.company.shop.entity.Resume">
+    <id column="RESUME_ID" jdbcType="INTEGER" property="resumeId" />
+    <result column="RECRUIMENT_ID" jdbcType="INTEGER" property="recruimentId" />
+    <result column="NAME" jdbcType="VARCHAR" property="name" />
+    <result column="SEX" jdbcType="INTEGER" property="sex" />
+    <result column="AGE" jdbcType="INTEGER" property="age" />
+    <result column="TEL" jdbcType="VARCHAR" property="tel" />
+    <result column="MARITAL_STATE" jdbcType="INTEGER" property="maritalState" />
+    <result column="ENTRY_TIME" jdbcType="INTEGER" property="entryTime" />
+    <result column="EXPERIENCE" jdbcType="INTEGER" property="experience" />
+    <result column="EDUCATION" jdbcType="INTEGER" property="education" />
+    <result column="CREATE_TIME" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="INTERVIEW_TIME" jdbcType="TIMESTAMP" property="interviewTime" />
+    <result column="STATE" jdbcType="INTEGER" property="state" />
+    <result column="BIRTHDATE" jdbcType="TIMESTAMP" property="birthdate" />
+    <result column="RESUME_PATH" jdbcType="VARCHAR" property="resumePath" />
+    <result column="JOB" jdbcType="VARCHAR" property="job" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    RESUME_ID, RECRUIMENT_ID, NAME, SEX, AGE, TEL, MARITAL_STATE, ENTRY_TIME, EXPERIENCE, 
+    EDUCATION, CREATE_TIME, INTERVIEW_TIME, STATE, BIRTHDATE, RESUME_PATH, JOB
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from resume
+    where RESUME_ID = #{resumeId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from resume
+    where RESUME_ID = #{resumeId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.company.shop.entity.Resume">
+    insert into resume (RESUME_ID, RECRUIMENT_ID, NAME, 
+      SEX, AGE, TEL, MARITAL_STATE, 
+      ENTRY_TIME, EXPERIENCE, EDUCATION, 
+      CREATE_TIME, INTERVIEW_TIME, STATE, 
+      BIRTHDATE, RESUME_PATH, JOB
+      )
+    values (#{resumeId,jdbcType=INTEGER}, #{recruimentId,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, 
+      #{sex,jdbcType=INTEGER}, #{age,jdbcType=INTEGER}, #{tel,jdbcType=VARCHAR}, #{maritalState,jdbcType=INTEGER}, 
+      #{entryTime,jdbcType=INTEGER}, #{experience,jdbcType=INTEGER}, #{education,jdbcType=INTEGER}, 
+      now(), #{interviewTime,jdbcType=TIMESTAMP}, 1, 
+      #{birthdate,jdbcType=TIMESTAMP}, #{resumePath,jdbcType=VARCHAR}, #{job,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.company.shop.entity.Resume">
+    insert into resume
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="resumeId != null">
+        RESUME_ID,
+      </if>
+      <if test="recruimentId != null">
+        RECRUIMENT_ID,
+      </if>
+      <if test="name != null">
+        NAME,
+      </if>
+      <if test="sex != null">
+        SEX,
+      </if>
+      <if test="age != null">
+        AGE,
+      </if>
+      <if test="tel != null">
+        TEL,
+      </if>
+      <if test="maritalState != null">
+        MARITAL_STATE,
+      </if>
+      <if test="entryTime != null">
+        ENTRY_TIME,
+      </if>
+      <if test="experience != null">
+        EXPERIENCE,
+      </if>
+      <if test="education != null">
+        EDUCATION,
+      </if>
+      <if test="createTime != null">
+        CREATE_TIME,
+      </if>
+      <if test="interviewTime != null">
+        INTERVIEW_TIME,
+      </if>
+      <if test="state != null">
+        STATE,
+      </if>
+      <if test="birthdate != null">
+        BIRTHDATE,
+      </if>
+      <if test="resumePath != null">
+        RESUME_PATH,
+      </if>
+      <if test="job != null">
+        JOB,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="resumeId != null">
+        #{resumeId,jdbcType=INTEGER},
+      </if>
+      <if test="recruimentId != null">
+        #{recruimentId,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null">
+        #{sex,jdbcType=INTEGER},
+      </if>
+      <if test="age != null">
+        #{age,jdbcType=INTEGER},
+      </if>
+      <if test="tel != null">
+        #{tel,jdbcType=VARCHAR},
+      </if>
+      <if test="maritalState != null">
+        #{maritalState,jdbcType=INTEGER},
+      </if>
+      <if test="entryTime != null">
+        #{entryTime,jdbcType=INTEGER},
+      </if>
+      <if test="experience != null">
+        #{experience,jdbcType=INTEGER},
+      </if>
+      <if test="education != null">
+        #{education,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="interviewTime != null">
+        #{interviewTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="state != null">
+        #{state,jdbcType=INTEGER},
+      </if>
+      <if test="birthdate != null">
+        #{birthdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="resumePath != null">
+        #{resumePath,jdbcType=VARCHAR},
+      </if>
+      <if test="job != null">
+        #{job,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.company.shop.entity.Resume">
+    update resume
+    <set>
+      <if test="recruimentId != null">
+        RECRUIMENT_ID = #{recruimentId,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        NAME = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null">
+        SEX = #{sex,jdbcType=INTEGER},
+      </if>
+      <if test="age != null">
+        AGE = #{age,jdbcType=INTEGER},
+      </if>
+      <if test="tel != null">
+        TEL = #{tel,jdbcType=VARCHAR},
+      </if>
+      <if test="maritalState != null">
+        MARITAL_STATE = #{maritalState,jdbcType=INTEGER},
+      </if>
+      <if test="entryTime != null">
+        ENTRY_TIME = #{entryTime,jdbcType=INTEGER},
+      </if>
+      <if test="experience != null">
+        EXPERIENCE = #{experience,jdbcType=INTEGER},
+      </if>
+      <if test="education != null">
+        EDUCATION = #{education,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="interviewTime != null">
+        INTERVIEW_TIME = #{interviewTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="state != null">
+        STATE = #{state,jdbcType=INTEGER},
+      </if>
+      <if test="birthdate != null">
+        BIRTHDATE = #{birthdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="resumePath != null">
+        RESUME_PATH = #{resumePath,jdbcType=VARCHAR},
+      </if>
+      <if test="job != null">
+        JOB = #{job,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where RESUME_ID = #{resumeId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.company.shop.entity.Resume">
+    update resume
+    set RECRUIMENT_ID = #{recruimentId,jdbcType=INTEGER},
+      NAME = #{name,jdbcType=VARCHAR},
+      SEX = #{sex,jdbcType=INTEGER},
+      AGE = #{age,jdbcType=INTEGER},
+      TEL = #{tel,jdbcType=VARCHAR},
+      MARITAL_STATE = #{maritalState,jdbcType=INTEGER},
+      ENTRY_TIME = #{entryTime,jdbcType=INTEGER},
+      EXPERIENCE = #{experience,jdbcType=INTEGER},
+      EDUCATION = #{education,jdbcType=INTEGER},
+      CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      INTERVIEW_TIME = #{interviewTime,jdbcType=TIMESTAMP},
+      STATE = #{state,jdbcType=INTEGER},
+      BIRTHDATE = #{birthdate,jdbcType=TIMESTAMP},
+      RESUME_PATH = #{resumePath,jdbcType=VARCHAR},
+      JOB = #{job,jdbcType=VARCHAR}
+    where RESUME_ID = #{resumeId,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -1,0 +1,6 @@
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<div class="footer">
+      <p>版本所有权@2014-2015 成都非泊企业管理有限公司</p>
+        <p>Copyright@2014-2015&nbsp;fable360.com &nbsp;All Right Reserved备案号&nbsp;蜀ICP备案13004321</p>
+    </div>

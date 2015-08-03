@@ -1,0 +1,11 @@
+jdbc.driverClassName=com.mysql.jdbc.Driver
+jdbc.url=jdbc:mysql://10.0.0.31:3306/makeup?characterEncoding=UTF-8
+jdbc.username=root
+jdbc.password=mainkey
+jdbc.maxActive=20
+jdbc.maxIdle=5
+jdbc.maxWait=500
+jdbc.defaultAutoCommit=true
+jdbc.removeAbandoned=true   
+jdbc.removeAbandonedTimeout=30   
+jdbc.logAbandoned=true  

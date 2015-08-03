@@ -1,0 +1,195 @@
+@charset "utf-8";
+/* CSS Document */
+.rp{
+ width:100%; height:38px;
+  line-height:38px;
+  font-size:20px; color:#e86e61;
+  margin-bottom: 18px;
+  background:#f2f2f2;f2f2f2;
+}
+
+.rp .myscore{
+	display:inline-block;
+	font-size:16px;
+	margin-left:20px;
+}
+
+.rp .scoreLabel{
+	display:inline-block;
+	height:100%; line-height:41px;
+	font-size:12px; color:#000;
+	font-family:"宋体";
+	margin-left:20px;
+}
+
+.rp .scoreValue{
+	display:inline-block;
+	height:100%; line-height:41px;
+	font-size:16px; color:#e86e61;
+}
+
+.rp .condition{
+	display:inline-block;
+	width:auto; height:auto;
+	margin-top:8px;padding:1px;
+	border:1px solid #ababab;
+	min-width:85px; min-height:19px;
+	float:right;
+}
+
+.mcd{
+	width:760px; height:500px;
+	padding:19px 51px 0px;
+	border:1px solid #dcdcdc;
+	position:relative;
+}
+
+.mtitle{
+	width:100%; height:33px;
+	line-height:33px;
+	color:#999;
+	margin-bottom:12px;
+}
+
+.mi{
+	width:100%; height:405px;
+}
+
+.mi ul{
+	list-style-position:inside;
+	color:#9e9e9e;
+}
+
+.mi ul li{
+	height:47px; line-height:47px;
+}
+
+.mi ul li span.label{
+	display:inline-block;
+	width:94px;
+	height:47px; line-height:47px;
+	color:#808080; font-family:"宋体";
+}
+
+.mi ul li span.mv{
+	display:inline-block;
+	height:47px; line-height:47px;
+	color:#808080; font-family:"宋体";
+}
+
+.mi ul li span.mv input.truename{
+	height:30px; line-height:30px;
+	border:1px solid #d9d9d9;
+	margin:7px 0px;
+}
+
+.mi ul li span.mv input.birth{
+	height:30px; line-height:30px;
+  border:1px solid #d9d9d9;
+  margin:7px 0px;
+}
+
+.mi ul li span.mv input.tel{
+	width:187px;height:30px; 
+	line-height:30px;
+	border:1px solid #d9d9d9;
+	margin:7px 0px 7px -4px;
+}
+
+.sure{
+	display:inline-block;
+	width:98px;height:29px; 
+	font-size:12px; font-family:"宋体";
+	color:#fff; 
+	background:url(../images/sure.png) no-repeat scroll 0 0;
+	vertical-align:middle;
+	margin-right:30px;
+}
+
+.apply{
+	display:inline-block;
+	width:98px;height:29px; 
+	font-size:12px; font-family:"宋体";
+	color:#fff; 
+	background:url(../images/apply.png) no-repeat scroll 0 0;
+	vertical-align:middle;
+	margin-right:30px;
+}
+
+.mi ul li span.mv input.code{
+	width:70px;height:30px; 
+	line-height:30px;
+	border:1px solid #d9d9d9;
+	margin:7px 0px;
+}
+
+.mi ul li span.mv .note{
+	display:inline-block;
+	font-size:12px;font-family:"宋体";
+	height:47px; line-height:47px;
+	color:#b3b3b3; 
+}
+
+.mi ul li span.mv .note{
+	display:inline-block;
+	font-size:12px;font-family:"宋体";
+	height:47px; line-height:47px;
+	color:#b3b3b3; 
+}
+
+.mi ul li span.mv .sexPanel{
+	margin-right:20px;
+}
+
+.mi ul li span.mv .sexPanel input.sex{
+	vertical-align:middle;
+	margin-right:10px;
+}
+
+.mi ul li span.mv input.year{
+	width:80px;height:30px; 
+	line-height:30px;
+	border:1px solid #d9d9d9;
+	margin:7px 0px 7px -4px;
+}
+
+.mi ul li span.mv input.month{
+	width:60px;height:30px; 
+	line-height:30px;
+	border:1px solid #d9d9d9;
+	margin:7px 0px;
+}
+
+.mi ul li span.mv input.day{
+	width:60px;height:30px; 
+	line-height:30px;
+	border:1px solid #d9d9d9;
+	margin:7px 0px;
+}
+
+.mi ul li span.mv input.address{
+	width:350px; height:30px; 
+	line-height:30px;
+	border:1px solid #d9d9d9;
+	margin:7px 0px 7px -4px;
+}
+
+.mi ul li span.mv input.email{
+	width:350px;height:30px; 
+	line-height:30px;
+	border:1px solid #d9d9d9;
+	margin:7px 0px 7px -4px;
+}
+
+.submitPanel{
+	width:763px; height:27px;
+	border-top:1px solid #d9d9d9;
+	margin:40px auto 0px;
+	padding:24px 0px;
+	text-align:center;
+}
+
+.submit{
+	width:150px; height:27px;
+	background:url(../images/submit.png) no-repeat scroll 0 0;
+}

@@ -1,0 +1,180 @@
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="ad" uri="/WEB-INF/ad.tld" %>
+<%-- 从左至右 上至下 新闻定义 --%>
+<c:set var="NEWS_PLACE_1" value="${articleSortMap[2001001]}" /><%-- 卡车配件 --%>
+<c:set var="NEWS_PLACE_2" value="${articleSortMap[2001002]}" /><%-- 业界动态 --%>
+<c:set var="NEWS_PLACE_3" value="${articleSortMap[2001003]}" /><%-- 卡车文化--%>
+<c:set var="NEWS_PLACE_4" value="${articleSortMap[2001004]}" /><%-- 产业分析 --%>
+<c:set var="NEWS_PLACE_5" value="${articleSortMap[2001005]}" /><%-- 人物访谈 --%>
+<c:set var="NEWS_PLACE_6" value="${articleSortMap[2002001]}" /><%-- 促销信息 --%>
+<c:set var="NEWS_PLACE_7" value="${articleSortMap[2002002]}" /><%-- 车辆心得 --%>
+<c:set var="NEWS_PLACE_8" value="${articleSortMap[2004001]}" /><%-- 产业政策 --%>
+<c:set var="NEWS_PLACE_9" value="${articleSortMap[2002004]}" /><%-- 新车点评 --%>
+<c:set var="NEWS_PLACE_10" value="${articleSortMap[2003]}" /><%--养车心得 --%>
+<%-- 公告 --%>
+<c:set var="NOTICE_PLACE" value="${articleSortMap[3006]}" />
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<jsp:include page="/publicMeta.jsp">
+	<jsp:param value="资讯-首页" name="addTitle" />
+</jsp:include>
+<%@ include file="/WEB-INF/page/common/include.jsp"%>
+<link rel="stylesheet" href="/css/news.css"/>
+<script type="text/javascript">
+setCookie("searchType",3,48,"/");
+$(function(){
+	$('#slide_banner .bigImg').soChange({
+		thumbObj: '#slide_banner .slideUl span',
+		thumbNowClass: 'on',
+		changeTime: 5000
+	});
+
+	$('#slide .bigImg').soChange({
+		thumbObj: '#slide .slideUl span',
+		thumbNowClass: 'on',
+		changeTime: 5000
+	});
+
+	$('#slide2 .bigImg').soChange({
+		thumbObj: '#slide2 .slideUl span',
+		thumbNowClass: 'on',
+		changeTime: 5000
+	});
+
+});
+</script>
+</head>
+<body>
+<div class="main">
+<jsp:include page="/header.do"></jsp:include>
+<div class="banner">
+	<div class="wrap">
+		<ad:place id="16" />
+	</div>
+</div>
+<div class="wrap">
+	<div><img src="images/banner_bottom.png" /></div>
+	<div class="section_1">
+		<div class="col_1">
+			<ad:place id="17" />
+		</div>
+		<div class="col_2">	
+			<c:set var="newsSort" value="${NEWS_PLACE_1}"/>
+			<c:if test="${not empty newsSort && not empty newsSort.allArticles}">
+				<h2>
+					<a href="/news/detail.do?articleId=${newsSort.allArticles[0].articleId}" class="title">${newsSort.allArticles[0].title}</a>
+					<a href="/news/list.do?sortId=${newsSort.articleSortId}" target="_blank" class="more">更多>></a>
+				</h2>
+				<ul class="news">
+					<c:forEach var="article" items="${newsSort.allArticles}" begin="1" end="7">
+						<li class="auto_hidden">·[${article.articleSort.sortName}] 
+							<a href="/news/detail.do?articleId=${article.articleId}" target="_blank" title="<c:out value="${article.title}"/>">
+								<c:out value="${article.title}"/>
+							</a>
+						</li>
+					</c:forEach>
+				</ul>		
+			</c:if>
+		</div>
+		<div class="col_3">
+		 	<c:set var="newsSort" value="${NOTICE_PLACE}"/>
+			<c:if test="${not empty newsSort}">
+				<h2>
+					<a href="/news/list.do?sortId=${NOTICE_PLACE.articleSortId}" target="_blank" class="title">陆路公告</a>
+					<a href="/news/list.do?sortId=${NOTICE_PLACE.articleSortId}" target="_blank" class="more">更多>></a>
+				</h2>
+				<ul class="news">			    
+					<c:forEach var="article" items="${newsSort.allArticles}" begin="0" end="8">
+						<li class="auto_hidden">·<a href="/news/detail.do?articleId=${article.articleId}" target="_blank" title="<c:out value="${article.title}"/>"><c:out value="${article.title}"/></a></li>
+					</c:forEach>
+				</ul>
+			</c:if>
+		</div>
+	</div>
+	<div class="section_list">
+		<jsp:include page="/news/include/newSort.do?sortId=${NEWS_PLACE_2.articleSortId}">	
+		  <jsp:param value="38" name="adPlaceId"/>
+		</jsp:include>
+		<jsp:include page="/news/include/newSort.do?sortId=${NEWS_PLACE_3.articleSortId}">
+			<jsp:param value="39" name="adPlaceId"/>
+		</jsp:include>
+		<jsp:include page="/news/include/newSort.do?sortId=${NEWS_PLACE_4.articleSortId}">
+			<jsp:param value="40" name="adPlaceId"/>
+		</jsp:include>
+	</div>
+	<div class="bannerCommon"><ad:place id="19"/></div>
+	<div class="section_list">
+		<jsp:include page="/news/include/newSort.do?sortId=${NEWS_PLACE_5.articleSortId}">
+			<jsp:param value="41" name="adPlaceId"/>
+		</jsp:include>	
+		<jsp:include page="/news/include/newSort.do?sortId=${NEWS_PLACE_6.articleSortId}">
+			<jsp:param value="42" name="adPlaceId"/>
+		</jsp:include>
+		<jsp:include page="/news/include/newSort.do?sortId=${NEWS_PLACE_7.articleSortId}">
+			 <jsp:param value="43" name="adPlaceId"/>
+		</jsp:include>
+	</div>
+	<div class="section_2">
+		<div class="col_1">
+			<ad:place id="18" />
+			<div class="newslist">
+				<c:set var="newsSort" value="${NEWS_PLACE_8}"/>
+				<c:if test="${not empty newsSort}">
+					<div class="head">
+						<h2>${newsSort.allArticles[0].title}</h2>
+						<a href="/news/list.do?sortId=${newsSort.articleSortId}" target="_blank" class="more">更多>></a>
+					</div>
+					<ul class="news">
+						<c:forEach var="article" items="${newsSort.allArticles}" begin="0" end="2">
+							<li>[${article.articleSort.sortName}] 
+								<a href="/news/detail.do?articleId=${article.articleId}" target="_blank" title="<c:out value="${article.title}"/>">
+									<c:out value="${article.title}"/>
+								</a>
+							</li>
+						</c:forEach>
+					</ul>		
+				</c:if>
+				<div class="line"></div>
+				<c:set var="newsSort" value="${NEWS_PLACE_9}"/>
+				<c:if test="${not empty newsSort}">
+					<div class="head">
+						<h2>${newsSort.allArticles[0].title}</h2>
+						<a href="/news/list.do?sortId=${newsSort.articleSortId}" target="_blank" class="more">更多>></a>
+					</div>
+					<ul class="news">
+						<c:forEach var="article" items="${newsSort.allArticles}" begin="0" end="2">
+							<li>· ${article.articleSort.sortName} 
+								<a href="/news/detail.do?articleId=${article.articleId}" target="_blank" title="<c:out value="${article.title}"/>">
+									<c:out value="${article.title}"/>
+								</a>
+							</li>
+						</c:forEach>
+					</ul>		
+				</c:if>
+			</div>
+		</div>
+		<div class="col_3">
+			<c:set var="newsSort" value="${NEWS_PLACE_10}"/>
+			<c:if test="${not empty newsSort}">
+				<h2>
+				  <a href="/news/list.do?sortId=${newsSort.articleSortId}" target="_blank" class="title"><c:out value="${newsSort.sortName}"/></a>
+				  <a href="/news/list.do?sortId=${newsSort.articleSortId}" target="_blank" class="more">更多&gt;&gt;</a>						
+				</h2>
+				<ul class="news">
+					<c:forEach var="article" items="${newsSort.allArticles}" begin="0" end="9">
+					  <li class="auto_hidden"><a href="/news/detail.do?articleId=${article.articleId}" target="_blank"  title="<c:out value="${article.title}"/>"><c:out value="${article.title}"/></a></li>
+					</c:forEach>
+				</ul>		
+			</c:if>
+		</div>
+	</div>
+	<div class="bannerCommon"><ad:place id="20"/></div>
+</div>
+<%-- 底部 --%>
+<jsp:include page="/footer.do"></jsp:include>
+</div>
+</body>
+</html>

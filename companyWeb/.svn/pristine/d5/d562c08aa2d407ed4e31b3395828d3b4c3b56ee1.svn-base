@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.company.shop.dao.ArticleMapper" >
+  <resultMap id="BaseResultMap" type="com.company.shop.entity.Article" >
+    <id column="ARTICLE_ID" property="articleId" jdbcType="INTEGER" />
+    <result column="ARTICLE_SORT_ID" property="articleSortId" jdbcType="INTEGER" />
+    <result column="TITLE" property="title" jdbcType="VARCHAR" />
+    <result column="RANK_NUM" property="rankNum" jdbcType="INTEGER" />
+    <result column="CLICK_CNT" property="clickCnt" jdbcType="INTEGER" />
+    <result column="START_TIME" property="startTime" jdbcType="TIMESTAMP" />
+    <result column="END_TIME" property="endTime" jdbcType="TIMESTAMP" />
+    <result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="OP_ID" property="opId" jdbcType="INTEGER" />
+    <result column="STATE" property="state" jdbcType="INTEGER" />
+    <result column="IMG_URL" property="imgUrl" jdbcType="VARCHAR" />
+    <result column="NOTE" property="note" jdbcType="VARCHAR" />
+      <association property="storeExtend" column="STORE_ID" javaType="Store">
+      <id property="storeId" column="STORE_ID"/>
+      <result property="storeName" column="STORE_NAME"/>
+    </association>
+  </resultMap>
+  
+  <resultMap id="ResultMapWithBLOBs" type="com.company.shop.entity.Article" extends="BaseResultMap" >
+    <result column="CONTENT" property="content" jdbcType="LONGVARCHAR" />
+  </resultMap>
+ 
+  
+  <sql id="Base_Column_List" >
+    ARTICLE_ID, ARTICLE_SORT_ID, TITLE, RANK_NUM, CLICK_CNT, START_TIME, END_TIME, CREATE_TIME, 
+    OP_ID, STATE, IMG_URL, NOTE
+  </sql>
+  <sql id="Blob_Column_List" >
+    CONTENT
+  </sql>
+  
+  <select id="selectArticleImgList" resultMap="BaseResultMap" parameterType="com.company.pager.Page" >
+    select 
+    a.*,s.STORE_NAME,s.STORE_ID
+    from article a join
+    article_img ai on a.ARTICLE_ID = ai.ARTICLE_ID join
+    store_extend s on ai.OBJECT_ID = s.STORE_ID
+    where OBJECT_TYPE = 3
+  </select>
+  
+  
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from article
+    where ARTICLE_ID = #{articleId,jdbcType=INTEGER}
+  </select>
+  
+  <select id="selectArticleList" resultMap="BaseResultMap" parameterType="com.company.pager.Page">
+  select a.* 
+  from article a
+  join article_sort s on a.article_sort_id =s.article_sort_id  
+  where s.STATE_PATH NOT LIKE '%0%' and a.STATE = 1
+   <if test="params.sortId !=null "> and s.id_path like  CONCAT('%/',${params.sortId},'/%' )
+   </if> 
+   order by a.click_cnt desc,a.RANK_NUM desc,a.CREATE_TIME desc 
+  </select>
+  
+ 
+  
+  
+  
+  
+  
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from article
+    where ARTICLE_ID = #{articleId,jdbcType=INTEGER}
+  </delete>
+  
+  <insert id="insert" parameterType="com.company.shop.entity.Article" >
+    insert into article (ARTICLE_ID, ARTICLE_SORT_ID, TITLE, 
+      RANK_NUM, CLICK_CNT, START_TIME, 
+      END_TIME, CREATE_TIME, OP_ID, 
+      STATE, IMG_URL, NOTE, 
+      CONTENT)
+    values (#{articleId,jdbcType=INTEGER}, #{articleSortId,jdbcType=INTEGER}, #{title,jdbcType=VARCHAR}, 
+      #{rankNum,jdbcType=INTEGER}, #{clickCnt,jdbcType=INTEGER}, #{startTime,jdbcType=TIMESTAMP}, 
+      #{endTime,jdbcType=TIMESTAMP}, #{createTime,jdbcType=TIMESTAMP}, #{opId,jdbcType=INTEGER}, 
+      #{state,jdbcType=INTEGER}, #{imgUrl,jdbcType=VARCHAR}, #{note,jdbcType=VARCHAR}, 
+      #{content,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.company.shop.entity.Article" >
+    insert into article
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="articleId != null" >
+        ARTICLE_ID,
+      </if>
+      <if test="articleSortId != null" >
+        ARTICLE_SORT_ID,
+      </if>
+      <if test="title != null" >
+        TITLE,
+      </if>
+      <if test="rankNum != null" >
+        RANK_NUM,
+      </if>
+      <if test="clickCnt != null" >
+        CLICK_CNT,
+      </if>
+      <if test="startTime != null" >
+        START_TIME,
+      </if>
+      <if test="endTime != null" >
+        END_TIME,
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME,
+      </if>
+      <if test="opId != null" >
+        OP_ID,
+      </if>
+      <if test="state != null" >
+        STATE,
+      </if>
+      <if test="imgUrl != null" >
+        IMG_URL,
+      </if>
+      <if test="note != null" >
+        NOTE,
+      </if>
+      <if test="content != null" >
+        CONTENT,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="articleId != null" >
+        #{articleId,jdbcType=INTEGER},
+      </if>
+      <if test="articleSortId != null" >
+        #{articleSortId,jdbcType=INTEGER},
+      </if>
+      <if test="title != null" >
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="rankNum != null" >
+        #{rankNum,jdbcType=INTEGER},
+      </if>
+      <if test="clickCnt != null" >
+        #{clickCnt,jdbcType=INTEGER},
+      </if>
+      <if test="startTime != null" >
+        #{startTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endTime != null" >
+        #{endTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="opId != null" >
+        #{opId,jdbcType=INTEGER},
+      </if>
+      <if test="state != null" >
+        #{state,jdbcType=INTEGER},
+      </if>
+      <if test="imgUrl != null" >
+        #{imgUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="note != null" >
+        #{note,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null" >
+        #{content,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.company.shop.entity.Article" >
+    update article
+    <set >
+      <if test="articleSortId != null" >
+        ARTICLE_SORT_ID = #{articleSortId,jdbcType=INTEGER},
+      </if>
+      <if test="title != null" >
+        TITLE = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="rankNum != null" >
+        RANK_NUM = #{rankNum,jdbcType=INTEGER},
+      </if>
+      <if test="clickCnt != null" >
+        CLICK_CNT = #{clickCnt,jdbcType=INTEGER},
+      </if>
+      <if test="startTime != null" >
+        START_TIME = #{startTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endTime != null" >
+        END_TIME = #{endTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="opId != null" >
+        OP_ID = #{opId,jdbcType=INTEGER},
+      </if>
+      <if test="state != null" >
+        STATE = #{state,jdbcType=INTEGER},
+      </if>
+      <if test="imgUrl != null" >
+        IMG_URL = #{imgUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="note != null" >
+        NOTE = #{note,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null" >
+        CONTENT = #{content,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where ARTICLE_ID = #{articleId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.company.shop.entity.Article" >
+    update article
+    set ARTICLE_SORT_ID = #{articleSortId,jdbcType=INTEGER},
+      TITLE = #{title,jdbcType=VARCHAR},
+      RANK_NUM = #{rankNum,jdbcType=INTEGER},
+      CLICK_CNT = #{clickCnt,jdbcType=INTEGER},
+      START_TIME = #{startTime,jdbcType=TIMESTAMP},
+      END_TIME = #{endTime,jdbcType=TIMESTAMP},
+      CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      OP_ID = #{opId,jdbcType=INTEGER},
+      STATE = #{state,jdbcType=INTEGER},
+      IMG_URL = #{imgUrl,jdbcType=VARCHAR},
+      NOTE = #{note,jdbcType=VARCHAR},
+      CONTENT = #{content,jdbcType=LONGVARCHAR}
+    where ARTICLE_ID = #{articleId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.company.shop.entity.Article" >
+    update article
+    set ARTICLE_SORT_ID = #{articleSortId,jdbcType=INTEGER},
+      TITLE = #{title,jdbcType=VARCHAR},
+      RANK_NUM = #{rankNum,jdbcType=INTEGER},
+      CLICK_CNT = #{clickCnt,jdbcType=INTEGER},
+      START_TIME = #{startTime,jdbcType=TIMESTAMP},
+      END_TIME = #{endTime,jdbcType=TIMESTAMP},
+      CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      OP_ID = #{opId,jdbcType=INTEGER},
+      STATE = #{state,jdbcType=INTEGER},
+      IMG_URL = #{imgUrl,jdbcType=VARCHAR},
+      NOTE = #{note,jdbcType=VARCHAR}
+    where ARTICLE_ID = #{articleId,jdbcType=INTEGER}
+  </update>
+</mapper>

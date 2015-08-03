@@ -1,0 +1,68 @@
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="ad" uri="/WEB-INF/ad.tld" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+  <head>
+	<jsp:include page="/publicMeta.jsp">
+	  <jsp:param value="消息提示" name="addTitle"/>
+	</jsp:include>
+	<%@include file="/WEB-INF/page/common/include.jsp"%>
+	<link rel="stylesheet" href="/css/common.css"/>
+	<link rel="stylesheet" href="/css/mall.css"/>
+	<script type="text/javascript">
+	  function rtn(){
+	   <c:choose>
+	  <c:when test="${not empty jumpIndex }">
+	    window.history.go(${jumpIndex});
+	  </c:when>
+	  <c:when test="${not empty jumpUrl}">
+	    window.location="${jumpUrl}";
+	  </c:when>
+	  <c:otherwise>
+	   window.location="/index.do";
+	  </c:otherwise>
+	</c:choose>
+	  }
+	</script>
+	
+  </head>
+  
+  <body>
+  <div class="main">
+    <jsp:include page="/header.do"></jsp:include>
+    <%--
+   	<div class="wrap" style="text-align: center;">
+   		<br/><br/><br/><br/>
+   		<h2 style="color: red;font-family: 微软雅黑;">${message}</h2>
+   		<br/><br/>
+   		<h3> <a onclick="rtn();" style="cursor: pointer;">返回</a></h3>
+   	</div>
+     --%>
+   	
+	<div class="wrap">
+	
+		<div class="errorPage">
+			<div class="fl"><ad:place id="47"/></div>
+			<div class="con">
+				<h2>信息提示</h2>
+				<br/>
+				<p style="color:red;">${message}</p>
+				<br />
+				<p>
+					您可以：<a onclick="rtn();" style="cursor: pointer;">返回上一页>></a>
+					<br/>
+					<%--
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="index.do">返回首页>></a>
+					 --%>
+				</p>
+			</div>
+		</div>
+	</div>
+   	
+   	
+    <!-- 底部 -->
+	<jsp:include page="/footer.do"></jsp:include>
+	</div>
+  </body>
+</html>

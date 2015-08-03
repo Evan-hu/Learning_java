@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.company.shop.dao.ArticleImgMapper" >
+  <resultMap id="BaseResultMap" type="com.company.shop.entity.ArticleImg" >
+    <id column="ARTICLE_IMG_ID" property="articleImgId" jdbcType="INTEGER" />
+    <result column="IMG_URL" property="imgUrl" jdbcType="VARCHAR" />
+    <result column="ARTICLE_ID" property="articleId" jdbcType="INTEGER" />
+    <result column="CLICK_CNT" property="clickCnt" jdbcType="INTEGER" />
+    <result column="RANK_NUM" property="rankNum" jdbcType="INTEGER" />
+    <result column="OP_ID" property="opId" jdbcType="INTEGER" />
+    <result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="STATE" property="state" jdbcType="INTEGER" />
+    <result column="OBJECT_TYPE" property="objectType" jdbcType="INTEGER" />
+    <result column="OBJECT_ID" property="objectId" jdbcType="INTEGER" />
+    <result column="CONTENT" property="content" jdbcType="VARCHAR" />
+    <association property="storeExtend" column="STORE_ID" javaType="Store">
+      <id property="storeId" column="STORE_ID"/>
+      <result property="storeName" column="STORE_NAME"/>
+    </association>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ARTICLE_IMG_ID, IMG_URL, ARTICLE_ID, CLICK_CNT, RANK_NUM, OP_ID, CREATE_TIME, STATE, 
+    OBJECT_TYPE, OBJECT_ID, CONTENT
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from article_img
+    where ARTICLE_IMG_ID = #{articleImgId,jdbcType=INTEGER}
+  </select>
+  
+  <select id="selectArticleImgs" resultMap="BaseResultMap" parameterType="com.company.pager.Page" >
+    SELECT 
+    ai.*
+    <!-- IMG_URL,s.STORE_NAME,s.STORE_ID -->
+    from store_extend s join
+    article_img ai on ai.OBJECT_ID = s.STORE_ID
+    GROUP BY s.STORE_NAME
+  </select>
+  
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from article_img
+    where ARTICLE_IMG_ID = #{articleImgId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.company.shop.entity.ArticleImg" >
+    insert into article_img (ARTICLE_IMG_ID, IMG_URL, ARTICLE_ID, 
+      CLICK_CNT, RANK_NUM, OP_ID, 
+      CREATE_TIME, STATE, OBJECT_TYPE, 
+      OBJECT_ID, CONTENT)
+    values (#{articleImgId,jdbcType=INTEGER}, #{imgUrl,jdbcType=VARCHAR}, #{articleId,jdbcType=INTEGER}, 
+      #{clickCnt,jdbcType=INTEGER}, #{rankNum,jdbcType=INTEGER}, #{opId,jdbcType=INTEGER}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{state,jdbcType=INTEGER}, #{objectType,jdbcType=INTEGER}, 
+      #{objectId,jdbcType=INTEGER}, #{content,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.company.shop.entity.ArticleImg" >
+    insert into article_img
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="articleImgId != null" >
+        ARTICLE_IMG_ID,
+      </if>
+      <if test="imgUrl != null" >
+        IMG_URL,
+      </if>
+      <if test="articleId != null" >
+        ARTICLE_ID,
+      </if>
+      <if test="clickCnt != null" >
+        CLICK_CNT,
+      </if>
+      <if test="rankNum != null" >
+        RANK_NUM,
+      </if>
+      <if test="opId != null" >
+        OP_ID,
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME,
+      </if>
+      <if test="state != null" >
+        STATE,
+      </if>
+      <if test="objectType != null" >
+        OBJECT_TYPE,
+      </if>
+      <if test="objectId != null" >
+        OBJECT_ID,
+      </if>
+      <if test="content != null" >
+        CONTENT,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="articleImgId != null" >
+        #{articleImgId,jdbcType=INTEGER},
+      </if>
+      <if test="imgUrl != null" >
+        #{imgUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="articleId != null" >
+        #{articleId,jdbcType=INTEGER},
+      </if>
+      <if test="clickCnt != null" >
+        #{clickCnt,jdbcType=INTEGER},
+      </if>
+      <if test="rankNum != null" >
+        #{rankNum,jdbcType=INTEGER},
+      </if>
+      <if test="opId != null" >
+        #{opId,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="state != null" >
+        #{state,jdbcType=INTEGER},
+      </if>
+      <if test="objectType != null" >
+        #{objectType,jdbcType=INTEGER},
+      </if>
+      <if test="objectId != null" >
+        #{objectId,jdbcType=INTEGER},
+      </if>
+      <if test="content != null" >
+        #{content,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.company.shop.entity.ArticleImg" >
+    update article_img
+    <set >
+      <if test="imgUrl != null" >
+        IMG_URL = #{imgUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="articleId != null" >
+        ARTICLE_ID = #{articleId,jdbcType=INTEGER},
+      </if>
+      <if test="clickCnt != null" >
+        CLICK_CNT = #{clickCnt,jdbcType=INTEGER},
+      </if>
+      <if test="rankNum != null" >
+        RANK_NUM = #{rankNum,jdbcType=INTEGER},
+      </if>
+      <if test="opId != null" >
+        OP_ID = #{opId,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="state != null" >
+        STATE = #{state,jdbcType=INTEGER},
+      </if>
+      <if test="objectType != null" >
+        OBJECT_TYPE = #{objectType,jdbcType=INTEGER},
+      </if>
+      <if test="objectId != null" >
+        OBJECT_ID = #{objectId,jdbcType=INTEGER},
+      </if>
+      <if test="content != null" >
+        CONTENT = #{content,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ARTICLE_IMG_ID = #{articleImgId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.company.shop.entity.ArticleImg" >
+    update article_img
+    set IMG_URL = #{imgUrl,jdbcType=VARCHAR},
+      ARTICLE_ID = #{articleId,jdbcType=INTEGER},
+      CLICK_CNT = #{clickCnt,jdbcType=INTEGER},
+      RANK_NUM = #{rankNum,jdbcType=INTEGER},
+      OP_ID = #{opId,jdbcType=INTEGER},
+      CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      STATE = #{state,jdbcType=INTEGER},
+      OBJECT_TYPE = #{objectType,jdbcType=INTEGER},
+      OBJECT_ID = #{objectId,jdbcType=INTEGER},
+      CONTENT = #{content,jdbcType=VARCHAR}
+    where ARTICLE_IMG_ID = #{articleImgId,jdbcType=INTEGER}
+  </update>
+</mapper>

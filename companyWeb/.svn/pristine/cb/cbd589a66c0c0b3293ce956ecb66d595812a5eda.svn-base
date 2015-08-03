@@ -1,0 +1,45 @@
+/**
+ * 弹出层组件
+ */
+
+/*------ 弹出层组件 start ------*/
+.dialog{ display:none; position:fixed; background:#fff;
+	-webkit-box-shadow:0 0 10px rgba(0,0,0,0.8); 
+	-moz-box-shadow:0 0 10px rgba(0,0,0,0.8); 
+	box-shadow:0 0 10px rgba(0,0,0,0.8);
+	background: #EEFFBB;
+	border: 1px solid #AECC6A;
+}
+.dialogTitle{ position:relative; height:28px; padding-left:15px; line-height:28px; font-weight:bold; color:#fff; font-size:14px;
+  background: #B0CB6A;
+}
+.dialogTitleH1{ text-align: center;}
+.dialogFold, .dialogMin, .dialogMax{ float:right; width:17px; height:16px; margin:6px 8px 0 0; display:inline; background-image:url(images/dialog_icon.gif); }
+.dialogFold{ background-position:-51px 0;}
+.dialogFold:hover{ background-position:-51px -16px;}
+.dialogFoldActive{ background-position:-68px 0;}
+.dialogFoldActive:hover{ background-position:-68px -16px;}
+.dialogFoldDisable, .dialogFoldDisable:hover{ background-position:-51px -32px;}
+
+.dialogMin{ background-position:0 0;}
+.dialogMin:hover{ background-position:0 -16px;}
+.dialogMinDisable, .dialogMinDisable:hover{ background-position:0 -32px;}
+
+.dialogMax{ background-position:-17px 0;}
+.dialogMax:hover{ background-position:-17px -16px;}
+.dialogMaxActive{ background-position:-34px 0;}
+.dialogMaxActive:hover{ background-position:-34px -16px;}
+
+.dialogClose{ position: absolute; top:0; right: 0; width:28px; height:28px; text-align: center; color: #fff}
+.dialogCon{ position:relative; padding:10px; overflow:auto;}
+.dialogResize{ position:absolute; bottom:0; right:0; width:5px; height:5px; cursor:nw-resize;}
+.dialogMask{ z-index:1000000; display:none; position:absolute; top:0; left:0; width:100%; background:#333; filter:alpha(opacity=40); -moz-opacity:0.4; opacity:0.4;}
+
+.dialogMinBar{position:fixed; bottom:-25px; left:0; width:100%; height:25px; background:#eee; border-top:1px solid #bbb; _position:absolute; _right:0; _top:expression(documentElement.scrollTop+documentElement.clientHeight); z-index:8000; overflow:hidden; }
+.dialogMinBar div{ position:relative; float:left; padding:0 25px; background:#ddd; border-right:1px solid #bebebe; line-height:25px; cursor:pointer;}
+.dialogMinBar div.active{ background:#aaa;}
+.dialogMinBar div a{ color:#333;}
+
+.dialogMinBar div .dialogMinBarClose{ position:absolute; top:2px; right:2px; width:15px; height:15px; line-height:14px; color:#111; font-family:arial; text-align:center;}
+.dialogMinBar div .dialogMinBarClose:hover{ color:red;}
+/*------ 弹出层组件 end ------*/

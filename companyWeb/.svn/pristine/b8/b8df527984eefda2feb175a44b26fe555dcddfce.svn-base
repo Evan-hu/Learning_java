@@ -1,0 +1,70 @@
+/**
+ * Copyright (c) 2014 GA
+ * All right reserved.
+ */
+package com.company.shop.service;
+
+import java.awt.List;
+import java.util.Date;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.company.shop.dao.MemberMapper;
+import com.company.shop.entity.Member;
+
+/**
+ * 类描述
+ * @author ht
+ * @create_time 2014-7-15 下午5:21:52
+ * @project companyWeb
+ */
+@Service 
+public class MemberService {
+  
+  @Autowired
+  MemberMapper memberMapper;
+  
+  //memberInfo
+  public Member findMember(int memberId) {
+    return memberMapper.selectByPrimaryKey(memberId);
+  }
+  
+//  login
+  public Member quUser(String userName,String passwd){
+    Member member = memberMapper.selectMember(userName);
+    if(null != member){
+      member.setLastTime(new Date());
+    }
+    return member;
+  }
+  
+// update passwd
+  public boolean updatePasswd(Member member){
+    return memberMapper.updateByPrimaryKey(member)>0?true:false;
+  }
+  
+//  站内消息
+  public List myMessageList(int memberid){
+    
+    return null;
+  }
+  
+//  update memberInfo
+  public int updateInfo(Member memberUpdateInfo){
+    return this.memberMapper.updateByPrimaryKey(memberUpdateInfo);
+  }
+  
+  public int validate(String tel, String memberNum){
+    Member member = this.memberMapper.selectMember(memberNum);
+    if(tel.equals(member.getTel())){
+      member.setPwd("6666");
+      if(this.memberMapper.updateByPrimaryKey(member) > 0){
+        return 1;//找回成功
+      }
+      return 2;//密码更新失败
+    }
+    return 0;//找回失败
+  }
+  
+}
